@@ -3,7 +3,7 @@
 
 ## Database Schema Design
 
-`<insert database schema design here>`
+`<img src=https://imgur.com/a/Cbibdxv>`
 
 ## API Documentation
 
