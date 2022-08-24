@@ -1,6 +1,6 @@
 # API-Project
 
-# `<EarthRnR>`
+# `EarthRnR`
 
 ## Database Schema Design
 
