@@ -1,6 +1,5 @@
-# API-Project
 
-# `EarthRnR`
+# `# API-Project-EarthRnR(AirBnB clone)`
 
 ## Database Schema Design
 
