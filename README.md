@@ -3,7 +3,7 @@
 
 ## Database Schema Design
 
-![image](https://drive.google.com/uc?export=view&id=1wOGfyNE2ADU5-wTBsMBhaV8t-CWj7LXW))
+![image](https://drive.google.com/uc?export=view&id=1wOGfyNE2ADU5-wTBsMBhaV8t-CWj7LXW)
 
 ## API Documentation
 
