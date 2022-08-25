@@ -6,6 +6,14 @@ const { User } = require('../../db/models');
 
 const router = express.Router();
 
+router.delete(
+    '/',
+    (_req, res) => {
+        res.clearCookie('token');
+        return res.json({ message: 'success' });
+    }
+);
+
 router.post('/', async (req, res, next) => {
     const { credential, password } = req.body;
 
