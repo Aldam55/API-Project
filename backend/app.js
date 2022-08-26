@@ -24,7 +24,7 @@ const { ValidationError } = require('sequelize');
 
 
 app.get('/', (req, res) => {
-    res.json('Hello World!')
+    res.json("Haven't heard of EarthRnR? Have you been living under a rock?!")
 })
 
 // Security Middleware
