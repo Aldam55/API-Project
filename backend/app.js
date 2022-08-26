@@ -23,7 +23,9 @@ const { ValidationError } = require('sequelize');
 // ...
 
 
-
+app.get('/', (req, res) => {
+    res.json('Hello World!')
+})
 
 // Security Middleware
 if (!isProduction) {
