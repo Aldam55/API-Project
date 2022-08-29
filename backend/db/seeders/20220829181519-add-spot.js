@@ -2,7 +2,6 @@
 
 const spots = [
   {
-    ownerId: 1,
     address: '9619 Primrose Drive',
     city: 'Sacramento',
     state: 'California',
@@ -14,7 +13,6 @@ const spots = [
     price: 150,
   },
   {
-    ownerId: 2,
     address: '212 Wintergreen Avenue',
     city: 'Miami',
     state: 'Florida',
@@ -26,7 +24,6 @@ const spots = [
     price: 35,
   },
   {
-    ownerId: 3,
     address: '9988 Beacon St.',
     city: 'Chicago',
     state: 'Illinois',
@@ -37,7 +34,6 @@ const spots = [
     description: 'Just a house available for booking in Chicago',
     price: 300,
   }, {
-    ownerId: 4,
     address: '14 Mountainview Drive',
     city: 'Seattle',
     state: 'Washington',
