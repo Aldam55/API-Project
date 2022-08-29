@@ -23,10 +23,6 @@ const { ValidationError } = require('sequelize');
 // ...
 
 
-app.get('/', (req, res) => {
-    res.json("Haven't heard of EarthRnR? Have you been living under a rock?!")
-})
-
 // Security Middleware
 if (!isProduction) {
     // enable cors only in development
