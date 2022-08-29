@@ -7,4 +7,8 @@ router.get('/', async (req, res) => {
     res.json(spots)
 })
 
+// router.post('/', async (req, res) => {
+//     const {ownerId, address, city, state, }
+// })
+
 module.exports = router;
