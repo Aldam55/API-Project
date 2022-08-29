@@ -11,7 +11,7 @@ router.post('/', async (req, res) => {
     const { address, city, state, country, lat, lng, name, description, price } = req.body
     // try {
     const newSpot = await Spot.create({
-        ownerId: id,
+        // ownerId: id,
         address,
         city,
         state,
