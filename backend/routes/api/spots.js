@@ -52,6 +52,7 @@ router.put('/:spotId', requireAuth, async (req, res) => {
 })
 
 router.get('/:spotId/reviews', async (req, res) => {
+    const spot = await Spot.findByPk(req.params.spotId)
     const reviews = await Review.findAll({
         where: {
             spotId: req.params.spotId
@@ -70,6 +71,13 @@ router.get('/:spotId/reviews', async (req, res) => {
         ]
 
     })
+    if (!spot) {
+        res.statusCode = 404
+        res.json({
+            message: "Spot couldn't be found",
+            statusCode: res.statusCode
+        })
+    }
 
     res.json({
         Reviews: reviews
