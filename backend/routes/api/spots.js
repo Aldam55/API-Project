@@ -1,6 +1,6 @@
 const express = require('express');
 const { requireAuth } = require('../../utils/auth')
-const { Spot, SpotImage, Review, User } = require('../../db/models');
+const { Spot, SpotImage, Review, User, ReviewImage } = require('../../db/models');
 const sequelize = require('sequelize')
 const router = express.Router();
 
@@ -51,8 +51,29 @@ router.put('/:spotId', requireAuth, async (req, res) => {
 
 })
 
-router.get('/:spotId/reviews', (req, res) => {
-    
+router.get('/:spotId/reviews', async (req, res) => {
+    const reviews = await Review.findAll({
+        where: {
+            spotId: req.params.spotId
+        },
+        include: [
+            {
+                model: User,
+                attributes: ['id', 'firstName', 'lastName']
+            },
+            {
+                model: ReviewImage,
+                attributes: {
+                    exclude: ['createdAt', 'updatedAt', 'reviewId']
+                }
+            }
+        ]
+
+    })
+
+    res.json({
+        Reviews: reviews
+    })
 })
 
 router.get('/current', async (req, res) => {
