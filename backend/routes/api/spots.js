@@ -121,17 +121,17 @@ router.post('/:spotId/reviews', async (req, res) => {
             userId: req.user.id
         }
     })
-    if (existingReviews) {
-        res.statusCode = 403
-        res.json({
-            message: "User already has a review for this spot",
-            statusCode: res.statusCode
-        })
-    }
     if (!spot) {
         res.statusCode = 404
         res.json({
             message: "Spot couldn't be found",
+            statusCode: res.statusCode
+        })
+    }
+    if (existingReviews) {
+        res.statusCode = 403
+        res.json({
+            message: "User already has a review for this spot",
             statusCode: res.statusCode
         })
     }
