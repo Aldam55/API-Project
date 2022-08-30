@@ -9,7 +9,7 @@ router.get('/:spotId/bookings', async (req, res) => {
     if (!spot) {
         res.statusCode = 404
         res.json({
-            message: "Spot coulnd't be found",
+            message: "Spot couldn't be found",
             statusCode: res.statusCode
         })
     }
@@ -39,7 +39,7 @@ router.get('/:spotId/bookings', async (req, res) => {
 
         })
         return res.json({
-            Bookigns: bookings
+            Bookings: bookings
         })
     }
 
