@@ -6,6 +6,21 @@ const router = express.Router();
 
 router.put('/:spotId', requireAuth, async (req, res) => {
     const { address, city, state, country, lat, lng, name, description, price } = req.body
+    const spot = await Spot.findByPk(req.params.spotId)
+
+    spot.update({
+        address,
+        city,
+        state,
+        country,
+        lat,
+        lng,
+        name,
+        description,
+        price
+    })
+
+    res.json(spot)
 })
 
 router.get('/current', async (req, res) => {
