@@ -1,6 +1,7 @@
 const express = require('express');
 const { requireAuth } = require('../../utils/auth')
 const { Spot, SpotImage, Review, User } = require('../../db/models');
+const sequelize = require('sequelize')
 const router = express.Router();
 
 
@@ -87,12 +88,50 @@ router.get('/:spotId', async (req, res) => {
 
 router.get('/', async (req, res) => {
     const spots = await Spot.findAll({
+        include: [
+            { model: Review },
+            {
+                model: SpotImage,
+                attributes: ['url'],
+                where: {
+                    preview: true
+                }
+            }
+        ],
+        attributes: {
+            include: [
+                [
+                    sequelize.fn("AVG", sequelize.col('Reviews.stars')),
+                    'avgRating'
+                ]
+            ]
+        }
     })
+
     res.json({
         Spot: spots
     })
 })
 
+router.post('/:spotId/reviews', async (req, res) => {
+    const { review, stars } = req.body
+    const spot = await Spot.findByPk(req.params.spotId)
+    if (!spot) {
+        res.statusCode = 404
+        res.json({
+            message: "Spot couldn't be found",
+            statusCode: res.statusCode
+        })
+    }
+    const newReview = await Review.create({
+        userId: req.user.id,
+        spotId: Number(req.params.spotId),
+        review,
+        stars
+    })
+
+    res.json(newReview)
+})
 
 router.post('/:spotId/images', requireAuth, async (req, res) => {
     const { url } = req.body
