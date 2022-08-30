@@ -4,6 +4,23 @@ const { Spot, SpotImage, Review, User } = require('../../db/models');
 const router = express.Router();
 
 
+router.put('/:spotId', requireAuth, async (req, res) => {
+    const { address, city, state, country, lat, lng, name, description, price } = req.body
+})
+
+router.get('/current', async (req, res) => {
+    const ownerId = req.user.id
+    const spots = await Spot.findAll({
+        where: {
+            ownerId: ownerId
+        }
+    })
+
+    res.json({
+        Spot: spots
+    })
+})
+
 router.get('/:spotId', async (req, res) => {
     const spot = await Spot.findByPk(req.params.spotId, {
         include: [
@@ -26,22 +43,13 @@ router.get('/:spotId', async (req, res) => {
     res.json(spot)
 })
 
-router.get('/current', async (req, res) => {
-    const ownerId = req.user.id
-    const spots = await Spot.findAll({
-        where: {
-            ownerId: ownerId
-        }
-    })
-
-    res.json(spots)
-})
-
 
 router.get('/', async (req, res) => {
     const spots = await Spot.findAll({
     })
-    res.json(spots)
+    res.json({
+        Spot: spots
+    })
 })
 
 
