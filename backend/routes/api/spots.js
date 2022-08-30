@@ -116,6 +116,18 @@ router.get('/', async (req, res) => {
 router.post('/:spotId/reviews', async (req, res) => {
     const { review, stars } = req.body
     const spot = await Spot.findByPk(req.params.spotId)
+    const existingReviews = await Review.findOne({
+        where: {
+            userId: req.user.id
+        }
+    })
+    if (existingReviews) {
+        res.statusCode = 403
+        res.json({
+            message: "User already has a review for this spot",
+            statusCode: res.statusCode
+        })
+    }
     if (!spot) {
         res.statusCode = 404
         res.json({
@@ -123,14 +135,26 @@ router.post('/:spotId/reviews', async (req, res) => {
             statusCode: res.statusCode
         })
     }
-    const newReview = await Review.create({
-        userId: req.user.id,
-        spotId: Number(req.params.spotId),
-        review,
-        stars
-    })
+    try {
+        const newReview = await Review.create({
+            userId: req.user.id,
+            spotId: Number(req.params.spotId),
+            review,
+            stars
+        })
 
-    res.json(newReview)
+        return res.json(newReview)
+    } catch {
+        res.json({
+            "message": "Validation error",
+            "statusCode": 400,
+            "errors": {
+                "review": "Review text is required",
+                "stars": "Stars must be an integer from 1 to 5",
+            }
+        })
+    }
+
 })
 
 router.post('/:spotId/images', requireAuth, async (req, res) => {
