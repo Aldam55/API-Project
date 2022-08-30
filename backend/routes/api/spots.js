@@ -128,13 +128,13 @@ router.post('/:spotId/reviews', async (req, res) => {
             statusCode: res.statusCode
         })
     }
-    if (existingReviews) {
-        res.statusCode = 403
-        res.json({
-            message: "User already has a review for this spot",
-            statusCode: res.statusCode
-        })
-    }
+    // if (existingReviews) {
+    //     res.statusCode = 403
+    //     res.json({
+    //         message: "User already has a review for this spot",
+    //         statusCode: res.statusCode
+    //     })
+    // }
     try {
         const newReview = await Review.create({
             userId: req.user.id,
