@@ -1,10 +1,37 @@
 const express = require('express');
-const { User, Spot } = require('../../db/models');
+const { requireAuth } = require('../../utils/auth')
+const { Spot, SpotImage } = require('../../db/models');
 const router = express.Router();
 
 router.get('/', async (req, res) => {
     const spots = await Spot.findAll()
     res.json(spots)
+})
+
+router.post('/:spotId/images', requireAuth, async (req, res) => {
+    const { url } = req.body
+    const spot = await Spot.findByPk(req.params.spotId)
+    const spotImage = await SpotImage.create({
+        spotId: Number(req.params.spotId),
+        url: url,
+        preview: true
+    })
+    if (!spot) {
+        res.statusCode = 404
+        res.json({
+            message: "Spot couldn't be found",
+            statusCode: res.statusCode
+        })
+    }
+    spot.update({
+        url: url,
+        preview: true
+    })
+    res.json({
+        id: spotImage.id,
+        url,
+        preview: true
+    })
 })
 
 router.post('/', async (req, res) => {
