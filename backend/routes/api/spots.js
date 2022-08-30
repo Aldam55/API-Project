@@ -23,11 +23,6 @@ router.post('/:spotId/images', requireAuth, async (req, res) => {
         url: url,
         preview: true
     })
-
-    spot.update({
-        url: url,
-        preview: true
-    })
     res.json({
         id: spotImage.id,
         url,
