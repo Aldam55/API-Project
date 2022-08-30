@@ -1,7 +1,30 @@
 const express = require('express');
 const { requireAuth } = require('../../utils/auth')
-const { Spot, SpotImage, Review } = require('../../db/models');
+const { Spot, SpotImage, Review, User } = require('../../db/models');
 const router = express.Router();
+
+
+router.get('/:spotId', async (req, res) => {
+    const spot = await Spot.findByPk(req.params.spotId, {
+        include: [
+            { model: SpotImage },
+            {
+                model: User,
+                attributes: ['id', 'firstName', 'lastName'],
+                as: 'Owner'
+            }
+        ]
+    })
+    if (!spot) {
+        res.statusCode = 404
+        res.json({
+            message: "Spot couldn't be found",
+            statusCode: res.statusCode
+        })
+    }
+
+    res.json(spot)
+})
 
 router.get('/current', async (req, res) => {
     const ownerId = req.user.id
@@ -17,17 +40,10 @@ router.get('/current', async (req, res) => {
 
 router.get('/', async (req, res) => {
     const spots = await Spot.findAll({
-        include: [
-            { model: Review },
-            {
-                model: SpotImage,
-                attributes: ['url'],
-                as: 'previewImage'
-            }
-        ]
     })
     res.json(spots)
 })
+
 
 router.post('/:spotId/images', requireAuth, async (req, res) => {
     const { url } = req.body
