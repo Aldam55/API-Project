@@ -8,6 +8,26 @@ router.put('/:spotId', requireAuth, async (req, res) => {
     const { address, city, state, country, lat, lng, name, description, price } = req.body
     const spot = await Spot.findByPk(req.params.spotId)
     if (!spot) {
+        res.statusCode = 404
+        res.json({
+            message: "Spot couldn't be found",
+            statusCode: res.statusCode
+        })
+    }
+    try {
+        spot.update({
+            address,
+            city,
+            state,
+            country,
+            lat,
+            lng,
+            name,
+            description,
+            price
+        })
+        return res.json(spot)
+    } catch {
         res.statusCode = 400
         res.json({
             message: 'Validation Error',
@@ -26,19 +46,7 @@ router.put('/:spotId', requireAuth, async (req, res) => {
         })
     }
 
-    spot.update({
-        address,
-        city,
-        state,
-        country,
-        lat,
-        lng,
-        name,
-        description,
-        price
-    })
 
-    res.json(spot)
 })
 
 router.get('/current', async (req, res) => {
