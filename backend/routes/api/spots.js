@@ -4,7 +4,44 @@ const { Spot, SpotImage, Review, User, ReviewImage, Booking } = require('../../d
 const sequelize = require('sequelize')
 const router = express.Router();
 
+router.get('/:spotId/bookings', async (req, res) => {
+    const spot = await Spot.findByPk(req.params.spotId)
+    if (!spot) {
+        res.statusCode = 404
+        res.json({
+            message: "Spot coulnd't be found",
+            statusCode: res.statusCode
+        })
+    }
+    if (req.user.id !== spot.ownerId) {
+        const bookings = await Booking.findAll({
+            where: {
+                spotId: spot.id
+            },
+            attributes: {
+                include: ['spotId', 'startDate', 'endDate']
+            }
+        })
+        return res.json(bookings)
+    }
+    if (req.user.id === spot.ownerId) {
+        const bookings = await Booking.findAll({
+            where: {
+                spotId: spot.id
+            },
+            include: [
+                {
+                    model: User,
+                    attributes: ['id', 'firstName', 'lastName']
+                }
+            ],
+            attributes: ['id', 'spotId', 'userId', 'startDate', 'endDate', 'createdAt', 'updatedAt']
 
+        })
+        return res.json(bookings)
+    }
+
+})
 
 router.put('/:spotId', requireAuth, async (req, res) => {
     const { address, city, state, country, lat, lng, name, description, price } = req.body
