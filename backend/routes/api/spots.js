@@ -11,11 +11,6 @@ router.get('/', async (req, res) => {
 router.post('/:spotId/images', requireAuth, async (req, res) => {
     const { url } = req.body
     const spot = await Spot.findByPk(req.params.spotId)
-    const spotImage = await SpotImage.create({
-        spotId: Number(req.params.spotId),
-        url: url,
-        preview: true
-    })
     if (!spot) {
         res.statusCode = 404
         res.json({
@@ -23,6 +18,12 @@ router.post('/:spotId/images', requireAuth, async (req, res) => {
             statusCode: res.statusCode
         })
     }
+    const spotImage = await SpotImage.create({
+        spotId: Number(req.params.spotId),
+        url: url,
+        preview: true
+    })
+
     spot.update({
         url: url,
         preview: true
