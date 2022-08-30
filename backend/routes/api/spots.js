@@ -5,6 +5,7 @@ const sequelize = require('sequelize')
 const router = express.Router();
 
 
+
 router.put('/:spotId', requireAuth, async (req, res) => {
     const { address, city, state, country, lat, lng, name, description, price } = req.body
     const spot = await Spot.findByPk(req.params.spotId)
@@ -48,6 +49,10 @@ router.put('/:spotId', requireAuth, async (req, res) => {
     }
 
 
+})
+
+router.get('/:spotId/reviews', (req, res) => {
+    
 })
 
 router.get('/current', async (req, res) => {
