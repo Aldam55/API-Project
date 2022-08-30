@@ -35,8 +35,6 @@ router.get('/:spotId/bookings', async (req, res) => {
                     attributes: ['id', 'firstName', 'lastName']
                 }
             ],
-            // attributes: ['id', 'spotId', 'userId', 'startDate', 'endDate', 'createdAt', 'updatedAt']
-
         })
         return res.json({
             Bookings: bookings

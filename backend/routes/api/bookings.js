@@ -25,4 +25,9 @@ router.get('/current', async (req, res) => {
     })
 })
 
+router.put('/:bookingId', requireAuth, async (req, res) => {
+    const {startDate, endDate} = req.body
+    const booking = await Booking.findByPk(req.params.bookingId)
+})
+
 module.exports = router;
