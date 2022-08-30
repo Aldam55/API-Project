@@ -6,10 +6,6 @@ const router = express.Router();
 
 router.post('/:reviewId/images', requireAuth, async (req, res) => {
     const { url } = req.body
-    const { reviewId } = req.params
-    res.json({
-        message: reviewId
-    })
     const review = await Review.findByPk(req.params.reviewId)
     if (!review) {
         res.statusCode = 404
@@ -38,6 +34,18 @@ router.post('/:reviewId/images', requireAuth, async (req, res) => {
     res.json({
         id: newReviewImage.id,
         url: url
+    })
+})
+
+router.get('/current', async (req, res) => {
+    const reviews = await Review.findAll({
+        where: {
+            userId: req.user.id
+        }
+    })
+
+    res.json({
+        Reviews: reviews
     })
 })
 
