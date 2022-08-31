@@ -171,7 +171,6 @@ router.get('/current', async (req, res) => {
 
 router.get('/:spotId', async (req, res) => {
     const spot = await Spot.findByPk(req.params.spotId, {
-        raw: true,
         include: [
             { model: SpotImage },
             {
@@ -200,7 +199,8 @@ router.get('/:spotId', async (req, res) => {
             spotId: spot.id
         }
     })
-    spot.numReviews = reviews
+    let newSpot = spot.toJSON()
+    newSpot.numReviews = reviews
     if (!spot) {
         res.statusCode = 404
         res.json({
@@ -209,7 +209,7 @@ router.get('/:spotId', async (req, res) => {
         })
     }
 
-    res.json(spot)
+    res.json(newSpot)
 })
 
 
