@@ -128,8 +128,41 @@ router.get('/current', async (req, res) => {
     const spots = await Spot.findAll({
         where: {
             ownerId: ownerId
-        }
+        },
+        raw: true,
+        include: [
+            {
+                model: Review,
+                attributes: []
+            }
+        ],
+        attributes: {
+            include: [
+                [
+                    sequelize.fn("AVG", sequelize.col('Reviews.stars')),
+                    'avgRating'
+                ]
+            ],
+            required: false
+        },
+        group: ["Spot.id"],
     })
+    for (i = 0; i < spots.length; i++) {
+        const image = await SpotImage.findOne({
+            raw: true,
+            where: {
+                [Op.and]: [
+                    { spotId: spots[i].id },
+                    { preview: true }
+                ]
+            }
+        })
+        if (image) {
+            spots[i].previewImage = image.url
+        } else {
+            spots[i].previewImage = null
+        }
+    }
 
     res.json({
         Spot: spots
@@ -144,8 +177,25 @@ router.get('/:spotId', async (req, res) => {
                 model: User,
                 attributes: ['id', 'firstName', 'lastName'],
                 as: 'Owner'
+            },
+            {
+                model: Review,
+                attributes: []
             }
-        ]
+        ],
+        attributes: {
+            include: [
+                [
+                    sequelize.fn("AVG", sequelize.col('Reviews.stars')),
+                    'avgStarRating'
+                ],
+                [sequelize.fn("COUNT", sequelize.col('Reviews.review')),
+                    'numReviews'
+                ]
+            ],
+            required: false
+        },
+
     })
     if (!spot) {
         res.statusCode = 404
@@ -322,7 +372,7 @@ router.post('/:spotId/reviews', async (req, res) => {
 })
 
 router.post('/:spotId/images', requireAuth, async (req, res) => {
-    const { url } = req.body
+    const { url, preview } = req.body
     const spot = await Spot.findByPk(req.params.spotId)
     if (!spot) {
         res.statusCode = 404
@@ -334,12 +384,12 @@ router.post('/:spotId/images', requireAuth, async (req, res) => {
     const spotImage = await SpotImage.create({
         spotId: Number(req.params.spotId),
         url: url,
-        preview: true
+        preview: preview
     })
     res.json({
         id: spotImage.id,
         url,
-        preview: true
+        preview
     })
 })
 
