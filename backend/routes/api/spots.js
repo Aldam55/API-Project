@@ -3,6 +3,7 @@ const { requireAuth } = require('../../utils/auth')
 const { Spot, SpotImage, Review, User, ReviewImage, Booking } = require('../../db/models');
 const sequelize = require('sequelize')
 const router = express.Router();
+const { Op } = require('sequelize')
 
 router.get('/:spotId/bookings', async (req, res) => {
     const spot = await Spot.findByPk(req.params.spotId)
@@ -194,32 +195,55 @@ router.post('/:spotId/bookings', requireAuth, async (req, res) => {
             statusCode: res.statusCode
         })
     }
-    // const bookings = await Booking.findOne({
-    //     where: {
-    //         spotId: spot.id
-    //     }
-    // })
-    // if ((bookings.startDate <= startDate && bookings.endDate >= startDate)
-    //     || (bookings.startDate <= endDate && bookings.endDate >= endDate)) {
-    //     res.statusCode = 403
-    //     res.json({
-    //         "message": "Sorry, this spot is already booked for the specified dates",
-    //         "statusCode": 403,
-    //         "errors": {
-    //             "startDate": "Start date conflicts with an existing booking",
-    //             "endDate": "End date conflicts with an existing booking"
-    //         }
-    //     })
-    // }
-    // if(spot.userId === req.user.id) throw Error
-    const newBooking = await Booking.create({
-        spotId: spot.id,
-        userId: req.user.id,
-        startDate,
-        endDate
+    const bookings = await Booking.findAll({
+        where: {
+            spotId: spot.id,
+            startDate: {
+                [Op.lt]: endDate,
+                [Op.gt]: startDate
+            }
+        }
     })
+    const bookings2 = await Booking.findAll({
+        where: {
+            spotId: spot.id,
+            endDate: {
+                [Op.lt]: endDate,
+                [Op.gt]: startDate
+            }
+        }
+    })
+    if (bookings.length >= 1 || bookings2.length >= 1) {
+        res.statusCode = 403
+        res.json({
+            "message": "Sorry, this spot is already booked for the specified dates",
+            "statusCode": 403,
+            "errors": {
+                "startDate": "Start date conflicts with an existing booking",
+                "endDate": "End date conflicts with an existing booking"
+            }
+        })
+    }
+    try {
+        const newBooking = await Booking.create({
+            spotId: spot.id,
+            userId: req.user.id,
+            startDate,
+            endDate
+        })
 
-    res.json(newBooking)
+        return res.json(newBooking)
+    } catch {
+        res.statusCode = 400
+        res.json({
+            message: 'Validation error',
+            statusCode: res.statusCode,
+            errors: {
+                endDate: 'endDate cannot be on or before startDate'
+            }
+        })
+    }
+
 })
 
 router.post('/:spotId/reviews', async (req, res) => {
