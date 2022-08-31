@@ -14,9 +14,9 @@ router.get(
     (req, res) => {
         const { user } = req;
         if (user) {
-            return res.json({
+            return res.json(
                 user
-            });
+            );
         } else return res.json({});
     }
 );
@@ -46,9 +46,9 @@ router.post('/', async (req, res, next) => {
 
     const userObj = user.toJSON()
     userObj.token = token
-    return res.json({
+    return res.json(
         userObj
-    });
+    );
 }
 );
 const validateLogin = [
