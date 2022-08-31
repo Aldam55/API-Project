@@ -4,6 +4,7 @@ const { Spot, SpotImage, Review, User, ReviewImage, Booking } = require('../../d
 const sequelize = require('sequelize');
 const user = require('../../db/models/user');
 const router = express.Router();
+const { Op } = require('sequelize')
 
 router.get('/current', async (req, res) => {
     const bookings = await Booking.findAll({
@@ -55,6 +56,66 @@ router.delete('/:bookingId', requireAuth, async (req, res) => {
 router.put('/:bookingId', requireAuth, async (req, res) => {
     const { startDate, endDate } = req.body
     const booking = await Booking.findByPk(req.params.bookingId)
+    if (!booking) {
+        res.statusCode = 404
+        res.json({
+            message: "Booking couldn't be found",
+            statusCode: res.statusCode
+        })
+    }
+    if (booking.endDate < new Date()) {
+        res.statusCode = 403
+        res.json({
+            message: "Past bookings can't be modified",
+            statusCode: res.statusCode
+        })
+    }
+    const existingBooking = await Booking.findAll({
+        where: {
+            spotId: booking.spotId,
+            startDate: {
+                [Op.lte]: endDate,
+                [Op.gte]: startDate
+            }
+        }
+    })
+    const existingBooking2 = await Booking.findAll({
+        where: {
+            spotId: booking.spotId,
+            endDate: {
+                [Op.lte]: endDate,
+                [Op.gte]: startDate
+            }
+        }
+    })
+    if (existingBooking.length >= 1 || existingBooking2.length >= 1) {
+        res.statusCode = 403
+        res.json({
+            "message": "Sorry, this spot is already booked for the specified dates",
+            "statusCode": res.statusCode,
+            "errors": {
+                "startDate": "Start date conflicts with an existing booking",
+                "endDate": "End date conflicts with an existing booking"
+            }
+        })
+    }
+    try {
+        booking.update({
+            startDate: startDate,
+            endDate: endDate
+        })
+        return res.json(booking)
+    } catch {
+        res.statusCode = 400
+        res.json({
+            message: 'Validation error',
+            statusCode: res.statusCode,
+            errors: {
+                endDate: 'endDate cannot come before startDate'
+            }
+        })
+    }
+
 })
 
 module.exports = router;
