@@ -183,24 +183,24 @@ router.get('/:spotId', async (req, res) => {
                 attributes: []
             }
         ],
-        attributes: {
-            include: [
-                [
-                    sequelize.fn("AVG", sequelize.col('Reviews.stars')),
-                    'avgStarRating'
-                ],
-            ],
-            required: false
-        },
-
     })
     const reviews = await Review.count({
         where: {
             spotId: spot.id
         }
     })
+    const sumOfStars = await Review.sum('stars', {
+        where: { spotId: spotId }
+    })
     let newSpot = spot.toJSON()
     newSpot.numReviews = reviews
+    let avgStarRating;
+    if (sumOfStars === null) {
+        avgStarRating = 0
+    } else {
+        avgStarRating = (sumOfStars / reviews).toFixed(1)
+    }
+    newSpot.avgStarRating = avgStarRating
     if (!spot) {
         res.statusCode = 404
         res.json({
