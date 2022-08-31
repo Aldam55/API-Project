@@ -35,10 +35,16 @@ router.delete('/:bookingId', requireAuth, async (req, res) => {
             statusCode: res.statusCode
         })
     }
-
+    if (booking.startDate < new Date() && booking.endDate > new Date()) {
+        res.statusCode = 403
+        res.json({
+            message: "Bookings that have been started can't be deleted",
+            statusCode: res.statusCode
+        })
+    }
     const spot = await Spot.findOne({
         where: {
-            spotId: booking.spotId
+            id: booking.spotId
         }
     })
     if (booking.userId === req.user.id || spot.ownerId === req.user.id) {

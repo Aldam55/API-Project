@@ -1,5 +1,5 @@
 const express = require('express');
-const { requireAuth } = require('../../utils/auth')
+const { requireAuth, restoreUser } = require('../../utils/auth')
 const { Spot, SpotImage, Review, User, ReviewImage } = require('../../db/models');
 const sequelize = require('sequelize');
 const user = require('../../db/models/user');
@@ -100,6 +100,25 @@ router.put('/:reviewId', requireAuth, async (req, res) => {
         })
     }
 
+})
+
+router.delete('/:reviewId', requireAuth, async (req, res) => {
+    const review = await Review.findByPk(req.params.reviewId)
+    if (review) {
+        res.statusCode = 404
+        res.json({
+            message: "Review couldn't be found",
+            statusCode: res.statusCode
+        })
+    }
+
+    review.destroy()
+
+    res.statusCode = 200
+    res.json({
+        message: "Successfully deleted",
+        statusCode: res.statusCode
+    })
 })
 
 
