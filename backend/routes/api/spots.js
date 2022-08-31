@@ -171,6 +171,7 @@ router.get('/current', async (req, res) => {
 
 router.get('/:spotId', async (req, res) => {
     const spot = await Spot.findByPk(req.params.spotId, {
+        raw: true,
         include: [
             { model: SpotImage },
             {
@@ -189,14 +190,17 @@ router.get('/:spotId', async (req, res) => {
                     sequelize.fn("AVG", sequelize.col('Reviews.stars')),
                     'avgStarRating'
                 ],
-                [sequelize.fn("COUNT", sequelize.col('Reviews.review')),
-                    'numReviews'
-                ]
             ],
             required: false
         },
 
     })
+    const reviews = await Review.count({
+        where: {
+            spotId: spot.id
+        }
+    })
+    spot.numReviews = reviews
     if (!spot) {
         res.statusCode = 404
         res.json({
