@@ -199,8 +199,8 @@ router.post('/:spotId/bookings', requireAuth, async (req, res) => {
         where: {
             spotId: spot.id,
             startDate: {
-                [Op.lt]: endDate,
-                [Op.gt]: startDate
+                [Op.lte]: endDate,
+                [Op.gte]: startDate
             }
         }
     })
@@ -208,8 +208,8 @@ router.post('/:spotId/bookings', requireAuth, async (req, res) => {
         where: {
             spotId: spot.id,
             endDate: {
-                [Op.lt]: endDate,
-                [Op.gt]: startDate
+                [Op.lte]: endDate,
+                [Op.gte]: startDate
             }
         }
     })
