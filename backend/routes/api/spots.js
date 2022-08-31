@@ -190,7 +190,7 @@ router.get('/:spotId', async (req, res) => {
         }
     })
     const sumOfStars = await Review.sum('stars', {
-        where: { spotId: spotId }
+        where: { spotId: spot.id }
     })
     let newSpot = spot.toJSON()
     newSpot.numReviews = reviews
