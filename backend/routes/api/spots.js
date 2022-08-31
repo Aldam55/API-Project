@@ -3,7 +3,8 @@ const { requireAuth } = require('../../utils/auth')
 const { Spot, SpotImage, Review, User, ReviewImage, Booking } = require('../../db/models');
 const sequelize = require('sequelize')
 const router = express.Router();
-const { Op } = require('sequelize')
+const { Op } = require('sequelize');
+const e = require('express');
 
 router.get('/:spotId/bookings', async (req, res) => {
     const spot = await Spot.findByPk(req.params.spotId)
@@ -162,34 +163,54 @@ router.get('/', async (req, res) => {
     let { page, size, minLat, maxLat, minLng, maxLng, minPrice, maxPrice } = req.query
     page = parseInt(page)
     size = parseInt(size)
-    if (!page) page = 0
+    if (!page) page = 1
     if (page > 10) page = 10
     if (!size) size = 20
     if (size > 20) size = 20
     let pagination = {}
-    if (page >= 0 && size >= 0) {
+    if (page >= 1 && size >= 1) {
         pagination.limit = size
         pagination.offset = size * (page - 1)
     }
     const spots = await Spot.findAll({
+        raw: true,
         include: [
             {
-                model: Review
+                model: Review,
+                attributes: []
             }
         ],
         attributes: {
             include: [
                 [
-                    sequelize.fn("AVG", sequelize.col("Reviews.stars")),
+                    sequelize.fn("AVG", sequelize.col('Reviews.stars')),
                     'avgRating'
                 ]
             ],
             required: false
-        }
-    })
+        },
+        group: ["Spot.id"],
 
+    })
+    for (i = 0; i < spots.length; i++) {
+        const image = await SpotImage.findOne({
+            raw: true,
+            where: {
+                [Op.and]: [
+                    { spotId: spots[i].id },
+                    { preview: true }
+                ]
+            }
+        })
+        if (image) {
+            spots[i].previewImage = image.url
+        } else {
+            spots[i].previewImage = null
+        }
+    }
+    const finalSpots = spots.slice(pagination.offset + 1, pagination.offset + pagination.limit + 1)
     res.json({
-        Spot: spots,
+        Spot: finalSpots,
         page,
         size
     })
