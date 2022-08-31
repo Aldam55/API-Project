@@ -160,24 +160,24 @@ router.get('/:spotId', async (req, res) => {
 
 router.get('/', async (req, res) => {
     const spots = await Spot.findAll({
-        // include: [
-        //     { model: Review },
-        //     {
-        //         model: SpotImage,
-        //         attributes: ['url'],
-        //         where: {
-        //             preview: true
-        //         }
-        //     }
-        // ],
-        // attributes: {
-        //     include: [
-        //         [
-        //             sequelize.fn("AVG", sequelize.col('Reviews.stars')),
-        //             'avgRating'
-        //         ]
-        //     ]
-        // }
+        include: [
+            { model: Review },
+            {
+                model: SpotImage,
+                attributes: ['url'],
+                where: {
+                    preview: true
+                }
+            }
+        ],
+        attributes: {
+            include: [
+                [
+                    sequelize.fn("AVG", sequelize.col('Reviews.stars')),
+                    'avgRating'
+                ]
+            ]
+        }
     })
 
     res.json({

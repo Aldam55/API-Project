@@ -42,10 +42,12 @@ router.post('/', async (req, res, next) => {
         return next(err);
     }
 
-    await setTokenCookie(res, user);
+    const token = await setTokenCookie(res, user);
 
+    const userObj = user.toJSON()
+    userObj.token = token
     return res.json({
-        user
+        userObj
     });
 }
 );
