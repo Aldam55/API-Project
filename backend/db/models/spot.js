@@ -58,7 +58,7 @@ module.exports = (sequelize, DataTypes) => {
       len: [5, 49]
     },
     description: DataTypes.STRING,
-    price: DataTypes.DECIMAL
+    price: DataTypes.DECIMAL,
   }, {
     sequelize,
     modelName: 'Spot',

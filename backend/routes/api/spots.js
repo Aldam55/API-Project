@@ -159,29 +159,34 @@ router.get('/:spotId', async (req, res) => {
 
 
 router.get('/', async (req, res) => {
+    let { page, size, minLat, maxLat, minLng, maxLng, minPrice, maxPrice } = req.query
+    page = parseInt(page)
+    size = parseInt(size)
+    if (!page) page = 0
+    if (page > 10) page = 10
+    if (!size) size = 20
+    if (size > 20) size = 20
+    let pagination = {}
+    if (page >= 0 && size >= 0) {
+        pagination.limit = size
+        pagination.offset = size * (page - 1)
+    }
     const spots = await Spot.findAll({
-        include: [
-            { model: Review },
-            {
-                model: SpotImage,
-                attributes: ['url'],
-                where: {
-                    preview: true
-                }
-            }
-        ],
         attributes: {
             include: [
                 [
-                    sequelize.fn("AVG", sequelize.col('Reviews.stars')),
+                    sequelize.fn("AVG", sequelize.col("Reviews.stars")),
                     'avgRating'
                 ]
-            ]
+            ],
+            required: false
         }
     })
 
     res.json({
-        Spot: spots
+        Spot: spots,
+        page,
+        size
     })
 })
 
