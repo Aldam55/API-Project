@@ -184,6 +184,13 @@ router.get('/:spotId', async (req, res) => {
             }
         ],
     })
+    if (!spot) {
+        res.statusCode = 404
+        res.json({
+            message: "Spot couldn't be found",
+            statusCode: res.statusCode
+        })
+    }
     const reviews = await Review.count({
         where: {
             spotId: spot.id
@@ -198,16 +205,9 @@ router.get('/:spotId', async (req, res) => {
     if (sumOfStars === null) {
         avgStarRating = 0
     } else {
-        avgStarRating = (sumOfStars / reviews).toFixed(1)
+        avgStarRating = (sumOfStars / reviews).toFixed(2)
     }
-    newSpot.avgStarRating = avgStarRating
-    if (!spot) {
-        res.statusCode = 404
-        res.json({
-            message: "Spot couldn't be found",
-            statusCode: res.statusCode
-        })
-    }
+    newSpot.avgStarRating = Number(avgStarRating)
 
     res.json(newSpot)
 })
@@ -262,7 +262,8 @@ router.get('/', async (req, res) => {
             spots[i].previewImage = null
         }
     }
-    const finalSpots = spots.slice(pagination.offset + 1, pagination.offset + pagination.limit + 1)
+    const offset = pagination.offset || -1
+    const finalSpots = spots.slice(offset + 1, offset + pagination.limit + 1)
     res.json({
         Spot: finalSpots,
         page,
@@ -376,7 +377,7 @@ router.post('/:spotId/reviews', async (req, res) => {
 })
 
 router.post('/:spotId/images', requireAuth, async (req, res) => {
-    const { url, preview } = req.body
+    const { url, previewImage } = req.body
     const spot = await Spot.findByPk(req.params.spotId)
     if (!spot) {
         res.statusCode = 404
@@ -388,12 +389,12 @@ router.post('/:spotId/images', requireAuth, async (req, res) => {
     const spotImage = await SpotImage.create({
         spotId: Number(req.params.spotId),
         url: url,
-        preview: preview
+        preview: previewImage
     })
     res.json({
         id: spotImage.id,
         url,
-        preview
+        preview: previewImage
     })
 })
 
