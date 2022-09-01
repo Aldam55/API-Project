@@ -9,7 +9,7 @@ router.delete('/:imageId', requireAuth, async (req, res) => {
     const reviewImage = await ReviewImage.findByPk(req.params.imageId)
     if (!reviewImage) {
         res.statusCode = 404
-        res.json({
+        return res.json({
             message: "Review Image couldn't be found",
             statusCode: res.statusCode
         })
