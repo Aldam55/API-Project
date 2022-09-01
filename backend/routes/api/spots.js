@@ -336,11 +336,6 @@ router.post('/:spotId/bookings', requireAuth, async (req, res) => {
 router.post('/:spotId/reviews', async (req, res) => {
     const { review, stars } = req.body
     const spot = await Spot.findByPk(req.params.spotId)
-    const existingReviews = await Review.findOne({
-        where: {
-            userId: req.user.id
-        }
-    })
     if (!spot) {
         res.statusCode = 404
         res.json({
@@ -348,6 +343,12 @@ router.post('/:spotId/reviews', async (req, res) => {
             statusCode: res.statusCode
         })
     }
+    const existingReviews = await Review.findOne({
+        where: {
+            spotId: spot.id,
+            userId: req.user.id
+        }
+    })
     if (existingReviews) {
         res.statusCode = 403
         res.json({

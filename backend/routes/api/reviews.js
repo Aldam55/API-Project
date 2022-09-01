@@ -4,6 +4,7 @@ const { Spot, SpotImage, Review, User, ReviewImage } = require('../../db/models'
 const sequelize = require('sequelize');
 const user = require('../../db/models/user');
 const router = express.Router();
+const { Op } = require('sequelize')
 
 router.post('/:reviewId/images', requireAuth, async (req, res) => {
     const { url } = req.body
@@ -73,22 +74,16 @@ router.get('/current', async (req, res) => {
             }
         ]
     })
-
     for (let i = 0; i < reviews.length; i++) {
-        const image = SpotImage.findOne({
-            raw: true,
-            where: {
-                [Op.and]: [
-                    { spotId: reviews[i].spotId },
-                    { preview: true }
-                ]
-            }
-        })
-        if (image) {
-            reviews[i].SpotImage.previewImage = image.url
+        let reviewsObj = reviews[i].toJSON()
+        let urlObj = reviewsObj.Spot.SpotImages[0]
+        if (urlObj) {
+            reviewsObj.Spot.previewImage = urlObj.url
         } else {
-            reviews[i].SpotImage.previewImage = null
+            reviewsObj.Spot.previewImage = null
         }
+        delete reviewsObj.Spot.SpotImages
+        reviews[i] = reviewsObj
     }
 
     res.json({
