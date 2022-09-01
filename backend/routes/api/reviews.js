@@ -16,7 +16,7 @@ router.post('/:reviewId/images', requireAuth, async (req, res) => {
             statusCode: res.statusCode = 404
         })
     }
-    if (review.id !== req.user.id) {
+    if (review.userId !== req.user.id) {
         res.statusCode = 403
         return res.json({
             "message": "Forbidden",
@@ -108,7 +108,7 @@ router.put('/:reviewId', requireAuth, async (req, res) => {
             statusCode: res.statusCode
         })
     }
-    if (review.id !== req.user.id) {
+    if (oldReview.userId !== req.user.id) {
         res.statusCode = 403
         return res.json({
             "message": "Forbidden",
@@ -145,7 +145,7 @@ router.delete('/:reviewId', requireAuth, async (req, res) => {
             statusCode: res.statusCode
         })
     }
-    if (review.id !== req.user.id) {
+    if (review.userId !== req.user.id) {
         res.statusCode = 403
         return res.json({
             "message": "Forbidden",

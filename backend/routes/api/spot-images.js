@@ -1,6 +1,6 @@
 const express = require('express');
 const { requireAuth } = require('../../utils/auth')
-const { SpotImage } = require('../../db/models');
+const { SpotImage, Spot } = require('../../db/models');
 const sequelize = require('sequelize');
 const user = require('../../db/models/user');
 const router = express.Router();
@@ -14,13 +14,14 @@ router.delete('/:spotImageId', requireAuth, async (req, res) => {
             statusCode: res.statusCode
         })
     }
-    if (spotImage.spotId !== req.user.id) {
-        res.statusCode = 403
-        return res.json({
-            "message": "Forbidden",
-            "statusCode": res.statusCode
-        })
-    }
+    // const spot = await Spot.findByPk(spotImage.spotId)
+    // if (spot.ownerId !== req.user.id) {
+    //     res.statusCode = 403
+    //     return res.json({
+    //         "message": "Forbidden",
+    //         "statusCode": res.statusCode
+    //     })
+    // }
 
     spotImage.destroy()
     res.statusCode = 200

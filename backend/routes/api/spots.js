@@ -55,7 +55,7 @@ router.put('/:spotId', requireAuth, async (req, res) => {
             statusCode: res.statusCode
         })
     }
-    if (spot.id !== req.user.id) {
+    if (spot.ownerId !== req.user.id) {
         res.statusCode = 403
         return res.json({
             "message": "Forbidden",
@@ -402,7 +402,7 @@ router.post('/:spotId/images', requireAuth, async (req, res) => {
             statusCode: res.statusCode
         })
     }
-    if (spot.id !== user.id) {
+    if (spot.ownerId !== user.id) {
         res.statusCode = 403
         return res.json({
             "message": "Forbidden",
@@ -475,7 +475,7 @@ router.delete('/:spotId', requireAuth, async (req, res) => {
             statusCode: res.statusCode
         })
     }
-    if (spot.id !== req.user.id) {
+    if (spot.ownerId !== req.user.id) {
         res.statusCode = 403
         return res.json({
             "message": "Forbidden",
