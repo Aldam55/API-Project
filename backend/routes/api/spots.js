@@ -7,7 +7,7 @@ const { Op } = require('sequelize');
 const e = require('express');
 sequelize.Sequelize.DataTypes.postgres.DECIMAL.parse = parseFloat
 
-router.get('/:spotId/bookings', async (req, res) => {
+router.get('/:spotId/bookings', requireAuth, async (req, res) => {
     const spot = await Spot.findByPk(req.params.spotId)
     if (!spot) {
         res.statusCode = 404
@@ -53,6 +53,13 @@ router.put('/:spotId', requireAuth, async (req, res) => {
         return res.json({
             message: "Spot couldn't be found",
             statusCode: res.statusCode
+        })
+    }
+    if (spot.id !== req.user.id) {
+        res.statusCode = 403
+        return res.json({
+            "message": "Forbidden",
+            "statusCode": res.statusCode
         })
     }
     try {
@@ -123,7 +130,7 @@ router.get('/:spotId/reviews', async (req, res) => {
     })
 })
 
-router.get('/current', async (req, res) => {
+router.get('/current', requireAuth, async (req, res) => {
     const ownerId = req.user.id
     const spots = await Spot.findAll({
         where: {
@@ -276,9 +283,16 @@ router.post('/:spotId/bookings', requireAuth, async (req, res) => {
     const spot = await Spot.findByPk(req.params.spotId)
     if (!spot) {
         res.statusCode = 404
-        res.json({
+        return res.json({
             message: "Spot couldn't be found",
             statusCode: res.statusCode
+        })
+    }
+    if (spot.ownerId === req.user.id) {
+        res.statusCode = 403
+        return res.json({
+            "message": "Forbidden",
+            "statusCode": res.statusCode
         })
     }
     const bookings = await Booking.findAll({
@@ -332,7 +346,7 @@ router.post('/:spotId/bookings', requireAuth, async (req, res) => {
 
 })
 
-router.post('/:spotId/reviews', async (req, res) => {
+router.post('/:spotId/reviews', requireAuth, async (req, res) => {
     const { review, stars } = req.body
     const spot = await Spot.findByPk(req.params.spotId)
     if (!spot) {
@@ -378,13 +392,21 @@ router.post('/:spotId/reviews', async (req, res) => {
 })
 
 router.post('/:spotId/images', requireAuth, async (req, res) => {
+    const user = req.user
     const { url, preview } = req.body
     const spot = await Spot.findByPk(req.params.spotId)
     if (!spot) {
         res.statusCode = 404
-        res.json({
+        return res.json({
             message: "Spot couldn't be found",
             statusCode: res.statusCode
+        })
+    }
+    if (spot.id !== user.id) {
+        res.statusCode = 403
+        return res.json({
+            "message": "Forbidden",
+            "statusCode": res.statusCode
         })
     }
     const spotImage = await SpotImage.create({
@@ -399,8 +421,14 @@ router.post('/:spotId/images', requireAuth, async (req, res) => {
     })
 })
 
-router.post('/', async (req, res) => {
+router.post('/', requireAuth, async (req, res) => {
     const user = req.user
+    // if (!user) {
+    //     return res.json({
+    //         "message": "Authentication required",
+    //         "statusCode": 401
+    //     })
+    // }
     const { address, city, state, country, lat, lng, name, description, price } = req.body
     try {
         const newSpot = await Spot.create({
@@ -445,6 +473,13 @@ router.delete('/:spotId', requireAuth, async (req, res) => {
         return res.json({
             message: "Spot couldn't be found",
             statusCode: res.statusCode
+        })
+    }
+    if (spot.id !== req.user.id) {
+        res.statusCode = 403
+        return res.json({
+            "message": "Forbidden",
+            "statusCode": res.statusCode
         })
     }
 

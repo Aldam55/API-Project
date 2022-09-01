@@ -1,10 +1,11 @@
 // backend/routes/api/session.js
 const express = require('express');
 
-const { setTokenCookie, restoreUser } = require('../../utils/auth');
+const { setTokenCookie, restoreUser, requireAuth } = require('../../utils/auth');
 const { User } = require('../../db/models');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
+
 
 const router = express.Router();
 
@@ -17,7 +18,10 @@ router.get(
             return res.json(
                 user
             );
-        } else return res.json({});
+        } else return res.json({
+            "message": "Authentication required",
+            "statusCode": 401
+        });
     }
 );
 

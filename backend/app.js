@@ -86,5 +86,25 @@ app.use((err, _req, res, _next) => {
         stack: isProduction ? null : err.stack
     });
 });
+// app.use((err, _req, res, _next) => {
+//     let errObj = {}
+//     res.status(err.status || 500);
+//     console.error(err);
+
+//     if (!err.errors) {
+//         errObj.message = err.message
+//         errObj.statusCode = err.status
+//     } else {
+//         errObj.message = err.title
+//         errObj.statusCode = err.status
+//         errObj.errors = err.errors
+//     }
+//     // res.json({
+//     //     // title: err.title || 'Server Error',
+//     //     message: err.message,
+//     //     statusCode: res.status
+//     //     // errors: err.errors,
+//     // });
+//     res.json(errObj)
 
 module.exports = app;

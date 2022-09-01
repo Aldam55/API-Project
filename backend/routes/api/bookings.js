@@ -6,7 +6,7 @@ const user = require('../../db/models/user');
 const router = express.Router();
 const { Op } = require('sequelize')
 
-router.get('/current', async (req, res) => {
+router.get('/current', requireAuth, async (req, res) => {
     const bookings = await Booking.findAll({
         where: {
             userId: req.user.id
@@ -55,6 +55,13 @@ router.delete('/:bookingId', requireAuth, async (req, res) => {
             statusCode: res.statusCode
         })
     }
+    // if (booking.userId !== req.user.id || booking.spotId !== req.user.id) {
+    //     res.statusCode = 403
+    //     return res.json({
+    //         "message": "Forbidden",
+    //         "statusCode": res.statusCode
+    //     })
+    // }
     if (booking.startDate < new Date() && booking.endDate > new Date()) {
         res.statusCode = 403
         return res.json({
@@ -74,6 +81,12 @@ router.delete('/:bookingId', requireAuth, async (req, res) => {
             message: "Successfully deleted",
             statusCode: res.statusCode
         })
+    } else {
+        res.statusCode = 403
+        return res.json({
+            "message": "Forbidden",
+            "statusCode": res.statusCode
+        })
     }
 
 })
@@ -86,6 +99,13 @@ router.put('/:bookingId', requireAuth, async (req, res) => {
         return res.json({
             message: "Booking couldn't be found",
             statusCode: res.statusCode
+        })
+    }
+    if (booking.userId !== req.user.id) {
+        res.statusCode = 403
+        return res.json({
+            "message": "Forbidden",
+            "statusCode": res.statusCode
         })
     }
     if (booking.endDate < new Date()) {
