@@ -5,6 +5,7 @@ const sequelize = require('sequelize')
 const router = express.Router();
 const { Op } = require('sequelize');
 const e = require('express');
+sequelize.Sequelize.DataTypes.postgres.DECIMAL.parse = parseFloat
 
 router.get('/:spotId/bookings', async (req, res) => {
     const spot = await Spot.findByPk(req.params.spotId)
