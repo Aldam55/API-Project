@@ -74,7 +74,22 @@ router.get('/current', async (req, res) => {
         ]
     })
 
-    
+    for (let i = 0; i < reviews.length; i++) {
+        const image = SpotImage.findOne({
+            raw: true,
+            where: {
+                [Op.and]: [
+                    { spotId: reviews[i].spotId },
+                    { preview: true }
+                ]
+            }
+        })
+        if (image) {
+            reviews[i].SpotImage.previewImage = image.url
+        } else {
+            reviews[i].SpotImage.previewImage = null
+        }
+    }
 
     res.json({
         Reviews: reviews
