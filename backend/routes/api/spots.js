@@ -50,7 +50,7 @@ router.put('/:spotId', requireAuth, async (req, res) => {
     const spot = await Spot.findByPk(req.params.spotId)
     if (!spot) {
         res.statusCode = 404
-        res.json({
+        return res.json({
             message: "Spot couldn't be found",
             statusCode: res.statusCode
         })
@@ -378,7 +378,7 @@ router.post('/:spotId/reviews', async (req, res) => {
 })
 
 router.post('/:spotId/images', requireAuth, async (req, res) => {
-    const { url, previewImage } = req.body
+    const { url, preview } = req.body
     const spot = await Spot.findByPk(req.params.spotId)
     if (!spot) {
         res.statusCode = 404
@@ -390,12 +390,12 @@ router.post('/:spotId/images', requireAuth, async (req, res) => {
     const spotImage = await SpotImage.create({
         spotId: Number(req.params.spotId),
         url: url,
-        preview: previewImage
+        preview: preview
     })
     res.json({
         id: spotImage.id,
         url,
-        preview: previewImage
+        preview: preview
     })
 })
 
