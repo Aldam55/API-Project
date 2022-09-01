@@ -15,11 +15,31 @@ router.get('/current', async (req, res) => {
             {
                 model: Spot,
                 attributes: {
-                    exclude: ['createdAt', 'updatedAt']
+                    exclude: ['createdAt', 'updatedAt', 'description']
+                },
+                include: {
+                    model: SpotImage,
+                    where: {
+                        preview: true
+                    },
+                    limit: 1,
+                    attributes: ['url']
                 }
             }
         ],
     })
+
+    for (let i = 0; i < bookings.length; i++) {
+        let bookingsObj = bookings[i].toJSON()
+        let urlObj = bookingsObj.Spot.SpotImages[0]
+        if (urlObj) {
+            bookingsObj.Spot.previewImage = urlObj.urlObj
+        } else {
+            bookingsObj.Spot.previewImage = null
+        }
+        delete bookingsObj.Spot.SpotImages
+        bookings[i] = bookingsObj
+    }
 
     res.json({
         Bookings: bookings

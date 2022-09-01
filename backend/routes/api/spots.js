@@ -21,11 +21,10 @@ router.get('/:spotId/bookings', async (req, res) => {
             where: {
                 spotId: spot.id
             },
-            attributes: {
-                include: ['spotId', 'startDate', 'endDate']
-            }
+            attributes: ['spotId', 'startDate', 'endDate']
+
         })
-        return res.json(bookings)
+        return res.json({ Bookings: bookings })
     }
     if (req.user.id === spot.ownerId) {
         const bookings = await Booking.findAll({
@@ -302,7 +301,7 @@ router.post('/:spotId/bookings', requireAuth, async (req, res) => {
     })
     if (bookings.length >= 1 || bookings2.length >= 1) {
         res.statusCode = 403
-        res.json({
+        return res.json({
             "message": "Sorry, this spot is already booked for the specified dates",
             "statusCode": res.statusCode,
             "errors": {
@@ -338,7 +337,7 @@ router.post('/:spotId/reviews', async (req, res) => {
     const spot = await Spot.findByPk(req.params.spotId)
     if (!spot) {
         res.statusCode = 404
-        res.json({
+        return res.json({
             message: "Spot couldn't be found",
             statusCode: res.statusCode
         })
@@ -351,7 +350,7 @@ router.post('/:spotId/reviews', async (req, res) => {
     })
     if (existingReviews) {
         res.statusCode = 403
-        res.json({
+        return res.json({
             message: "User already has a review for this spot",
             statusCode: res.statusCode
         })
