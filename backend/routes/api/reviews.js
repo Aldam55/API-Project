@@ -55,6 +55,14 @@ router.get('/current', async (req, res) => {
                 model: Spot,
                 attributes: {
                     exclude: ['createdAt', 'updatedAt', 'description'],
+                },
+                include: {
+                    model: SpotImage,
+                    where: {
+                        preview: true
+                    },
+                    limit: 1,
+                    attributes: ['url']
                 }
             },
             {
@@ -65,6 +73,8 @@ router.get('/current', async (req, res) => {
             }
         ]
     })
+
+    
 
     res.json({
         Reviews: reviews
