@@ -4,6 +4,14 @@ EarthRnR is a web app inspired by [AirBnB](https://www.airbnb.com/). EarthRnR ac
 
 ## Project Wiki
 
-## Languages
+## Languages and Technologies
+
+This project is built with:
+* Javascript
+* Sequelize
+* Express
+* React
+* Redux
+
 
 ## Home Page
