@@ -8,7 +8,7 @@ const SpotReviewPage = () => {
     const { spotId } = useParams()
     const dispatch = useDispatch()
 
-    const spotReviews = useSelector(state => state.spot)
+    const spotReviews = useSelector(state => state.reviews)
     console.log('all reviews for this spot', spotReviews)
 
     useEffect(() => {

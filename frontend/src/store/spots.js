@@ -119,6 +119,11 @@ const spotsReducer = (state = initialState, action) => {
     const allSpots = {};
     let newState;
     switch (action.type) {
+        case LOAD_CURRENT:
+            action.spots.Spot.forEach(spot => {
+                allSpots[spot.id] = spot
+            })
+            return { ...state, allSpots }
         case LOAD:
             // const obj = action.spots.Spot.reduce((acc, spot) => {
             //     acc[spot.id] = spot
@@ -138,8 +143,6 @@ const spotsReducer = (state = initialState, action) => {
                 ...state,
                 singleSpot
             }
-        case LOAD_CURRENT:
-            
         case (ADD || UPDATE):
             newState = { allSpots: { ...state.allSpots }, singleSpot: { ...state.singleSpot } }
             newState.allSpots[action.spot.id] = action.spot

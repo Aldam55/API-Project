@@ -8,7 +8,7 @@ const AddReviewFormPage = () => {
     const history = useHistory()
 
     const user = useSelector(state => state.session.user)
-    const spot = useSelector(state => state.spot)
+    const spot = useSelector(state => state.reviews)
 
     const [review, setReview] = useState('')
     const [stars, setStars] = useState(0)
