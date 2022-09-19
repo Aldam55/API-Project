@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react"
-import  { useDispatch, useSelector } from "react-redux"
-import  { useHistory } from "react-router-dom"
+import { useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { useHistory } from "react-router-dom"
 import { addSpotReview } from "../../store/reviews"
 
 const AddReviewFormPage = () => {
@@ -16,9 +16,6 @@ const AddReviewFormPage = () => {
     const updateReview = (e) => setReview(e.target.value)
     const updateStars = (e) => setStars(e.target.value)
 
-    useEffect(()=> {
-        dispatch(addSpotReview(spot.id))
-    })
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -30,8 +27,8 @@ const AddReviewFormPage = () => {
 
         let createdReview = await dispatch(addSpotReview(payload))
 
-        if (createdReview){
-            history.push(`/spots/${}`)
+        if (createdReview) {
+            history.push(`/spots/${spot.spotId}`)
         }
     }
 
@@ -49,7 +46,8 @@ const AddReviewFormPage = () => {
                         min='1'
                         max='5'
                         value={stars}
-                        onChange={setStars} />
+                        onChange={updateStars} />
+                    {(review.length && stars) && (<button type='submit'>Submit</button>)}
                 </form>
             )}
         </div>

@@ -2,6 +2,7 @@ import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router-dom"
 import { getSpotById, removeSpot } from "../../store/spots"
+import AddReviewFormPage from "../AddReviewFormPage"
 import SpotReviewPage from "../SpotReviewPage"
 
 const SingleSpotPage = () => {
@@ -30,6 +31,9 @@ const SingleSpotPage = () => {
             </div>
             <div>
                 <SpotReviewPage></SpotReviewPage>
+            </div>
+            <div>
+                <AddReviewFormPage></AddReviewFormPage>
             </div>
         </div>
     )
