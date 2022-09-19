@@ -42,13 +42,60 @@ const AddSpotFormPage = () => {
 
         let createdSpot = await dispatch(addASpot(payload))
 
-        if(createdSpot){
+        if (createdSpot) {
             history.push(`/spots/${createdSpot.id}`)
         }
     }
 
     return (
-        
+        <div>
+            <form onSubmit={handleSubmit}>
+                <input
+                    type='text'
+                    placeholder='123 App Academy Way'
+                    value={address}
+                    onChange={updateAddress}
+                    required />
+                <input
+                    type='text'
+                    placeholder='Bikini Bottom'
+                    value={city}
+                    onChange={updateCity}
+                    required />
+                    <input
+                    type='text'
+                    placeholder='State of Depression'
+                    value={state}
+                    onChange={updateState}
+                    required />
+                    <input
+                    type='text'
+                    placeholder='United States of America'
+                    value={country}
+                    onChange={updateCountry}
+                    required />
+                    <input
+                    type='text'
+                    placeholder={'Patrick\'s Rock'}
+                    value={name}
+                    onChange={updateName}
+                    required />
+                    <input
+                    type='text'
+                    placeholder='Ready to rock-n-roll?'
+                    value={description}
+                    onChange={updateDescription}
+                    required />
+                    <input
+                    type='number'
+                    placeholder='420'
+                    value={price}
+                    onChange={updatePrice}
+                    required />
+            </form>
+        </div>
     )
 
 }
+
+export default AddSpotFormPage
