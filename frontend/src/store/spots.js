@@ -32,7 +32,6 @@ export const removeSpot = (spotId) => async dispatch => {
 
     if (response.ok){
         dispatch(remove(spotId))
-
     }
 }
 

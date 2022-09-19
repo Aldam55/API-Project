@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router-dom"
-import { getSpotById } from "../../store/spots"
+import { getSpotById, removeSpot } from "../../store/spots"
 
 const SingleSpotPage = () => {
     const { spotId } = useParams()
@@ -9,7 +9,7 @@ const SingleSpotPage = () => {
 
     const spot = useSelector(state => state.spots.singleSpot)
     const user = useSelector(state => state.session.user)
-
+    // ADD A REDIRECT FOR AFTER DELETING A SPOT
     useEffect(() => {
         dispatch(getSpotById(spotId))
     }, [dispatch, spotId])
@@ -20,6 +20,13 @@ const SingleSpotPage = () => {
         <div>
             <div>
                 {spot.name}
+            </div>
+            <div>
+                {(user && user.id === spot.ownerId) && (
+                    <button onClick={() => dispatch(removeSpot(spot.id))}>
+                        Delete spot</button>
+                )}
+
             </div>
         </div>
     )
