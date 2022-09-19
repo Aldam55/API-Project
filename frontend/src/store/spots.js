@@ -49,7 +49,19 @@ export const getSpotReview = (spotId) => async dispatch => {
 }
 
 export const addASpot = (data) => async dispatch => {
-    const response = await fetch ('/api/spots')
+    const response = await fetch ('/api/spots', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+
+    if (response.ok){
+        const spot = await response.json()
+        dispatch(add(spot))
+        return spot
+    }
 }
 
 const initialState = {
@@ -59,9 +71,9 @@ const initialState = {
 
 const spotsReducer = (state = initialState, action) => {
     // const newState = { ...state, allSpots: {} }
+    const allSpots = {}
     switch (action.type) {
         case LOAD:
-            const allSpots = {}
             // const obj = action.spots.Spot.reduce((acc, spot) => {
             //     acc[spot.id] = spot
             //     return acc
@@ -79,6 +91,12 @@ const spotsReducer = (state = initialState, action) => {
             return {
                 ...state,
                 singleSpot
+            }
+        case ADD:
+            allSpots[action.spot.id] = action.spot
+            return {
+                ...state,
+                allSpots
             }
         default:
             return state
