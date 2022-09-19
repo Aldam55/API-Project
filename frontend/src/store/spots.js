@@ -1,7 +1,9 @@
+import { csrfFetch } from "./csrf"
 
 const LOAD = 'spots/LOAD'
 const LOAD_ONE = 'spots/LOAD_ONE'
 const ADD = '/spots/ADD'
+const REMOVE = '/spots/REMOVE'
 
 const load = (spots) => ({
     type: LOAD,
@@ -18,6 +20,21 @@ const add = (spot) => ({
     spot
 })
 
+const remove = (spotId) => ({
+    type: REMOVE,
+    spotId
+})
+
+export const removeSpot = (spotId) => async dispatch => {
+    const response = await csrfFetch(`/api/spots/${spotId}`, {
+        method: 'DELETE'
+    })
+
+    if (response.ok){
+        dispatch(remove(spotId))
+
+    }
+}
 
 export const getAllSpots = () => async dispatch => {
     const response = await fetch('/api/spots')
@@ -39,28 +56,26 @@ export const getSpotById = (spotId) => async dispatch => {
     }
 }
 
-export const getSpotReview = (spotId) => async dispatch => {
-    const response = await fetch('/api/spots/:spotId/reviews')
-
-    if (response.ok){
-        const spotReview = await response.json()
-        dispatch(loadOne(spotReview))
-    }
-}
 
 export const addASpot = (data) => async dispatch => {
-    const response = await fetch ('/api/spots', {
+    const response = await csrfFetch ('/api/spots', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(data)
     })
-
+    console.log('response in addASpot thunk action', response)
     if (response.ok){
         const spot = await response.json()
         dispatch(add(spot))
         return spot
+    // } else {
+    //     let error
+    //     if(response.status === 403){
+    //         error = await response.json()
+    //         throw new Error(error.errors, response.statusText)
+    //     }
     }
 }
 
@@ -71,7 +86,8 @@ const initialState = {
 
 const spotsReducer = (state = initialState, action) => {
     // const newState = { ...state, allSpots: {} }
-    const allSpots = {}
+    const allSpots = {};
+    let newState;
     switch (action.type) {
         case LOAD:
             // const obj = action.spots.Spot.reduce((acc, spot) => {
@@ -93,11 +109,19 @@ const spotsReducer = (state = initialState, action) => {
                 singleSpot
             }
         case ADD:
-            allSpots[action.spot.id] = action.spot
+            newState = {allSpots: {...state.allSpots}, singleSpot: {...state.singleSpot}}
+            newState.allSpots[action.spot.id] = action.spot
             return {
                 ...state,
                 allSpots
             }
+        case REMOVE:
+            newState = {allSpots: {...state.allSpots}, singleSpot: {...state.singleSpot}}
+            delete newState.allSpots[action.spotId]
+            if(newState.singleSpot.id === action.spotId){
+                newState.singleSpot = {}
+            }
+            return newState
         default:
             return state
     }

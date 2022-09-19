@@ -47,51 +47,62 @@ const AddSpotFormPage = () => {
         }
     }
 
+    const handleCancel = async (e) => {
+        e.preventDefault()
+        history.push('/')
+    }
+
     return (
         <div>
             <form onSubmit={handleSubmit}>
+                <select
+                    value={country}
+                    onChange={updateCountry}
+                    required >
+                    <option>United States of America</option>
+                    <option>China</option>
+                    <option>Japan</option>
+                    <option>Mexico</option>
+                    <option>Canada</option>
+                </select>
                 <input
                     type='text'
-                    placeholder='123 App Academy Way'
+                    placeholder='Address'
                     value={address}
                     onChange={updateAddress}
                     required />
                 <input
                     type='text'
-                    placeholder='Bikini Bottom'
+                    placeholder='City'
                     value={city}
                     onChange={updateCity}
                     required />
-                    <input
+                <input
                     type='text'
-                    placeholder='State of Depression'
+                    placeholder='State'
                     value={state}
                     onChange={updateState}
                     required />
-                    <input
+                <input
                     type='text'
-                    placeholder='United States of America'
-                    value={country}
-                    onChange={updateCountry}
-                    required />
-                    <input
-                    type='text'
-                    placeholder={'Patrick\'s Rock'}
+                    placeholder='Name'
                     value={name}
                     onChange={updateName}
                     required />
-                    <input
+                <input
                     type='text'
-                    placeholder='Ready to rock-n-roll?'
+                    placeholder='Description'
                     value={description}
                     onChange={updateDescription}
                     required />
-                    <input
+                <input
                     type='number'
-                    placeholder='420'
+                    placeholder='Price'
                     value={price}
                     onChange={updatePrice}
                     required />
+                <button type='submit'>Create your spot</button>
+                <button type='button' onClick={handleCancel}>Cancel</button>
             </form>
         </div>
     )

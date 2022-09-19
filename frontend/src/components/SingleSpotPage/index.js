@@ -8,17 +8,18 @@ const SingleSpotPage = () => {
     const dispatch = useDispatch()
 
     const spot = useSelector(state => state.spots.singleSpot)
+    const user = useSelector(state => state.session.user)
 
     useEffect(() => {
         dispatch(getSpotById(spotId))
     }, [dispatch, spotId])
 
-    if(!spot) return null
+    if (!spot) return null
 
     return (
         <div>
             <div>
-            {spot.name}
+                {spot.name}
             </div>
         </div>
     )
