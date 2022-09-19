@@ -4,6 +4,8 @@ const LOAD = 'spots/LOAD'
 const LOAD_ONE = 'spots/LOAD_ONE'
 const ADD = '/spots/ADD'
 const REMOVE = '/spots/REMOVE'
+const UPDATE = '/spots/UPDATE'
+const LOAD_CURRENT = 'spots/LOAD_CURRENT'
 
 const load = (spots) => ({
     type: LOAD,
@@ -25,26 +27,42 @@ const remove = (spotId) => ({
     spotId
 })
 
+const update = (spot) => ({
+    type: UPDATE,
+    spot
+})
+
+const loadCurrent = (spot) => ({
+    type: LOAD_CURRENT,
+    spot
+})
+
 export const removeSpot = (spotId) => async dispatch => {
     const response = await csrfFetch(`/api/spots/${spotId}`, {
         method: 'DELETE'
     })
 
-    if (response.ok){
+    if (response.ok) {
         dispatch(remove(spotId))
     }
 }
 
 export const getCurrent = () => async dispatch => {
-    const response = await csrfFetch('/api/spots')
+    const response = await fetch('/api/spots/current')
+
+    if (response.ok) {
+        const spot = response.json()
+        dispatch(loadCurrent(spot))
+        return spot
+    }
 }
 
 export const getAllSpots = () => async dispatch => {
     const response = await fetch('/api/spots')
-
+    console.log('response from getAllSpots thunk', response)
     if (response.ok) {
         const spots = await response.json()
-        // console.log('spots', spots)
+        console.log('spots', spots)
         dispatch(load(spots))
     }
 }
@@ -59,9 +77,24 @@ export const getSpotById = (spotId) => async dispatch => {
     }
 }
 
+export const updateSpot = data => async dispatch => {
+    const response = await csrfFetch(`/api/spots/${data.id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+
+    if (response.ok) {
+        const spot = await response.json()
+        dispatch(update(spot))
+        return spot
+    }
+}
 
 export const addASpot = (data) => async dispatch => {
-    const response = await csrfFetch ('/api/spots', {
+    const response = await csrfFetch('/api/spots', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -69,16 +102,10 @@ export const addASpot = (data) => async dispatch => {
         body: JSON.stringify(data)
     })
     console.log('response in addASpot thunk action', response)
-    if (response.ok){
+    if (response.ok) {
         const spot = await response.json()
         dispatch(add(spot))
         return spot
-    // } else {
-    //     let error
-    //     if(response.status === 403){
-    //         error = await response.json()
-    //         throw new Error(error.errors, response.statusText)
-    //     }
     }
 }
 
@@ -106,22 +133,24 @@ const spotsReducer = (state = initialState, action) => {
             return { ...state, allSpots }
         case LOAD_ONE:
             let singleSpot = {}
-            singleSpot = {...action.spotDetails}
+            singleSpot = { ...action.spotDetails }
             return {
                 ...state,
                 singleSpot
             }
-        case ADD:
-            newState = {allSpots: {...state.allSpots}, singleSpot: {...state.singleSpot}}
+        case LOAD_CURRENT:
+            
+        case (ADD || UPDATE):
+            newState = { allSpots: { ...state.allSpots }, singleSpot: { ...state.singleSpot } }
             newState.allSpots[action.spot.id] = action.spot
             return {
                 ...state,
                 allSpots
             }
         case REMOVE:
-            newState = {allSpots: {...state.allSpots}, singleSpot: {...state.singleSpot}}
+            newState = { allSpots: { ...state.allSpots }, singleSpot: { ...state.singleSpot } }
             delete newState.allSpots[action.spotId]
-            if(newState.singleSpot.id === action.spotId){
+            if (newState.singleSpot.id === action.spotId) {
                 newState.singleSpot = {}
             }
             return newState
