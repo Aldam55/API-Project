@@ -10,7 +10,7 @@ const SpotsPage = () => {
     const dispatch = useDispatch()
 
     const spots = useSelector(state => state.spots.allSpots)
-    console.log('spots from useSelect in SpotsPage', spots)
+    // console.log('spots from useSelect in SpotsPage', spots)
 
     useEffect(() => {
         dispatch(getAllSpots())

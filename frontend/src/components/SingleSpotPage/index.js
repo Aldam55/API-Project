@@ -2,6 +2,7 @@ import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router-dom"
 import { getSpotById, removeSpot } from "../../store/spots"
+import SpotReviewPage from "../SpotReviewPage"
 
 const SingleSpotPage = () => {
     const { spotId } = useParams()
@@ -26,7 +27,9 @@ const SingleSpotPage = () => {
                     <button onClick={() => dispatch(removeSpot(spot.id))}>
                         Delete spot</button>
                 )}
-
+            </div>
+            <div>
+                <SpotReviewPage></SpotReviewPage>
             </div>
         </div>
     )

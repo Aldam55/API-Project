@@ -35,6 +35,10 @@ export const removeSpot = (spotId) => async dispatch => {
     }
 }
 
+export const getCurrent = () => async dispatch => {
+    const response = await csrfFetch('/api/spots')
+}
+
 export const getAllSpots = () => async dispatch => {
     const response = await fetch('/api/spots')
 
