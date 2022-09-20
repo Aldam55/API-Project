@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useHistory } from "react-router-dom"
 import { addSpotReview } from "../../store/reviews"
@@ -12,10 +12,17 @@ const AddReviewFormPage = () => {
     // console.log('spot in addreviewformpage', spot)
     const [review, setReview] = useState('')
     const [stars, setStars] = useState('')
+    const [validationErrors, setValidationErrors] = useState([])
 
     const updateReview = (e) => setReview(e.target.value)
     const updateStars = (e) => setStars(e.target.value)
 
+    useEffect(() => {
+        const errors = []
+        if(!review) errors.push('Must provide a valid review')
+        if (!stars) errors.push('Must provide a rating')
+        setValidationErrors(errors)
+    }, [review, stars])
 
     const handleSubmit = async (e) => {
         e.preventDefault()

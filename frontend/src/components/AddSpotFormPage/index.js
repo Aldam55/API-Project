@@ -19,6 +19,7 @@ const AddSpotFormPage = () => {
     const [description, setDescription] = useState('')
     const [price, setPrice] = useState('')
     const [imgUrl, setImgUrl] = useState('')
+    const [validationErrors, setValidationErrors] = useState([])
 
     const updateAddress = (e) => setAddress(e.target.value)
     const updateCity = (e) => setCity(e.target.value)
@@ -30,6 +31,19 @@ const AddSpotFormPage = () => {
     const updateLat = (e) => setLat(e.target.value)
     const updateLng = (e) => setLng(e.target.value)
     const updateImgUrl = (e) => setImgUrl(e.target.value)
+
+    useEffect(() => {
+        const errors = []
+        if(!address || address.length > 20) errors.push('Must provide a valid address')
+        if(!city || city.length > 20) errors.push('Must provide a valid city')
+        if(!state || state.length > 20) errors.push('Must provide a valid state')
+        if(!name || name.length > 50) errors.push('Must provide a valid name')
+        if(!description) errors.push('Must provide a description')
+        if (!lat || isNaN(lat)) errors.push('Latitude must be a number')
+        if (!lng || isNaN(lng)) errors.push('Longitude must be a number')
+        if (!price || isNaN(price)) errors.push('Price must be a number')
+        setValidationErrors(errors)
+    }, [address, city, state, country, lat, lng, name, description, price, imgUrl])
 
 
     const handleSubmit = async (e) => {
@@ -54,10 +68,6 @@ const AddSpotFormPage = () => {
             url: imgUrl,
             preview: true
         })
-
-        if (imgBody.length > 0){
-            let addedImage = await dispatch(addImageToSpot(imgBody))
-        }
 
         if (createdSpot) {
             history.push(`/spots/${createdSpot.id}`)
@@ -135,7 +145,9 @@ const AddSpotFormPage = () => {
                     placeholder='Image URL'
                     value={imgUrl}
                     onChange={updateImgUrl} />
-                <button type='submit'>Create your spot</button>
+                <button type='submit'
+                    disabled={validationErrors.length > 0 ? true : false}>
+                    Create your spot</button>
                 <button type='button' onClick={handleCancel}>Cancel</button>
             </form>
         </div>

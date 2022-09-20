@@ -19,16 +19,7 @@ const UpdateSpotFormPage = () => {
     const [name, setName] = useState(spot.name)
     const [description, setDescription] = useState(spot.description)
     const [price, setPrice] = useState(spot.price)
-    // const [img, setImg] = useState(spot.img)
-    // const [address, setAddress] = useState('')
-    // const [city, setCity] = useState('')
-    // const [state, setState] = useState('')
-    // const [country, setCountry] = useState()
-    // const [lat, setLat] = useState()
-    // const [lng, setLng] = useState()
-    // const [name, setName] = useState()
-    // const [description, setDescription] = useState()
-    // const [price, setPrice] = useState()
+    const [validationErrors, setValidationErrors] = useState([])
 
     const updateAddress = (e) => setAddress(e.target.value)
     const updateCity = (e) => setCity(e.target.value)
@@ -40,6 +31,18 @@ const UpdateSpotFormPage = () => {
     const updateLat = (e) => setLat(e.target.value)
     const updateLng = (e) => setLng(e.target.value)
 
+    useEffect(() => {
+        const errors = []
+        if (!address || address.length > 20) errors.push('Must provide a valid address')
+        if (!city || city.length > 20) errors.push('Must provide a valid city')
+        if (!state || state.length > 20) errors.push('Must provide a valid state')
+        if (!name || name.length > 50) errors.push('Must provide a valid name')
+        if (!description) errors.push('Must provide a description')
+        if (!lat || isNaN(lat)) errors.push('Latitude must be a number')
+        if (!lng || isNaN(lng)) errors.push('Longitude must be a number')
+        if (!price || isNaN(price)) errors.push('Price must be a number')
+        setValidationErrors(errors)
+    }, [address, city, state, country, lat, lng, name, description, price])
 
 
     const handleSubmit = async (e) => {

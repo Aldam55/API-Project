@@ -27,7 +27,6 @@ function App() {
             <SignupFormPage />
           </Route>
           <Route exact path='/'>
-            Home Test
             <SpotsPage></SpotsPage>
           </Route>
           <Route path='/spots/:spotId/reviews'>
