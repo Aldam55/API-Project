@@ -23,6 +23,22 @@ const SingleSpotPage = () => {
         <div>
             <div>
                 {spot.name}
+                <div>
+                {spot.address}
+                </div>
+                <div>
+                {spot.city}
+                    </div>
+                <div>
+                {spot.state}
+                    </div>
+                <div>
+                {spot.country}
+                    </div>
+                <div>
+                {spot.price}
+                    </div>
+                {spot.description}
             </div>
             <div>
                 {(user && user.id === spot.ownerId) && (

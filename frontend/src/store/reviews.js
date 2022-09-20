@@ -2,6 +2,7 @@ import { csrfFetch } from "./csrf"
 
 const LOAD_REVIEWS = 'reviews/LOAD_REVIEWS'
 const ADD_REVIEW = 'reviews/ADD_REVIEW'
+const REMOVE_REVIEW = '/reviews/REMOVE_REVIEW'
 
 const load = (reviews, spotId) => ({
     type: LOAD_REVIEWS,
@@ -14,6 +15,21 @@ const add = (review, spotId) => ({
     review,
     spotId
 })
+
+const remove = (reviewId) => ({
+    type: REMOVE_REVIEW,
+    reviewId
+})
+
+export const removeSpotReview = (reviewId) => async dispatch => {
+    const response = await csrfFetch(`/api/reviews/${reviewId}`,{
+        method: 'DELETE'
+    })
+
+    if(response.ok){
+        dispatch(remove(reviewId))
+    }
+}
 
 export const addSpotReview = (data, spotId) => async dispatch => {
     const response = await csrfFetch(`/api/spots/${spotId}/reviews`, {
@@ -58,6 +74,8 @@ const reviewReducer = (state = initialState, action) => {
                 ...state,
                 spot
             }
+        case REMOVE_REVIEW:
+            
         default:
             return state
     }

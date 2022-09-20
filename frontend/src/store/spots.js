@@ -3,6 +3,7 @@ import { csrfFetch } from "./csrf"
 const LOAD = 'spots/LOAD'
 const LOAD_ONE = 'spots/LOAD_ONE'
 const ADD = '/spots/ADD'
+const ADD_IMAGE = '/spots/ADD_IMAGE'
 const REMOVE = '/spots/REMOVE'
 const UPDATE = '/spots/UPDATE'
 const LOAD_CURRENT = 'spots/LOAD_CURRENT'
@@ -30,6 +31,11 @@ const remove = (spotId) => ({
 const update = (spot) => ({
     type: UPDATE,
     spot
+})
+
+const addImage = (spotId) => ({
+    type: ADD_IMAGE,
+    spotId
 })
 
 // const loadCurrent = (spot) => ({
@@ -93,9 +99,8 @@ export const updateSpot = (data, spotId) => async dispatch => {
     }
 }
 
-export const addImage = (data, spotId) => async dispatch => {
-    const spot = await csrfFetch(`/api/spots/${spotId}`)
-    const response = await csrfFetch(`'/api/spots/${spot.id}/images`, {
+export const addImageToSpot = (data, spotId) => async dispatch => {
+    const response = await csrfFetch(`'/api/spots/${spotId}/images`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -104,7 +109,9 @@ export const addImage = (data, spotId) => async dispatch => {
     })
 
     if (response.ok) {
-
+        const image = await response.json()
+        dispatch(addImage(image))
+        return image
     }
 }
 
@@ -132,6 +139,7 @@ const initialState = {
 const spotsReducer = (state = initialState, action) => {
     // const newState = { ...state, allSpots: {} }
     const allSpots = {};
+    let singleSpot = {};
     let newState;
     switch (action.type) {
         case LOAD_CURRENT:
@@ -148,26 +156,34 @@ const spotsReducer = (state = initialState, action) => {
             // console.log('newState.spots in spotsReducer', newState.spots)
             return { ...state, allSpots }
         case LOAD_ONE:
-            let singleSpot = {}
             singleSpot = { ...action.spotDetails }
             return {
                 ...state,
                 singleSpot
             }
         case UPDATE:
-            newState = { allSpots: { ...state.allSpots }, singleSpot: { ...state.singleSpot } }
-            newState.allSpots[action.spot.id] = action.spot
-            return {
-                ...state,
-                allSpots
+            newState = {
+                allSpots: { ...state.allSpots },
+                singleSpot: { ...state.singleSpot }
             }
+            newState.singleSpot = action.spot
+            return newState
         case ADD:
-            newState = { allSpots: { ...state.allSpots }, singleSpot: { ...state.singleSpot } }
+            newState = {
+                allSpots: { ...state.allSpots },
+                singleSpot: { ...state.singleSpot }
+            }
             newState.allSpots[action.spot.id] = action.spot
             return {
                 ...state,
                 allSpots
             }
+        case ADD_IMAGE:
+            newState = {
+                allSpots: { ...state.allSpots },
+                singleSpot: { ...state.singleSpot }
+            }
+            newState.singleSpot.SpotImages[action.image.id] = action.image
         case REMOVE:
             newState = { allSpots: { ...state.allSpots }, singleSpot: { ...state.singleSpot } }
             delete newState.allSpots[action.spotId]

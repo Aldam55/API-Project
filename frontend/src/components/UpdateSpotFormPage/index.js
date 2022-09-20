@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { useHistory } from "react-router-dom"
-import { updateSpot } from "../../store/spots"
+import { useHistory, useParams } from "react-router-dom"
+import { updateSpot, getSpotById } from "../../store/spots"
 
 const UpdateSpotFormPage = () => {
     const dispatch = useDispatch()
@@ -39,8 +39,6 @@ const UpdateSpotFormPage = () => {
     const updatePrice = (e) => setPrice(e.target.value)
     const updateLat = (e) => setLat(e.target.value)
     const updateLng = (e) => setLng(e.target.value)
-
-
 
 
     const handleSubmit = async (e) => {
@@ -119,7 +117,7 @@ const UpdateSpotFormPage = () => {
                     value={name}
                     onChange={updateName}
                     required />
-                <input
+                <textarea
                     type='text'
                     placeholder='Description'
                     value={description}

@@ -38,7 +38,7 @@ const AddReviewFormPage = () => {
         <div>
             {user && (
                 <form onSubmit={handleSubmit}>
-                    <input
+                    <textarea
                         type='text'
                         placeholder='How was your stay?'
                         value={review}

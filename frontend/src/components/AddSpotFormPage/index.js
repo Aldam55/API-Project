@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { useHistory } from "react-router-dom"
-import { addASpot } from "../../store/spots"
+import { useHistory, useParams } from "react-router-dom"
+import { addASpot, getSpotById } from "../../store/spots"
 
 const AddSpotFormPage = () => {
+    const {spotId} = useParams()
     const dispatch = useDispatch()
     const history = useHistory()
     const user = useSelector(state => state.session.user)
@@ -27,7 +28,6 @@ const AddSpotFormPage = () => {
     const updatePrice = (e) => setPrice(e.target.value)
     const updateLat = (e) => setLat(e.target.value)
     const updateLng = (e) => setLng(e.target.value)
-
 
 
     const handleSubmit = async (e) => {
@@ -106,7 +106,7 @@ const AddSpotFormPage = () => {
                     value={name}
                     onChange={updateName}
                     required />
-                <input
+                <textarea
                     type='text'
                     placeholder='Description'
                     value={description}
