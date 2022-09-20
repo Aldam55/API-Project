@@ -100,16 +100,17 @@ export const updateSpot = (data, spotId) => async dispatch => {
 }
 
 export const addImageToSpot = (data, spotId) => async dispatch => {
-    const response = await csrfFetch(`'/api/spots/${spotId}/images`, {
+    const response = await csrfFetch(`/api/spots/${spotId}/images`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(data)
     })
-
+    // console.log('response in addImage thunk', response)
     if (response.ok) {
         const image = await response.json()
+        console.log('image in addImage thunk', image)
         dispatch(addImage(image))
         return image
     }
@@ -133,13 +134,16 @@ export const addASpot = (data) => async dispatch => {
 
 const initialState = {
     allSpots: {},
-    singleSpot: {}
+    singleSpot: {
+        SpotImages: []
+    }
 }
 
 const spotsReducer = (state = initialState, action) => {
     // const newState = { ...state, allSpots: {} }
+    // this shit wet af LMAOAOOO
     const allSpots = {};
-    let singleSpot = {};
+    let singleSpot;
     let newState;
     switch (action.type) {
         case LOAD_CURRENT:
@@ -163,8 +167,7 @@ const spotsReducer = (state = initialState, action) => {
             }
         case UPDATE:
             newState = {
-                allSpots: { ...state.allSpots },
-                singleSpot: { ...state.singleSpot }
+
             }
             newState.singleSpot = action.spot
             return newState
@@ -173,17 +176,17 @@ const spotsReducer = (state = initialState, action) => {
                 allSpots: { ...state.allSpots },
                 singleSpot: { ...state.singleSpot }
             }
-            newState.singleSpot[action.spot.id] = action.spot
-            return {
-                ...state,
-                singleSpot
-            }
+            newState.singleSpot = action.spot
+            return newState
         case ADD_IMAGE:
             newState = {
                 allSpots: { ...state.allSpots },
                 singleSpot: { ...state.singleSpot }
             }
-            newState.singleSpot.SpotImages[action.image.id] = action.image
+            console.log('what is spotimages in reducer', state.singleSpot.SpotImages)
+            // NOT ITERABLE if you spread state.singleSpot.SpotImages
+            newState.singleSpot.SpotImages = [action.image]
+            // newState.singleSpot.SpotImages[action.image.id] = action.image
             return newState
         case REMOVE:
             newState = { allSpots: { ...state.allSpots }, singleSpot: { ...state.singleSpot } }

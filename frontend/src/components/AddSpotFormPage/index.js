@@ -34,11 +34,11 @@ const AddSpotFormPage = () => {
 
     useEffect(() => {
         const errors = []
-        if(!address || address.length > 20) errors.push('Must provide a valid address')
-        if(!city || city.length > 20) errors.push('Must provide a valid city')
-        if(!state || state.length > 20) errors.push('Must provide a valid state')
-        if(!name || name.length > 50) errors.push('Must provide a valid name')
-        if(!description) errors.push('Must provide a description')
+        if (!address || address.length > 20) errors.push('Must provide a valid address')
+        if (!city || city.length > 20) errors.push('Must provide a valid city')
+        if (!state || state.length > 20) errors.push('Must provide a valid state')
+        if (!name || name.length > 50) errors.push('Must provide a valid name')
+        if (!description) errors.push('Must provide a description')
         if (!lat || isNaN(lat)) errors.push('Latitude must be a number')
         if (!lng || isNaN(lng)) errors.push('Longitude must be a number')
         if (!price || isNaN(price)) errors.push('Price must be a number')
@@ -63,13 +63,16 @@ const AddSpotFormPage = () => {
 
         let createdSpot = await dispatch(addASpot(payload))
 
-        const imgBody = ({
-            id: createdSpot.id,
-            url: imgUrl,
-            preview: true
-        })
 
         if (createdSpot) {
+
+            const imgBody = ({
+                id: createdSpot.id,
+                url: imgUrl,
+                preview: true
+            })
+
+            dispatch(addImageToSpot(imgBody, createdSpot.id))
             history.push(`/spots/${createdSpot.id}`)
         }
     }
