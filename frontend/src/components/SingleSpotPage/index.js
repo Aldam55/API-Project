@@ -18,7 +18,7 @@ const SingleSpotPage = () => {
     }, [dispatch, spotId])
 
     if (!spot) return null
-
+    // console.log('rerender test in SingleSpotPage')
     return (
         <div>
             <div>

@@ -32,10 +32,10 @@ const update = (spot) => ({
     spot
 })
 
-const loadCurrent = (spot) => ({
-    type: LOAD_CURRENT,
-    spot
-})
+// const loadCurrent = (spot) => ({
+//     type: LOAD_CURRENT,
+//     spot
+// })
 
 export const removeSpot = (spotId) => async dispatch => {
     const response = await csrfFetch(`/api/spots/${spotId}`, {
@@ -59,7 +59,7 @@ export const getCurrent = () => async dispatch => {
 
 export const getAllSpots = () => async dispatch => {
     const response = await fetch('/api/spots')
-    console.log('response from getAllSpots thunk', response)
+    // console.log('response from getAllSpots thunk', response)
     if (response.ok) {
         const spots = await response.json()
         console.log('spots', spots)
@@ -77,8 +77,8 @@ export const getSpotById = (spotId) => async dispatch => {
     }
 }
 
-export const updateSpot = data => async dispatch => {
-    const response = await csrfFetch(`/api/spots/${data.id}`, {
+export const updateSpot = (data, spotId) => async dispatch => {
+    const response = await csrfFetch(`/api/spots/${spotId}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'

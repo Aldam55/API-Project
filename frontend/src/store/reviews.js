@@ -24,7 +24,7 @@ export const addSpotReview = (data, spotId) => async dispatch => {
         body: JSON.stringify(data)
     })
 
-    if(response.ok){
+    if (response.ok) {
         const spotReview = await response.json()
         dispatch(add(spotReview))
     }
@@ -39,24 +39,24 @@ export const getSpotReview = (spotId) => async dispatch => {
     }
 }
 
-const initialState = {}
+const initialState = { spot: {} }
 
 const reviewReducer = (state = initialState, action) => {
-    const newReviews = {};
+    const spot = {};
     switch (action.type) {
         case LOAD_REVIEWS:
             action.reviews.Reviews.forEach(review => {
-                newReviews[review.id] = review
+                spot[review.id] = review
             })
             return {
                 ...state,
-                ...newReviews
+                spot
             }
         case ADD_REVIEW:
-            newReviews[action.review.id] = action.review
+            spot[action.review.id] = action.review
             return {
                 ...state,
-                ...newReviews
+                spot
             }
         default:
             return state

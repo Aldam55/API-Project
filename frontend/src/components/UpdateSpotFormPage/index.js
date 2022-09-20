@@ -7,18 +7,28 @@ const UpdateSpotFormPage = () => {
     const dispatch = useDispatch()
     const history = useHistory()
     const user = useSelector(state => state.session.user)
-    const spot = useSelector(state => state.spots.singleSpots)
-    console.log('spot in update spot form page', spot)
+    const spot = useSelector(state => state.spots.singleSpot)
+    // console.log('spot in update spot form page', spot)
 
-    const [address, setAddress] = useState('')
-    const [city, setCity] = useState('')
-    const [state, setState] = useState('')
-    const [country, setCountry] = useState('')
-    const [lat, setLat] = useState('')
-    const [lng, setLng] = useState('')
-    const [name, setName] = useState('')
-    const [description, setDescription] = useState('')
-    const [price, setPrice] = useState('')
+    const [address, setAddress] = useState(spot.address)
+    const [city, setCity] = useState(spot.city)
+    const [state, setState] = useState(spot.state)
+    const [country, setCountry] = useState(spot.country)
+    const [lat, setLat] = useState(spot.lat)
+    const [lng, setLng] = useState(spot.lng)
+    const [name, setName] = useState(spot.name)
+    const [description, setDescription] = useState(spot.description)
+    const [price, setPrice] = useState(spot.price)
+
+    // const [address, setAddress] = useState('')
+    // const [city, setCity] = useState('')
+    // const [state, setState] = useState('')
+    // const [country, setCountry] = useState()
+    // const [lat, setLat] = useState()
+    // const [lng, setLng] = useState()
+    // const [name, setName] = useState()
+    // const [description, setDescription] = useState()
+    // const [price, setPrice] = useState()
 
     const updateAddress = (e) => setAddress(e.target.value)
     const updateCity = (e) => setCity(e.target.value)
@@ -29,6 +39,7 @@ const UpdateSpotFormPage = () => {
     const updatePrice = (e) => setPrice(e.target.value)
     const updateLat = (e) => setLat(e.target.value)
     const updateLng = (e) => setLng(e.target.value)
+
 
 
 
@@ -47,10 +58,10 @@ const UpdateSpotFormPage = () => {
             lng
         }
 
-        let createdSpot = await dispatch(updateSpot(payload))
+        let updatedSpot = await dispatch(updateSpot(payload, spot.id))
 
-        if (createdSpot) {
-            history.push(`/spots/${createdSpot.id}`)
+        if (updatedSpot) {
+            history.push(`/spots/${updatedSpot.id}`)
         }
     }
 
