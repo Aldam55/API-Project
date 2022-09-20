@@ -13,7 +13,7 @@ const SingleSpotPage = () => {
     const spot = useSelector(state => state.spots.singleSpot)
     const user = useSelector(state => state.session.user)
     // ADD A REDIRECT FOR AFTER DELETING A SPOT
-    console.log('spot in single spot page', spot)
+    console.log('spot in single spot page', spot.SpotImages)
     useEffect(() => {
         dispatch(getSpotById(spotId))
     }, [dispatch, spotId])

@@ -13,8 +13,6 @@ const AddSpotFormPage = () => {
     const [city, setCity] = useState('')
     const [state, setState] = useState('')
     const [country, setCountry] = useState('')
-    const [lat, setLat] = useState('')
-    const [lng, setLng] = useState('')
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
     const [price, setPrice] = useState('')
@@ -28,8 +26,6 @@ const AddSpotFormPage = () => {
     const updateName = (e) => setName(e.target.value)
     const updateDescription = (e) => setDescription(e.target.value)
     const updatePrice = (e) => setPrice(e.target.value)
-    const updateLat = (e) => setLat(e.target.value)
-    const updateLng = (e) => setLng(e.target.value)
     const updateImgUrl = (e) => setImgUrl(e.target.value)
 
     useEffect(() => {
@@ -39,11 +35,9 @@ const AddSpotFormPage = () => {
         if (!state || state.length > 20) errors.push('Must provide a valid state')
         if (!name || name.length > 50) errors.push('Must provide a valid name')
         if (!description) errors.push('Must provide a description')
-        if (!lat || isNaN(lat)) errors.push('Latitude must be a number')
-        if (!lng || isNaN(lng)) errors.push('Longitude must be a number')
         if (!price || isNaN(price)) errors.push('Price must be a number')
         setValidationErrors(errors)
-    }, [address, city, state, country, lat, lng, name, description, price, imgUrl])
+    }, [address, city, state, country, name, description, price, imgUrl])
 
 
     const handleSubmit = async (e) => {
@@ -56,9 +50,9 @@ const AddSpotFormPage = () => {
             country,
             name,
             description,
+            lat: 39.423,
+            lng: 39.423,
             price,
-            lat,
-            lng
         }
 
         let createdSpot = await dispatch(addASpot(payload))
@@ -112,18 +106,6 @@ const AddSpotFormPage = () => {
                     placeholder='State'
                     value={state}
                     onChange={updateState}
-                    required />
-                <input
-                    type='number'
-                    placeholder='Latitude'
-                    value={lat}
-                    onChange={updateLat}
-                    required />
-                <input
-                    type='number'
-                    placeholder='Longitude'
-                    value={lng}
-                    onChange={updateLng}
                     required />
                 <input
                     type='text'

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useHistory, useParams } from "react-router-dom"
-import { updateSpot, getSpotById } from "../../store/spots"
+import { updateSpot, addImageToSpot } from "../../store/spots"
 
 const UpdateSpotFormPage = () => {
     const dispatch = useDispatch()
@@ -14,11 +14,10 @@ const UpdateSpotFormPage = () => {
     const [city, setCity] = useState(spot.city)
     const [state, setState] = useState(spot.state)
     const [country, setCountry] = useState(spot.country)
-    const [lat, setLat] = useState(spot.lat)
-    const [lng, setLng] = useState(spot.lng)
     const [name, setName] = useState(spot.name)
     const [description, setDescription] = useState(spot.description)
     const [price, setPrice] = useState(spot.price)
+    const [imgUrl, setImgUrl] = useState(spot.SpotImages)
     const [validationErrors, setValidationErrors] = useState([])
 
     const updateAddress = (e) => setAddress(e.target.value)
@@ -28,8 +27,7 @@ const UpdateSpotFormPage = () => {
     const updateName = (e) => setName(e.target.value)
     const updateDescription = (e) => setDescription(e.target.value)
     const updatePrice = (e) => setPrice(e.target.value)
-    const updateLat = (e) => setLat(e.target.value)
-    const updateLng = (e) => setLng(e.target.value)
+    const updateImgUrl = (e) => setImgUrl(e.target.value)
 
     useEffect(() => {
         const errors = []
@@ -38,11 +36,9 @@ const UpdateSpotFormPage = () => {
         if (!state || state.length > 20) errors.push('Must provide a valid state')
         if (!name || name.length > 50) errors.push('Must provide a valid name')
         if (!description) errors.push('Must provide a description')
-        if (!lat || isNaN(lat)) errors.push('Latitude must be a number')
-        if (!lng || isNaN(lng)) errors.push('Longitude must be a number')
         if (!price || isNaN(price)) errors.push('Price must be a number')
         setValidationErrors(errors)
-    }, [address, city, state, country, lat, lng, name, description, price])
+    }, [address, city, state, country, name, description, price])
 
 
     const handleSubmit = async (e) => {
@@ -55,14 +51,22 @@ const UpdateSpotFormPage = () => {
             country,
             name,
             description,
+            lat: 39.423,
+            lng: 39.423,
             price,
-            lat,
-            lng
         }
 
         let updatedSpot = await dispatch(updateSpot(payload, spot.id))
 
         if (updatedSpot) {
+
+            const imgBody = ({
+                id: updatedSpot.id,
+                url: imgUrl,
+                preview: true
+            })
+
+            dispatch(addImageToSpot(imgBody, updatedSpot.id))
             history.push(`/spots/${updatedSpot.id}`)
         }
     }
@@ -104,18 +108,6 @@ const UpdateSpotFormPage = () => {
                     onChange={updateState}
                     required />
                 <input
-                    type='number'
-                    placeholder='Latitude'
-                    value={lat}
-                    onChange={updateLat}
-                    required />
-                <input
-                    type='number'
-                    placeholder='Longitude'
-                    value={lng}
-                    onChange={updateLng}
-                    required />
-                <input
                     type='text'
                     placeholder='Name'
                     value={name}
@@ -139,6 +131,11 @@ const UpdateSpotFormPage = () => {
                     value={price}
                     onChange={updatePrice}
                     required />
+                <input
+                    type='text'
+                    placeholder='Image URL'
+                    value={imgUrl}
+                    onChange={updateImgUrl} />
                 <button type='submit'>Update</button>
                 <button type='button' onClick={handleCancel}>Cancel</button>
             </form>
