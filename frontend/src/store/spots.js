@@ -48,11 +48,11 @@ export const removeSpot = (spotId) => async dispatch => {
 }
 
 export const getCurrent = () => async dispatch => {
-    const response = await fetch('/api/spots/current')
+    const response = await csrfFetch('/api/spots/current')
 
     if (response.ok) {
-        const spot = response.json()
-        dispatch(loadCurrent(spot))
+        const spot = await response.json()
+        dispatch(load(spot))
         return spot
     }
 }
@@ -121,11 +121,7 @@ const spotsReducer = (state = initialState, action) => {
     const allSpots = {};
     let newState;
     switch (action.type) {
-        case LOAD_CURRENT:
-            action.spots.Spot.forEach(spot => {
-                allSpots[spot.id] = spot
-            })
-            return { ...state, allSpots }
+        // case LOAD_CURRENT:
         case LOAD:
             // const obj = action.spots.Spot.reduce((acc, spot) => {
             //     acc[spot.id] = spot

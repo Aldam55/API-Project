@@ -8,6 +8,7 @@ import Navigation from "./components/Navigation";
 import SpotsPage from "./components/SpotsPage";
 import SingleSpotPage from "./components/SingleSpotPage";
 import SpotReviewPage from "./components/SpotReviewPage";
+import CurrentUserSpotsPage from "./components/CurrentUserSpotsPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -31,6 +32,9 @@ function App() {
           <Route path='/spots/:spotId/reviews'>
             Spot Review Test
             <SpotReviewPage></SpotReviewPage>
+          </Route>
+          <Route path='/spots/current'>
+            <CurrentUserSpotsPage></CurrentUserSpotsPage>
           </Route>
           <Route path='/spots/:spotId'>
             Single Spot Test

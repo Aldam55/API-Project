@@ -12,8 +12,8 @@ const AddSpotFormPage = () => {
     const [city, setCity] = useState('')
     const [state, setState] = useState('')
     const [country, setCountry] = useState('')
-    // const [lat, setLat] = useState('')
-    // const [lng, setLng] = useState('')
+    const [lat, setLat] = useState('')
+    const [lng, setLng] = useState('')
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
     const [price, setPrice] = useState('')
@@ -25,6 +25,10 @@ const AddSpotFormPage = () => {
     const updateName = (e) => setName(e.target.value)
     const updateDescription = (e) => setDescription(e.target.value)
     const updatePrice = (e) => setPrice(e.target.value)
+    const updateLat = (e) => setLat(e.target.value)
+    const updateLng = (e) => setLng(e.target.value)
+
+
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -37,8 +41,8 @@ const AddSpotFormPage = () => {
             name,
             description,
             price,
-            lat: 38.5816,
-            lng: 121.4944
+            lat,
+            lng
         }
 
         let createdSpot = await dispatch(addASpot(payload))
@@ -60,7 +64,7 @@ const AddSpotFormPage = () => {
                     value={country}
                     onChange={updateCountry}
                     required >
-                    <option>United States of America</option>
+                    <option>USA</option>
                     <option>China</option>
                     <option>Japan</option>
                     <option>Mexico</option>
@@ -83,6 +87,18 @@ const AddSpotFormPage = () => {
                     placeholder='State'
                     value={state}
                     onChange={updateState}
+                    required />
+                <input
+                    type='number'
+                    placeholder='Latitude'
+                    value={lat}
+                    onChange={updateLat}
+                    required />
+                <input
+                    type='number'
+                    placeholder='Longitude'
+                    value={lng}
+                    onChange={updateLng}
                     required />
                 <input
                     type='text'
