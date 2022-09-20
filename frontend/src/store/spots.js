@@ -141,10 +141,9 @@ const initialState = {
 
 const spotsReducer = (state = initialState, action) => {
     // const newState = { ...state, allSpots: {} }
-    // this shit wet af LMAOAOOO
     const allSpots = {};
     let singleSpot;
-    let newState;
+    let newState; // wet newState code in 4 cases. fix later
     switch (action.type) {
         case LOAD_CURRENT:
         case LOAD:
@@ -189,7 +188,10 @@ const spotsReducer = (state = initialState, action) => {
             // newState.singleSpot.SpotImages[action.image.id] = action.image
             return newState
         case REMOVE:
-            newState = { allSpots: { ...state.allSpots }, singleSpot: { ...state.singleSpot } }
+            newState = {
+                allSpots: { ...state.allSpots },
+                singleSpot: { ...state.singleSpot }
+            }
             delete newState.allSpots[action.spotId]
             if (newState.singleSpot.id === action.spotId) {
                 newState.singleSpot = {}
