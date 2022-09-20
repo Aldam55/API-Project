@@ -8,10 +8,10 @@ const AddReviewFormPage = () => {
     const history = useHistory()
 
     const user = useSelector(state => state.session.user)
-    const spot = useSelector(state => state.reviews)
-
+    const spot = useSelector(state => state.spots.singleSpot)
+    // console.log('spot in addreviewformpage', spot)
     const [review, setReview] = useState('')
-    const [stars, setStars] = useState(0)
+    const [stars, setStars] = useState('')
 
     const updateReview = (e) => setReview(e.target.value)
     const updateStars = (e) => setStars(e.target.value)
@@ -25,9 +25,11 @@ const AddReviewFormPage = () => {
             stars
         }
 
-        let createdReview = await dispatch(addSpotReview(payload))
+        let createdReview = await dispatch(addSpotReview(payload, spot.id))
 
         if (createdReview) {
+            setReview('')
+            setStars('')
             history.push(`/spots/${spot.spotId}`)
         }
     }
@@ -47,7 +49,7 @@ const AddReviewFormPage = () => {
                         max='5'
                         value={stars}
                         onChange={updateStars} />
-                    {(review.length && stars) && (<button type='submit'>Submit</button>)}
+                    <button type='submit' hidden={(review.length && stars) ? false : true}>Submit</button>
                 </form>
             )}
         </div>

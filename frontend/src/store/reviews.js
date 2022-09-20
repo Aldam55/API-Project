@@ -16,8 +16,7 @@ const add = (review, spotId) => ({
 })
 
 export const addSpotReview = (data, spotId) => async dispatch => {
-    const spot = await fetch(`/api/spots/${spotId}`)
-    const response = await csrfFetch(`/api/spots/${spot.id}/reviews`, {
+    const response = await csrfFetch(`/api/spots/${spotId}/reviews`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
