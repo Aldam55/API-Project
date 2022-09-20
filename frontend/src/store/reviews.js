@@ -75,7 +75,8 @@ const initialState = { spot: {}, user: {} }
 
 const reviewReducer = (state = initialState, action) => {
     const spot = {};
-    const user = {}
+    const user = {};
+    let newState;
     switch (action.type) {
         case LOAD_REVIEWS:
             action.reviews.Reviews.forEach(review => {
@@ -86,11 +87,9 @@ const reviewReducer = (state = initialState, action) => {
                 spot
             }
         case ADD_REVIEW:
-            spot[action.review.id] = action.review
-            return {
-                ...state,
-                spot
-            }
+            newState = {spot: {...state.spot}, user: {...state.user}}
+            newState.spot[action.review.id] = action.review
+            return newState
         case CURRENT_REVIEWS:
             action.reviews.Reviews.forEach(review => {
                 user[review.id] = review
@@ -99,6 +98,11 @@ const reviewReducer = (state = initialState, action) => {
                 ...state,
                 user
             }
+        case REMOVE_REVIEW:
+            newState = { spot: { ...state.spot }, user: { ...state.user } }
+            delete newState.spot[action.reviewId]
+            delete newState.user[action.reviewId]
+            return newState
         default:
             return state
     }
