@@ -93,7 +93,20 @@ export const updateSpot = data => async dispatch => {
     }
 }
 
-// export const addImage = ()
+export const addImage = (data, spotId) => async dispatch => {
+    const spot = await csrfFetch(`/api/spots/${spotId}`)
+    const response = await csrfFetch(`'/api/spots/${spot.id}/images`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+
+    if (response.ok) {
+
+    }
+}
 
 export const addASpot = (data) => async dispatch => {
     const response = await csrfFetch('/api/spots', {
@@ -121,7 +134,7 @@ const spotsReducer = (state = initialState, action) => {
     const allSpots = {};
     let newState;
     switch (action.type) {
-        // case LOAD_CURRENT:
+        case LOAD_CURRENT:
         case LOAD:
             // const obj = action.spots.Spot.reduce((acc, spot) => {
             //     acc[spot.id] = spot
@@ -142,6 +155,12 @@ const spotsReducer = (state = initialState, action) => {
                 singleSpot
             }
         case UPDATE:
+            newState = { allSpots: { ...state.allSpots }, singleSpot: { ...state.singleSpot } }
+            newState.allSpots[action.spot.id] = action.spot
+            return {
+                ...state,
+                allSpots
+            }
         case ADD:
             newState = { allSpots: { ...state.allSpots }, singleSpot: { ...state.singleSpot } }
             newState.allSpots[action.spot.id] = action.spot

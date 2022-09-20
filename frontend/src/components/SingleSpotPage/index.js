@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom"
 import { getSpotById, removeSpot } from "../../store/spots"
 import AddReviewFormPage from "../AddReviewFormPage"
 import SpotReviewPage from "../SpotReviewPage"
+import UpdateSpotFormPage from "../UpdateSpotFormPage"
 
 const SingleSpotPage = () => {
     const { spotId } = useParams()
@@ -35,6 +36,8 @@ const SingleSpotPage = () => {
             <div>
                 <AddReviewFormPage></AddReviewFormPage>
             </div>
+            {(user && user.id === spot.ownerId) && (
+                <UpdateSpotFormPage></UpdateSpotFormPage>)}
         </div>
     )
 }
