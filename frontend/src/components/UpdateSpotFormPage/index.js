@@ -1,22 +1,23 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useHistory, useParams } from "react-router-dom"
-import { addASpot, addImageToSpot, getSpotById } from "../../store/spots"
+import { updateSpot, addImageToSpot } from "../../store/spots"
 
-const AddSpotFormPage = () => {
-    const { spotId } = useParams()
+const UpdateSpotFormPage = () => {
     const dispatch = useDispatch()
     const history = useHistory()
     const user = useSelector(state => state.session.user)
+    const spot = useSelector(state => state.spots.singleSpot)
+    // console.log('spot in update spot form page', spot)
 
-    const [address, setAddress] = useState('')
-    const [city, setCity] = useState('')
-    const [state, setState] = useState('')
-    const [country, setCountry] = useState('')
-    const [name, setName] = useState('')
-    const [description, setDescription] = useState('')
-    const [price, setPrice] = useState('')
-    const [imgUrl, setImgUrl] = useState('')
+    const [address, setAddress] = useState(spot.address)
+    const [city, setCity] = useState(spot.city)
+    const [state, setState] = useState(spot.state)
+    const [country, setCountry] = useState(spot.country)
+    const [name, setName] = useState(spot.name)
+    const [description, setDescription] = useState(spot.description)
+    const [price, setPrice] = useState(spot.price)
+    const [imgUrl, setImgUrl] = useState(spot.SpotImages)
     const [validationErrors, setValidationErrors] = useState([])
 
     const updateAddress = (e) => setAddress(e.target.value)
@@ -37,7 +38,7 @@ const AddSpotFormPage = () => {
         if (!description) errors.push('Must provide a description')
         if (!price || isNaN(price)) errors.push('Price must be a number')
         setValidationErrors(errors)
-    }, [address, city, state, country, name, description, price, imgUrl])
+    }, [address, city, state, country, name, description, price])
 
 
     const handleSubmit = async (e) => {
@@ -55,19 +56,18 @@ const AddSpotFormPage = () => {
             price,
         }
 
-        let createdSpot = await dispatch(addASpot(payload))
+        let updatedSpot = await dispatch(updateSpot(payload, spot.id))
 
-
-        if (createdSpot) {
+        if (updatedSpot) {
 
             const imgBody = ({
-                id: createdSpot.id,
+                id: updatedSpot.id,
                 url: imgUrl,
                 preview: true
             })
 
-            dispatch(addImageToSpot(imgBody, createdSpot.id))
-            history.push(`/spots/${createdSpot.id}`)
+            dispatch(addImageToSpot(imgBody, updatedSpot.id))
+            history.push(`/spots/${updatedSpot.id}`)
         }
     }
 
@@ -127,12 +127,16 @@ const AddSpotFormPage = () => {
                     required />
                 <input
                     type='text'
+                    placeholder='Price'
+                    value={price}
+                    onChange={updatePrice}
+                    required />
+                <input
+                    type='text'
                     placeholder='Image URL'
                     value={imgUrl}
                     onChange={updateImgUrl} />
-                <button type='submit'
-                    disabled={validationErrors.length > 0 ? true : false}>
-                    Create your spot</button>
+                <button type='submit'>Update</button>
                 <button type='button' onClick={handleCancel}>Cancel</button>
             </form>
         </div>
@@ -140,4 +144,4 @@ const AddSpotFormPage = () => {
 
 }
 
-export default AddSpotFormPage
+export default UpdateSpotFormPage

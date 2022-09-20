@@ -16,7 +16,7 @@ const SpotsPage = () => {
         dispatch(getAllSpots())
     }, [dispatch])
 
-    console.log(spots)
+    // console.log(spots)
     if (!spots) return null
 
     return (
