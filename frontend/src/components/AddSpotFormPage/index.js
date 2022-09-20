@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useHistory, useParams } from "react-router-dom"
-import { addASpot, getSpotById } from "../../store/spots"
+import { addASpot, addImageToSpot, getSpotById } from "../../store/spots"
 
 const AddSpotFormPage = () => {
-    const {spotId} = useParams()
+    const { spotId } = useParams()
     const dispatch = useDispatch()
     const history = useHistory()
     const user = useSelector(state => state.session.user)
@@ -18,6 +18,7 @@ const AddSpotFormPage = () => {
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
     const [price, setPrice] = useState('')
+    const [imgUrl, setImgUrl] = useState('')
 
     const updateAddress = (e) => setAddress(e.target.value)
     const updateCity = (e) => setCity(e.target.value)
@@ -28,6 +29,7 @@ const AddSpotFormPage = () => {
     const updatePrice = (e) => setPrice(e.target.value)
     const updateLat = (e) => setLat(e.target.value)
     const updateLng = (e) => setLng(e.target.value)
+    const updateImgUrl = (e) => setImgUrl(e.target.value)
 
 
     const handleSubmit = async (e) => {
@@ -46,6 +48,16 @@ const AddSpotFormPage = () => {
         }
 
         let createdSpot = await dispatch(addASpot(payload))
+
+        const imgBody = ({
+            id: createdSpot.id,
+            url: imgUrl,
+            preview: true
+        })
+
+        if (imgBody.length > 0){
+            let addedImage = await dispatch(addImageToSpot(imgBody))
+        }
 
         if (createdSpot) {
             history.push(`/spots/${createdSpot.id}`)
@@ -118,6 +130,11 @@ const AddSpotFormPage = () => {
                     value={price}
                     onChange={updatePrice}
                     required />
+                <input
+                    type='text'
+                    placeholder='Image URL'
+                    value={imgUrl}
+                    onChange={updateImgUrl} />
                 <button type='submit'>Create your spot</button>
                 <button type='button' onClick={handleCancel}>Cancel</button>
             </form>

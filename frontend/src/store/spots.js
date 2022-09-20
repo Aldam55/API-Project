@@ -173,10 +173,10 @@ const spotsReducer = (state = initialState, action) => {
                 allSpots: { ...state.allSpots },
                 singleSpot: { ...state.singleSpot }
             }
-            newState.allSpots[action.spot.id] = action.spot
+            newState.singleSpot[action.spot.id] = action.spot
             return {
                 ...state,
-                allSpots
+                singleSpot
             }
         case ADD_IMAGE:
             newState = {
@@ -184,6 +184,7 @@ const spotsReducer = (state = initialState, action) => {
                 singleSpot: { ...state.singleSpot }
             }
             newState.singleSpot.SpotImages[action.image.id] = action.image
+            return newState
         case REMOVE:
             newState = { allSpots: { ...state.allSpots }, singleSpot: { ...state.singleSpot } }
             delete newState.allSpots[action.spotId]

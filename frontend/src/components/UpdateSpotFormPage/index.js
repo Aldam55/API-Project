@@ -19,7 +19,7 @@ const UpdateSpotFormPage = () => {
     const [name, setName] = useState(spot.name)
     const [description, setDescription] = useState(spot.description)
     const [price, setPrice] = useState(spot.price)
-
+    // const [img, setImg] = useState(spot.img)
     // const [address, setAddress] = useState('')
     // const [city, setCity] = useState('')
     // const [state, setState] = useState('')
@@ -39,6 +39,7 @@ const UpdateSpotFormPage = () => {
     const updatePrice = (e) => setPrice(e.target.value)
     const updateLat = (e) => setLat(e.target.value)
     const updateLng = (e) => setLng(e.target.value)
+
 
 
     const handleSubmit = async (e) => {
@@ -125,6 +126,12 @@ const UpdateSpotFormPage = () => {
                     required />
                 <input
                     type='number'
+                    placeholder='Price'
+                    value={price}
+                    onChange={updatePrice}
+                    required />
+                <input
+                    type='text'
                     placeholder='Price'
                     value={price}
                     onChange={updatePrice}
