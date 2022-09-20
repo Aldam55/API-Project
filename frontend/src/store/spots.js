@@ -167,7 +167,8 @@ const spotsReducer = (state = initialState, action) => {
             }
         case UPDATE:
             newState = {
-
+                allSpots: { ...state.allSpots },
+                singleSpot: { ...state.singleSpot }
             }
             newState.singleSpot = action.spot
             return newState
@@ -183,7 +184,6 @@ const spotsReducer = (state = initialState, action) => {
                 allSpots: { ...state.allSpots },
                 singleSpot: { ...state.singleSpot }
             }
-            console.log('what is spotimages in reducer', state.singleSpot.SpotImages)
             // NOT ITERABLE if you spread state.singleSpot.SpotImages
             newState.singleSpot.SpotImages = [action.image]
             // newState.singleSpot.SpotImages[action.image.id] = action.image
