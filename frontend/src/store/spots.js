@@ -110,7 +110,7 @@ export const addImageToSpot = (data, spotId) => async dispatch => {
     // console.log('response in addImage thunk', response)
     if (response.ok) {
         const image = await response.json()
-        console.log('image in addImage thunk', image)
+        // console.log('image in addImage thunk', image)
         dispatch(addImage(image))
         return image
     }
