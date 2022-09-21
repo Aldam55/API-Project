@@ -24,7 +24,7 @@ const SpotsPage = () => {
             <div>
                 {Object.values(spots).map(spot =>(
                     <div key={spot.id}>name: {spot.name}, price: {spot.price}, rating {spot.avgRating}
-                    <img src={spot.previewImage}></img>
+                    <img src={spot.previewImage} alt='Rocks'></img>
                     </div>
                 ))}
             </div>
