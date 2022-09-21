@@ -22,14 +22,15 @@ const SpotsPage = () => {
     return (
         <div className='allspots'>
             {Object.values(spots).map(spot => (
-                <NavLink to={`/spots/${spot.id}`}>
+                <NavLink id="nopurpleplease" to={`/spots/${spot.id}`}>
                     <div className='singlespot'>
                         <div className='spotcard'>
                         <img id='spotimg' src={spot.previewImage || 'https://i.imgur.com/LophMn3.png'} alt='https://imgur.com/a/77bQHGw'></img>
-                        <div key={spot.id} className='spot-name'>name: {spot.name}</div>
+                        <div key={spot.id} className='spot-name'>{spot.name}</div>
                         <div className="city">{spot.city}, {spot.state}</div>
                         <div className="country">{spot.country}</div>
                         <div className="price">${spot.price} night</div>
+                        <div className='rating'>★{spot.avgRating || 0}</div>
                         </div>
                     </div>
                 </NavLink>
