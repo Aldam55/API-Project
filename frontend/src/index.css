@@ -1,1 +1,7 @@
 /* TODO Add site wide styles */
+html,body{
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    width: 100%;
+}
