@@ -1,0 +1,60 @@
+.allspots {
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 100px;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* .spotcard {
+    margin-top: 50px;
+} */
+
+#spotimg {
+    width: 300px;
+    height: 300px;
+    border-radius: 25px;
+}
+
+.singlespot {
+    padding: 10px;
+}
+
+.name-rating {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.spot-name {
+    font-size: 16px;
+    font-weight: bold;
+    color: #222222;
+    padding-top: 10px;
+    padding-left: 2px;
+    padding-bottom: 5px;
+}
+
+.city {
+    color: gray;
+    padding-left: 2px;
+}
+
+.country {
+    color: gray;
+    padding-left: 2px
+}
+
+.price {
+    color: #222222;
+    padding-top: 10px;
+}
+
+.rating {
+    color: #222222;
+    padding-right: 10px;
+}
+
+#nopurpleplease {
+    text-decoration: none;
+}

@@ -10,6 +10,7 @@ import SingleSpotPage from "./components/SingleSpotPage";
 import SpotReviewPage from "./components/SpotReviewPage";
 import CurrentUserSpotsPage from "./components/CurrentUserSpotsPage";
 import CurrentUserReviewsPage from "./components/CurrentUserReviewsPage";
+import AddSpotFormPage from "./components/AddSpotFormPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -38,6 +39,9 @@ function App() {
           </Route>
           <Route path='/spots/current'>
             <CurrentUserSpotsPage></CurrentUserSpotsPage>
+          </Route>
+          <Route path='/spots/create'>
+            <AddSpotFormPage></AddSpotFormPage>
           </Route>
           <Route path='/spots/:spotId'>
             Single Spot Test

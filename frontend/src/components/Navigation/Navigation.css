@@ -1,0 +1,39 @@
+.navwrapper {
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: lightgray 1px solid;
+    position: fixed;
+    background-color: white;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    border: red 1px solid;
+    width: 1700px;
+    /* top: 0; */
+    /* margin-left: 130px;
+    margin-right: 130px; */
+}
+
+.leftbuttons {
+    justify-content: left;
+    align-items: center;
+}
+
+.rightbuttons {
+    justify-content: right;
+    align-items: center;
+    display: flex;
+}
+
+.createspot {
+    padding-right: 15px;
+}
+
+.login {
+    padding: 5px;
+}

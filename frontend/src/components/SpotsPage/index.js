@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { getAllSpots } from "../../store/spots"
-import AddSpotFormPage from "../AddSpotFormPage"
+import { NavLink } from 'react-router-dom';
 import './SpotsPage.css'
 
 
@@ -20,17 +20,23 @@ const SpotsPage = () => {
     if (!spots) return null
 
     return (
-        <div className='blah'>
-            <div>
-                {Object.values(spots).map(spot => (
-                    <div key={spot.id}>name: {spot.name}, price: {spot.price}, rating {spot.avgRating}
-                        <img src={spot.previewImage || 'https://media.moddb.com/images/members/5/4550/4549205/duck.jpg'} alt='https://imgur.com/a/77bQHGw'></img>
+        <div className='allspots'>
+            {Object.values(spots).map(spot => (
+                <NavLink id="nopurpleplease" to={`/spots/${spot.id}`}>
+                    <div className='singlespot'>
+                        <div className='spotcard'>
+                            <img id='spotimg' src={spot.previewImage || 'https://i.imgur.com/LophMn3.png'} alt='https://imgur.com/a/77bQHGw'></img>
+                            <div className='name-rating'>
+                                <div key={spot.id} className='spot-name'>{spot.name}</div>
+                                <div className='rating'>★{spot.avgRating || 0}</div>
+                            </div>
+                            <div className="city">{spot.city}, {spot.state}</div>
+                            <div className="country">{spot.country}</div>
+                            <div className="price"><b>${spot.price}</b> night</div>
+                        </div>
                     </div>
-                ))}
-            </div>
-            <div>
-                <AddSpotFormPage></AddSpotFormPage>
-            </div>
+                </NavLink>
+            ))}
         </div>
     )
 }

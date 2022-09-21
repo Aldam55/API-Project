@@ -1,1 +1,11 @@
 /* TODO Add site wide styles */
+@import url('http://fonts.cdnfonts.com/css/circular-std');
+
+html,
+body {
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    width: 100%;
+    font-family: 'Circular Std', sans-serif;
+}

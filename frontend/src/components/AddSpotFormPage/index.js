@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useHistory, useParams } from "react-router-dom"
 import { addASpot, addImageToSpot, getSpotById } from "../../store/spots"
+import './AddSpotFormPage.css'
 
 const AddSpotFormPage = () => {
     const { spotId } = useParams()
@@ -60,7 +61,7 @@ const AddSpotFormPage = () => {
 
         if (createdSpot) {
             const imgBody = ({
-                id: createdSpot.id,
+                spotId: createdSpot.id,
                 url: imgUrl,
                 preview: true
             })
@@ -75,7 +76,7 @@ const AddSpotFormPage = () => {
     }
 
     return (
-        <div>
+        <div id="form">
             <form onSubmit={handleSubmit}>
                 <select
                     value={country}
