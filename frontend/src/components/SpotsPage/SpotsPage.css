@@ -17,7 +17,13 @@
 }
 
 .singlespot {
-    padding: 20px;
+    padding: 10px;
+}
+
+.name-rating {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .spot-name {
@@ -25,22 +31,28 @@
     font-weight: bold;
     color: #222222;
     padding-top: 10px;
+    padding-left: 2px;
+    padding-bottom: 5px;
 }
 
 .city {
-    color: #222222;
+    color: gray;
+    padding-left: 2px;
 }
 
 .country {
-    color: #222222;
+    color: gray;
+    padding-left: 2px
 }
 
 .price {
     color: #222222;
+    padding-top: 10px;
 }
 
 .rating {
     color: #222222;
+    padding-right: 10px;
 }
 
 #nopurpleplease {
