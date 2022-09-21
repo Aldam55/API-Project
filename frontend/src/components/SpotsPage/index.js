@@ -23,7 +23,7 @@ const SpotsPage = () => {
         <div className='blah'>
             <div>
                 {Object.values(spots).map(spot => (
-                    <div key={spot.id}>name: {spot.name}, price: {spot.price}, rating {spot.avgRating}
+                    <div key={spot.id}>name: {spot.name}, price: {spot.price}, rating {Number(spot.avgRating).toFixed(2)}
                         <img src={spot.previewImage || 'https://media.moddb.com/images/members/5/4550/4549205/duck.jpg'} alt='https://imgur.com/a/77bQHGw'></img>
                     </div>
                 ))}
