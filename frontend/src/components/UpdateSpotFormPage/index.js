@@ -58,17 +58,17 @@ const UpdateSpotFormPage = () => {
 
         let updatedSpot = await dispatch(updateSpot(payload, spot.id))
 
-        if (updatedSpot) {
+        // if (updatedSpot) {
 
-            const imgBody = ({
-                id: updatedSpot.id,
-                url: imgUrl,
-                preview: true
-            })
+        //     const imgBody = ({
+        //         id: updatedSpot.id,
+        //         url: imgUrl,
+        //         preview: true
+        //     })
 
-            dispatch(addImageToSpot(imgBody, updatedSpot.id))
+        //     dispatch(addImageToSpot(imgBody, updatedSpot.id))
             history.push(`/spots/${updatedSpot.id}`)
-        }
+        // }
     }
 
     const handleCancel = async (e) => {
@@ -131,11 +131,11 @@ const UpdateSpotFormPage = () => {
                     value={price}
                     onChange={updatePrice}
                     required />
-                <input
+                {/* <input
                     type='text'
                     placeholder='Image URL'
                     value={imgUrl}
-                    onChange={updateImgUrl} />
+                    onChange={updateImgUrl} /> */}
                 <button type='submit'>Update</button>
                 <button type='button' onClick={handleCancel}>Cancel</button>
             </form>
