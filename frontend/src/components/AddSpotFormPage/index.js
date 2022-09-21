@@ -58,15 +58,15 @@ const AddSpotFormPage = () => {
         let createdSpot = await dispatch(addASpot(payload))
 
 
-        // if (createdSpot) {
-        //     const imgBody = ({
-        //         id: createdSpot.id,
-        //         url: imgUrl,
-        //         preview: true
-        //     })
-            // dispatch(addImageToSpot(imgBody, createdSpot.id))
+        if (createdSpot) {
+            const imgBody = ({
+                id: createdSpot.id,
+                url: imgUrl,
+                preview: true
+            })
+            await dispatch(addImageToSpot(imgBody, createdSpot.id))
             history.push(`/spots/${createdSpot.id}`)
-        // }
+        }
     }
 
     const handleCancel = async (e) => {
@@ -123,11 +123,11 @@ const AddSpotFormPage = () => {
                     value={price}
                     onChange={updatePrice}
                     required />
-                {/* <input
+                <input
                     type='text'
                     placeholder='Image URL'
                     value={imgUrl}
-                    onChange={updateImgUrl} /> */}
+                    onChange={updateImgUrl} />
                 <button type='submit'
                     disabled={validationErrors.length > 0 ? true : false}>
                     Create your spot</button>
