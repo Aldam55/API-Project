@@ -6,7 +6,7 @@ import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import './Navigation.css';
 
-function Navigation({ isLoaded }){
+function Navigation({ isLoaded }) {
   const sessionUser = useSelector(state => state.session.user);
 
   let sessionLinks;
@@ -25,21 +25,23 @@ function Navigation({ isLoaded }){
 
   return (
     <div className='navwrapper'>
-    <div className='navbar'>
-      <div className='leftbuttons'>
-      <div id='home'>
-        <NavLink exact to="/">Home</NavLink>
-      </div>
-      </div>
-      <div className='rightbuttons'>
-        <div className='createspot'>
-          <NavLink to='/spots/create'>Create a Spot</NavLink>
+      <div className='navbar'>
+        <div className='leftbuttons'>
+          <div id='home'>
+            <NavLink  exact to="/" >
+              <img id='home-logo' src='https://i.imgur.com/bKJG6DC.png'></img>
+              </NavLink>
+          </div>
         </div>
-        <div id='login'>
-        {isLoaded && sessionLinks}
+        <div className='rightbuttons'>
+          <div className='createspot'>
+            <NavLink id='hidepurple' to='/spots/create'>Create a Spot</NavLink>
+          </div>
+          <div id='login'>
+            {isLoaded && sessionLinks}
+          </div>
         </div>
       </div>
-    </div>
     </div>
   );
 }

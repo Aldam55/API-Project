@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { useHistory, useParams } from "react-router-dom"
+import { NavLink, useHistory, useParams } from "react-router-dom"
 import { getSpotById, removeSpot } from "../../store/spots"
 import AddReviewFormPage from "../AddReviewFormPage"
 import SpotReviewPage from "../SpotReviewPage"
@@ -14,7 +14,9 @@ const SingleSpotPage = () => {
     const spot = useSelector(state => state.spots.singleSpot)
     const user = useSelector(state => state.session.user)
     // ADD A REDIRECT FOR AFTER DELETING A SPOT
-    console.log('spot in single spot page', spot.SpotImages)
+    console.log('spotImages in single spot page', spot.SpotImages)
+    console.log('spot in singleSpotPage', spot)
+    console.log('Spot owner', spot.Owner)
     useEffect(() => {
         dispatch(getSpotById(spotId))
     }, [dispatch, spotId])
@@ -59,10 +61,11 @@ const SingleSpotPage = () => {
                 <SpotReviewPage></SpotReviewPage>
             </div>
             <div>
-                <AddReviewFormPage></AddReviewFormPage>
+                {(user && user.id !== spot.ownerId) && (
+                    <AddReviewFormPage></AddReviewFormPage>)}
             </div>
             {(user && user.id === spot.ownerId) && (
-                <UpdateSpotFormPage></UpdateSpotFormPage>)}
+                <NavLink to='/spots/:spotId/edit'>Edit</NavLink>)}
         </div>
     )
 }

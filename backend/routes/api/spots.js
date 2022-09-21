@@ -415,7 +415,7 @@ router.post('/:spotId/images', requireAuth, async (req, res) => {
         preview: preview
     })
     res.json({
-        id: spotImage.id,
+        // id: spotImage.id,
         url,
         preview: preview
     })

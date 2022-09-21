@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useHistory, useParams } from "react-router-dom"
 import { updateSpot, addImageToSpot } from "../../store/spots"
+import './UpdateSpotFormPage.css'
 
 const UpdateSpotFormPage = () => {
     const dispatch = useDispatch()
@@ -17,7 +18,7 @@ const UpdateSpotFormPage = () => {
     const [name, setName] = useState(spot.name)
     const [description, setDescription] = useState(spot.description)
     const [price, setPrice] = useState(spot.price)
-    const [imgUrl, setImgUrl] = useState(spot.SpotImages)
+    const [imgUrl, setImgUrl] = useState(spot.SpotImages[0])
     const [validationErrors, setValidationErrors] = useState([])
 
     const updateAddress = (e) => setAddress(e.target.value)
@@ -57,18 +58,19 @@ const UpdateSpotFormPage = () => {
         }
 
         let updatedSpot = await dispatch(updateSpot(payload, spot.id))
+        // console.log('does update break here?', updatedSpot)
 
-        // if (updatedSpot) {
+        if (updatedSpot) {
 
         //     const imgBody = ({
-        //         id: updatedSpot.id,
+        //         spotId: updatedSpot.id,
         //         url: imgUrl,
         //         preview: true
         //     })
 
-        //     dispatch(addImageToSpot(imgBody, updatedSpot.id))
+        //     await dispatch(addImageToSpot(imgBody, updatedSpot.id))
             history.push(`/spots/${updatedSpot.id}`)
-        // }
+        }
     }
 
     const handleCancel = async (e) => {
@@ -77,7 +79,7 @@ const UpdateSpotFormPage = () => {
     }
 
     return (
-        <div>
+        <div className="formwrapper">
             <form onSubmit={handleSubmit}>
                 <select
                     value={country}
@@ -121,12 +123,6 @@ const UpdateSpotFormPage = () => {
                     required />
                 <input
                     type='number'
-                    placeholder='Price'
-                    value={price}
-                    onChange={updatePrice}
-                    required />
-                <input
-                    type='text'
                     placeholder='Price'
                     value={price}
                     onChange={updatePrice}

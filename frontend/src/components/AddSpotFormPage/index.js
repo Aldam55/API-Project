@@ -5,7 +5,6 @@ import { addASpot, addImageToSpot, getSpotById } from "../../store/spots"
 import './AddSpotFormPage.css'
 
 const AddSpotFormPage = () => {
-    const { spotId } = useParams()
     const dispatch = useDispatch()
     const history = useHistory()
     const user = useSelector(state => state.session.user)
@@ -61,7 +60,6 @@ const AddSpotFormPage = () => {
 
         if (createdSpot) {
             const imgBody = ({
-                spotId: createdSpot.id,
                 url: imgUrl,
                 preview: true
             })

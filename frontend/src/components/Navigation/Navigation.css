@@ -1,19 +1,32 @@
 .navwrapper {
     width: 100%;
-    height: 70px;
+    height: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
     border-bottom: lightgray 1px solid;
-    position: fixed;
+    position: sticky;
     background-color: white;
+    top: 0
 }
+
+#hidepurple {
+    text-decoration: none;
+}
+
+/* #home {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} */
 
 .navbar {
     display: flex;
     justify-content: space-between;
     border: red 1px solid;
     width: 1700px;
+    height: 100px;
+    align-items: center;
     /* top: 0; */
     /* margin-left: 130px;
     margin-right: 130px; */
@@ -25,13 +38,23 @@
 }
 
 .rightbuttons {
-    justify-content: right;
+    justify-content: space-around;
     align-items: center;
     display: flex;
+    width: 150px;
+}
+
+.createspot:hover {
+    background-color: rgb(226, 226, 226);
 }
 
 .createspot {
-    padding-right: 15px;
+    border-radius: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    padding: 12px 16px
 }
 
 .login {

@@ -78,7 +78,7 @@ export const getSpotById = (spotId) => async dispatch => {
 
     if (response.ok) {
         const singleSpot = await response.json()
-        // console.log('single spot info', singleSpot)
+        console.log('single spot info', singleSpot)
         dispatch(loadOne(singleSpot))
     }
 }
@@ -110,7 +110,7 @@ export const addImageToSpot = (data, spotId) => async dispatch => {
     // console.log('response in addImage thunk', response)
     if (response.ok) {
         const image = await response.json()
-        // console.log('image in addImage thunk', image)
+        console.log('image in addImage thunk', image)
         dispatch(addImage(image))
         return image
     }
@@ -165,26 +165,25 @@ const spotsReducer = (state = initialState, action) => {
                 singleSpot
             }
         case UPDATE:
-            newState = {
-                allSpots: { ...state.allSpots },
-                singleSpot: { ...state.singleSpot }
-            }
+            // newState = {
+            //     singleSpot: { ...state.singleSpot, SpotImages: [...state.singleSpot.SpotImages] }
+            // }
+            // newState.singleSpot = action.spot
+            newState = { allSpots: { ...state.allSpots }, }
             newState.singleSpot = action.spot
+            newState.singleSpot.SpotImages = [...state.singleSpot.SpotImages]
             return newState
         case ADD:
-            newState = {
-                allSpots: { ...state.allSpots },
-                singleSpot: { ...state.singleSpot }
-            }
+            newState = { allSpots: { ...state.allSpots }, }
             newState.singleSpot = action.spot
+            newState.singleSpot.SpotImages = []
+
             return newState
         case ADD_IMAGE:
-            newState = {
-                allSpots: { ...state.allSpots },
-                singleSpot: { ...state.singleSpot }
-            }
+            newState = { singleSpot: { ...state.singleSpot } }
             // NOT ITERABLE if you spread state.singleSpot.SpotImages
-            newState.singleSpot.SpotImages = [action.image]
+            console.log('action in addImage reducer', action)
+            newState.singleSpot.SpotImages = [action.spotId.url]
             // newState.singleSpot.SpotImages[action.image.id] = action.image
             return newState
         case REMOVE:

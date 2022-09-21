@@ -1,7 +1,6 @@
 .allspots {
     display: flex;
     flex-wrap: wrap;
-    padding-top: 100px;
     justify-content: center;
     gap: 20px;
 }
@@ -17,7 +16,7 @@
 }
 
 .singlespot {
-    padding: 10px;
+    padding: 20px;
 }
 
 .name-rating {
