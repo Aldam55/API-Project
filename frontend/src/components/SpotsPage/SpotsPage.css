@@ -1,0 +1,20 @@
+.allspots {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.spotcard {
+    width: 300px;
+    height: 500px;
+}
+
+#spotimg {
+    width: 300px;
+    height: 300px;
+    border-radius: 25px;
+}
+
+.singlespot {
+    padding: 20px;
+}

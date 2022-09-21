@@ -17,9 +17,13 @@ const CurrentUserSpotsPage = () => {
     return (
         <div>
             <div>
-                {Object.values(spots).map(spot => {
-                    return <div key={spot.id}>name: {spot.name}, price: {spot.price}, image {spot.previewImage}, rating {spot.avgRating}</div>
-                })}
+                {Object.values(spots).map(spot => (
+                    <div key={spot.id}>name: {spot.name}, price: {spot.price}, rating {spot.avgRating}
+                    <div>
+                    <img src={spot.previewImage}></img>
+                    </div>
+                    </div>
+                ))}
             </div>
         </div>
     )

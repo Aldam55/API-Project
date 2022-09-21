@@ -24,12 +24,19 @@ function Navigation({ isLoaded }){
   }
 
   return (
-    <ul>
-      <li>
+    <div className='navwrapper'>
+    <div className='navbar'>
+      <div id='home'>
         <NavLink exact to="/">Home</NavLink>
+      </div>
+        <div id='login'>
         {isLoaded && sessionLinks}
-      </li>
-    </ul>
+        </div>
+        <div className='createspot'>
+          <NavLink to='/spots/create'>Create a Spot</NavLink>
+        </div>
+    </div>
+    </div>
   );
 }
 

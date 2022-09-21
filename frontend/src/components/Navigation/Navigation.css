@@ -1,0 +1,9 @@
+/* .navwrapper {
+
+} */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    border: red 10px solid;
+}

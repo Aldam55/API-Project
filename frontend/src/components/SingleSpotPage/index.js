@@ -29,7 +29,7 @@ const SingleSpotPage = () => {
     // if (!spot.SpotImages) spot.SpotImages[0] = 'https://imgur.com/a/77bQHGw' 'https://www.nps.gov/articles/images/image1_3.jpeg?maxwidth=1200&autorotate=false'
     return (
         <div>
-            <img src={spot.SpotImages[0]?.url || 'https://media.moddb.com/images/members/5/4550/4549205/duck.jpg'} alt='Rocks'></img>
+            <img src={spot.SpotImages[0]?.url || 'https://i.imgur.com/LophMn3.png'} alt='Rocks'></img>
             <div>
                 {spot.name}
                 <div>
