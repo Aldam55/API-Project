@@ -17,7 +17,7 @@ const reviews = [
     spotId: 1,
     userId: 3,
     review: "This place is poppin",
-    stars: 6,
+    stars: 5,
   },
   {
     spotId: 1,
