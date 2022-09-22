@@ -157,13 +157,17 @@ const spotsReducer = (state = initialState, action) => {
                 allSpots[spot.id] = spot
             })
             // console.log('newState.spots in spotsReducer', newState.spots)
-            return { ...state, allSpots }
-        case LOAD_ONE:
-            singleSpot = { ...action.spotDetails }
-            return {
-                ...state,
-                singleSpot
-            }
+            return { allSpots, singleSpot: { SpotImages: [] } }
+        case LOAD_ONE: {
+            const newState = { ...state, singleSpot: { ...state.singleSpot } };
+            console.log('action.spotDetails', action.spotDetails)
+            newState.singleSpot = action.spotDetails;
+            return newState;
+            // {
+            //     ...state,
+            //     singleSpot
+            // }
+        }
         case UPDATE:
             // newState = {
             //     singleSpot: { ...state.singleSpot, SpotImages: [...state.singleSpot.SpotImages] }
