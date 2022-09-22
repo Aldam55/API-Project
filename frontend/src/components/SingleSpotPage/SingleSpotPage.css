@@ -16,7 +16,8 @@
 
 #spotimg2 {
     width: 560px;
-    height: 450px
+    height: 450px;
+    border-radius: 20px;
 }
 
 /* FIX FONT ON HEROKU */

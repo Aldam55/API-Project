@@ -4,6 +4,7 @@ const LOAD_REVIEWS = 'reviews/LOAD_REVIEWS'
 const ADD_REVIEW = 'reviews/ADD_REVIEW'
 const REMOVE_REVIEW = '/reviews/REMOVE_REVIEW'
 const CURRENT_REVIEWS = '/reviews/CURRENT_REVIEWS'
+const RESET_REVIEWS = '/reviews/RESET_REVIEWS'
 
 const load = (reviews, spotId) => ({
     type: LOAD_REVIEWS,
@@ -25,6 +26,10 @@ const remove = (reviewId) => ({
 const current = (reviews) => ({
     type: CURRENT_REVIEWS,
     reviews
+})
+
+export const reset = () => ({
+    type: RESET_REVIEWS
 })
 
 export const getCurrent = () => async dispatch => {
@@ -82,10 +87,7 @@ const reviewReducer = (state = initialState, action) => {
             action.reviews.Reviews.forEach(review => {
                 spot[review.id] = review
             })
-            return {
-                ...state,
-                spot
-            }
+            return {spot}
         case ADD_REVIEW:
             newState = {spot: {...state.spot}, user: {...state.user}}
             newState.spot[action.review.id] = action.review
@@ -103,6 +105,8 @@ const reviewReducer = (state = initialState, action) => {
             delete newState.spot[action.reviewId]
             delete newState.user[action.reviewId]
             return newState
+        case RESET_REVIEWS:
+            return initialState
         default:
             return state
     }

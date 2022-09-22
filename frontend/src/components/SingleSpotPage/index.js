@@ -31,24 +31,26 @@ const SingleSpotPage = () => {
     // if (!spot.SpotImages) spot.SpotImages[0] = 'https://imgur.com/a/77bQHGw' 'https://www.nps.gov/articles/images/image1_3.jpeg?maxwidth=1200&autorotate=false'
     return (
         <div>
-            {spot.Owner &&
+            {spot.id &&
                 <div className="spotwrapper">
-                    <div className="title">
-                        <div>
-                            {spot.name}
+                    <div className="singlespotcard">
+                        <div className="title">
+                            <div>
+                                {spot.name}
+                            </div>
+                            <div>
+                                {spot.avgStarRating}
+                            </div>
+                            <div>
+                                {spot.numReviews || 0}
+                            </div>
+                            <div>
+                                {spot.city}, {spot.state}, {spot.country}
+                            </div>
                         </div>
                         <div>
-                            {spot.avgStarRating}
+                            <img id='spotimg2' src={spot.SpotImages[0]?.url || 'https://i.imgur.com/LophMn3.png'} alt='Rocks'></img>
                         </div>
-                        <div>
-                            {spot.numReviews || 0}
-                        </div>
-                        <div>
-                            {spot.city}, {spot.state}, {spot.country}
-                        </div>
-                    </div>
-                    <div>
-                        <img id='spotimg2' src={spot.SpotImages[0]?.url || 'https://i.imgur.com/LophMn3.png'} alt='Rocks'></img>
                     </div>
                     <div>
                         {(user && user.id === spot.ownerId) && (

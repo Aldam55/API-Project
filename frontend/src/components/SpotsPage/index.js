@@ -2,6 +2,7 @@ import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { getAllSpots } from "../../store/spots"
 import { NavLink } from 'react-router-dom';
+import { reset } from "../../store/reviews";
 import './SpotsPage.css'
 
 
@@ -14,6 +15,7 @@ const SpotsPage = () => {
 
     useEffect(() => {
         dispatch(getAllSpots())
+        return () => dispatch(reset())
     }, [dispatch])
 
     // console.log(spots)
@@ -28,7 +30,7 @@ const SpotsPage = () => {
                             <img id='spotimg' src={spot.previewImage || 'https://i.imgur.com/LophMn3.png'} alt='https://imgur.com/a/77bQHGw'></img>
                             <div className='name-rating'>
                                 <div key={spot.id} className='spot-name'>{spot.name}</div>
-                                <div className='rating'>★{Number(spot.avgRating).toFixed(2) || 0}</div>
+                                <div className='rating'>★{Number(spot.avgRating).toFixed(2)}</div>
                             </div>
                             <div className="city">{spot.city}, {spot.state}</div>
                             <div className="country">{spot.country}</div>

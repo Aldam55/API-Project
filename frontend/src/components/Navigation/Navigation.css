@@ -39,10 +39,10 @@
 }
 
 .rightbuttons {
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
     display: flex;
-    width: 150px;
+    width: 250px;
 }
 
 .createspot:hover {
@@ -50,14 +50,20 @@
 }
 
 .createspot {
-    border-radius: 22px;
+    border-radius: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
     background: transparent;
     padding: 10px;
-    margin-right: 10px;
     font-size: 16px;
+}
+
+.testcreatespot {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
 }
 
 .login {

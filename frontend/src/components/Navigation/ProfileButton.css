@@ -1,0 +1,25 @@
+.menu-container {
+    width: 100px;
+}
+
+.menu-button {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 20px;
+    border: none;
+    height: 45px;
+    width: 80px;
+}
+
+.menu-button:hover {
+    box-shadow: 0px 2px 3px gray;
+}
+
+.fa-solid {
+    padding: 10px 5px
+}
+
+.rock-menu-icon {
+    padding: 2px;
+}
