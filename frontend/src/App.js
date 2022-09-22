@@ -48,7 +48,6 @@ function App() {
             <AddSpotFormPage></AddSpotFormPage>
           </Route>
           <Route path='/spots/:spotId'>
-            Single Spot Test
             <SingleSpotPage></SingleSpotPage>
           </Route>
         </Switch>
