@@ -3,10 +3,14 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
 import './ProfileButton.css'
+import { NavLink } from "react-router-dom";
+import LoginFormModal from "../LoginFormModal";
+import SignupFormModal from "../SignupFormModal";
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
+  let sessionLinks;
 
   const openMenu = () => {
     if (showMenu) return;
@@ -30,25 +34,67 @@ function ProfileButton({ user }) {
     dispatch(sessionActions.logout());
   };
 
+  if (!user) {
+    sessionLinks = (
+      <div className="profile-dropdown">
+        <div className="user-dropdown">
+          <div className="user-dropdown">
+            <div className="dropdown-links">
+              <LoginFormModal />
+            </div>
+            <div className="dropdown-links">
+              <SignupFormModal />
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  } else {
+    sessionLinks = (
+      <div className="profile-dropdown">
+        <div className="user-dropdown">
+          <div>{user.username}</div>
+          <div>{user.email}</div>
+          <div className="dropdown-links">
+            <NavLink id='hidepurple' to='/spots/current'>Your Spots</NavLink>
+          </div>
+          <div className="dropdown-links">
+            <NavLink id='hidepurple' to='/reviews/current'>Your Reviews</NavLink>
+          </div>
+          <div>
+            <button onClick={logout}>Log Out</button>
+          </div>
+        </div>
+      </div>)
+  }
+
   return (
     <>
       <div className="menu-wrapper">
         <div className='menu-container'>
           <button className='menu-button' onClick={openMenu}>
-          <i class="fa-solid fa-bars"></i>
-          <img class='rock-menu-icon' src='https://i.imgur.com/C3HkZ6J.png' alt='rock' />
+            <i className="fa-solid fa-bars"></i>
+            <img className='rock-menu-icon' src='https://i.imgur.com/C3HkZ6J.png' alt='rock' />
           </button>
         </div>
       </div>
-      {showMenu && (
-        <ul className="profile-dropdown">
-          <li>{user.username}</li>
-          <li>{user.email}</li>
-          <li>
-            <button onClick={logout}>Log Out</button>
-          </li>
-        </ul>
-      )}
+      {showMenu &&
+        <div className="profile-dropdown">
+          <div className="user-dropdown">
+            <div>{user.username}</div>
+            <div>{user.email}</div>
+            <div className="dropdown-links">
+              <NavLink id='hidepurple' to='/spots/current'>Your Spots</NavLink>
+            </div>
+            <div className="dropdown-links">
+              <NavLink id='hidepurple' to='/reviews/current'>Your Reviews</NavLink>
+            </div>
+            <div>
+              <button onClick={logout}>Log Out</button>
+            </div>
+          </div>
+        </div>
+      }
     </>
   );
 }

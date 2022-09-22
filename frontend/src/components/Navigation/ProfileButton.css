@@ -23,3 +23,28 @@
 .rock-menu-icon {
     padding: 2px;
 }
+
+.profile-dropdown {
+    position: relative;
+}
+
+.user-dropdown {
+    position: absolute;
+    top: calc(100% + 10px);
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .1);
+    right: 20px
+}
+
+.dropdown-links:hover {
+    background-color: rgb(231, 231, 231);
+}
+
+
+
+/* .user-dropdown {
+    text-decoration: none;
+    color: black;
+} */

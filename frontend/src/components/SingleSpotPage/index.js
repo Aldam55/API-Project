@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { NavLink, useHistory, useParams } from "react-router-dom"
 import { getSpotById, removeSpot } from "../../store/spots"
 import AddReviewFormPage from "../AddReviewFormPage"
+import LoginFormModal from "../LoginFormModal"
 import SpotReviewPage from "../SpotReviewPage"
 import './SingleSpotPage.css'
 

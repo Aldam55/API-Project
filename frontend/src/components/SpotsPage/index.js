@@ -24,7 +24,7 @@ const SpotsPage = () => {
     return (
         <div className='allspots'>
             {Object.values(spots).map(spot => (
-                <NavLink id="nopurpleplease" to={`/spots/${spot.id}`}>
+                <NavLink key={spot.id} id="nopurpleplease" to={`/spots/${spot.id}`}>
                     <div className='singlespot'>
                         <div className='spotcard'>
                             <img id='spotimg' src={spot.previewImage || 'https://i.imgur.com/LophMn3.png'} alt='https://imgur.com/a/77bQHGw'></img>
