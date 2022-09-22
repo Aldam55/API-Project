@@ -37,7 +37,6 @@ function ProfileButton({ user }) {
           <button className='menu-button' onClick={openMenu}>
           <i class="fa-solid fa-bars"></i>
           <img class='rock-menu-icon' src='https://i.imgur.com/C3HkZ6J.png' alt='rock' />
-            {/* <i className="fas fa-user-circle" /> */}
           </button>
         </div>
       </div>

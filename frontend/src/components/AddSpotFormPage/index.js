@@ -74,59 +74,76 @@ const AddSpotFormPage = () => {
     }
 
     return (
-        <div id="form">
+        <div id="add-spot-form">
             <form onSubmit={handleSubmit}>
-                <select
-                    value={country}
-                    onChange={updateCountry}
-                    required >
-                    <option>USA</option>
-                    <option>China</option>
-                    <option>Japan</option>
-                    <option>Mexico</option>
-                    <option>Canada</option>
-                </select>
+                <label>
+                    country
+                    <select
+                        value={country}
+                        onChange={updateCountry}
+                        required >
+                        <option>USA</option>
+                        <option>China</option>
+                        <option>Japan</option>
+                        <option>Mexico</option>
+                        <option>Canada</option>
+                    </select>
+                </label>
+                <label>Address
                 <input
                     type='text'
                     placeholder='Address'
                     value={address}
                     onChange={updateAddress}
                     required />
+                    </label>
+                <label>City
                 <input
                     type='text'
                     placeholder='City'
                     value={city}
                     onChange={updateCity}
                     required />
+                    </label>
+                <label>State
                 <input
                     type='text'
                     placeholder='State'
                     value={state}
                     onChange={updateState}
                     required />
+                    </label>
+                <label>Name
                 <input
                     type='text'
                     placeholder='Name'
                     value={name}
                     onChange={updateName}
                     required />
+                    </label>
+                <label>Description
                 <textarea
                     type='text'
                     placeholder='Description'
                     value={description}
                     onChange={updateDescription}
                     required />
+                    <label>Price
+                    </label>
                 <input
                     type='number'
                     placeholder='Price'
                     value={price}
                     onChange={updatePrice}
                     required />
-                <input
-                    type='text'
-                    placeholder='Image URL'
-                    value={imgUrl}
-                    onChange={updateImgUrl} />
+                    </label>
+                <label>ImageURL
+                    <input
+                        type='text'
+                        placeholder='Image URL'
+                        value={imgUrl}
+                        onChange={updateImgUrl} />
+                </label>
                 <button type='submit'
                     disabled={validationErrors.length > 0 ? true : false}>
                     Create your spot</button>

@@ -1,3 +1,5 @@
-#form {
-    padding-top: 150px;
+#add-spot-form {
+    display: flex;
+    flex-direction: column;
+    padding-top: 100px;
 }

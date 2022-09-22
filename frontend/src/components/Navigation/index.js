@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import './Navigation.css';
+import SignupFormModal from '../SignupFormModal';
 
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector(state => state.session.user);
@@ -18,7 +19,8 @@ function Navigation({ isLoaded }) {
     sessionLinks = (
       <>
         <LoginFormModal />
-        <NavLink to="/signup">Sign Up</NavLink>
+        {/* <NavLink to="/signup">Sign Up</NavLink> */}
+        <SignupFormModal />
       </>
     );
   }
@@ -28,17 +30,19 @@ function Navigation({ isLoaded }) {
       <div className='navbar'>
         <div className='leftbuttons'>
           <div id='home'>
-            <NavLink  exact to="/" >
+            <NavLink exact to="/" >
               <img id='home-logo' src='https://i.imgur.com/bKJG6DC.png'></img>
-              </NavLink>
+            </NavLink>
           </div>
         </div>
         <div className='rightbuttons'>
+              {sessionUser &&
           <div className='createspot'>
             <div className='testcreatespot'>
-            <NavLink id='hidepurple' to='/spots/create'>Host a Spot</NavLink>
+                <NavLink id='hidepurple' to='/spots/create'>Host a Spot</NavLink>
             </div>
           </div>
+              }
           <div id='login'>
             {isLoaded && sessionLinks}
           </div>
