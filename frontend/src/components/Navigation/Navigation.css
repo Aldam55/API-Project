@@ -12,6 +12,7 @@
 
 #hidepurple {
     text-decoration: none;
+    color: black;
 }
 
 /* #home {
@@ -54,7 +55,9 @@
     justify-content: center;
     align-items: center;
     background: transparent;
-    padding: 12px 16px
+    padding: 10px;
+    margin-right: 10px;
+    font-size: 16px;
 }
 
 .login {

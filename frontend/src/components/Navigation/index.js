@@ -35,7 +35,7 @@ function Navigation({ isLoaded }) {
         </div>
         <div className='rightbuttons'>
           <div className='createspot'>
-            <NavLink id='hidepurple' to='/spots/create'>Create a Spot</NavLink>
+            <NavLink id='hidepurple' to='/spots/create'>Host a Spot</NavLink>
           </div>
           <div id='login'>
             {isLoaded && sessionLinks}
