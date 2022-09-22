@@ -31,7 +31,7 @@ const SingleSpotPage = () => {
     // if (!spot.SpotImages) spot.SpotImages[0] = 'https://imgur.com/a/77bQHGw' 'https://www.nps.gov/articles/images/image1_3.jpeg?maxwidth=1200&autorotate=false'
     return (
         <div>
-            {spot &&
+
                 <div className="spotwrapper">
                     <div className="title">
                         <div>
@@ -66,7 +66,6 @@ const SingleSpotPage = () => {
                     {(user && user.id === spot.ownerId) && (
                         <NavLink to='/spots/:spotId/edit'>Edit</NavLink>)}
                 </div>
-            }
         </div>
     )
 }
