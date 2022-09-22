@@ -4,7 +4,7 @@ import { NavLink, useHistory, useParams } from "react-router-dom"
 import { getSpotById, removeSpot } from "../../store/spots"
 import AddReviewFormPage from "../AddReviewFormPage"
 import SpotReviewPage from "../SpotReviewPage"
-import UpdateSpotFormPage from "../UpdateSpotFormPage"
+import './SingleSpotPage.css'
 
 const SingleSpotPage = () => {
     const { spotId } = useParams()
@@ -30,34 +30,31 @@ const SingleSpotPage = () => {
     // console.log('rerender test in SingleSpotPage')
     // if (!spot.SpotImages) spot.SpotImages[0] = 'https://imgur.com/a/77bQHGw' 'https://www.nps.gov/articles/images/image1_3.jpeg?maxwidth=1200&autorotate=false'
     return (
-        <div>
-            <img src={spot.SpotImages[0]?.url || 'https://i.imgur.com/LophMn3.png'} alt='Rocks'></img>
-            <div>
-                {spot.name}
+        <div className="spotwrapper">
+            <div className="title">
                 <div>
-                    {spot.address}
+                    {spot.name}
                 </div>
                 <div>
-                    {spot.city}
+                    {spot.avgStarRating}
                 </div>
                 <div>
-                    {spot.state}
+                    {spot.numReviews || 0}
                 </div>
                 <div>
-                    {spot.country}
+                    {spot.city}, {spot.state}, {spot.country}
                 </div>
-                <div>
-                    {spot.price}
-                </div>
-                {spot.description}
             </div>
+                <div>
+                <img id='spotimg2' src={spot.SpotImages[0]?.url || 'https://i.imgur.com/LophMn3.png'} alt='Rocks'></img>
+                </div>
             <div>
                 {(user && user.id === spot.ownerId) && (
                     <button onClick={handleRemove}>
                         Delete spot</button>
                 )}
             </div>
-            <div>
+            <div className="reviews">
                 <SpotReviewPage></SpotReviewPage>
             </div>
             <div>

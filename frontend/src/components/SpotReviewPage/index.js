@@ -20,9 +20,13 @@ const SpotReviewPage = () => {
             {/* {console.log('rerender test in SpotReviewPage return')} */}
             spotReview placeholder
             <div>
-                {Object.values(spotReviews).map(review => {
-                    return <div key={review.id}>user: {review.userId}, description: {review.review}</div>
-                })}
+                {Object.values(spotReviews).map(review => (
+                    <div>
+                        <div key={review.id}>user: {review.userId}</div>
+                        <div>description: {review.review}</div>
+                        <div>{review.stars}</div>
+                    </div>
+                ))}
             </div>
         </div>
     )
