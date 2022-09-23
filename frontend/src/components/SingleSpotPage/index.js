@@ -100,16 +100,16 @@ const SingleSpotPage = () => {
                             {(user && user.id !== spot.ownerId) &&
                                 <button className='reviews-button'>Add a review</button>}
                         </div>
+                        <div className="reviews">
+                            <SpotReviewPage></SpotReviewPage>
+                        </div>
                     </div>
-                    <div>
+                    {/* <div>
                         {(user && user.id === spot.ownerId) && (
                             <button onClick={handleRemove}>
                                 Delete spot</button>
                         )}
-                    </div>
-                    <div className="reviews">
-                        <SpotReviewPage></SpotReviewPage>
-                    </div>
+                    </div> */}
                     {/* <div>
                         {(user && user.id !== spot.ownerId) && (
                             <AddReviewFormPage></AddReviewFormPage>)}

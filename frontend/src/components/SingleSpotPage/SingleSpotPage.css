@@ -82,6 +82,8 @@
     justify-content: space-between;
     height: 200px;
     width: 1026px;
+    border-bottom: 1px lightgray solid;
+    padding-bottom: 15px
 }
 
 .single-spot-information {
@@ -94,6 +96,10 @@
     font-weight: 600;
     padding: 10px 0px;
     border-bottom: 1px lightgray solid;
+}
+
+.single-spot-description-text {
+    padding-top: 20px;
 }
 
 .single-spot-booking {
@@ -140,6 +146,7 @@
     display: flex;
     height: 40px;
     width: 500px;
+    padding: 20px 0px
 }
 
 .reviews-numReviews {
@@ -161,4 +168,17 @@
 
 #wtfman {
     padding-bottom: 5px;
+}
+
+.reviews-button {
+   margin-left: 25px;
+   height: 40px;
+   width: 150px;
+   background-color: rgb(255, 56, 92);
+   color: white;
+   border: none;
+   border-radius: 20px;
+   cursor: pointer;
+   font-weight: 700;
+   font-size: 14px;
 }

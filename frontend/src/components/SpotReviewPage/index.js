@@ -9,7 +9,7 @@ const SpotReviewPage = () => {
     const dispatch = useDispatch()
 
     const spotReviews = useSelector(state => state.reviews.spot)
-    console.log('all reviews for this spot', {...spotReviews})
+    // console.log('all reviews for this spot', {...spotReviews})
 
     useEffect(() => {
         dispatch(getSpotReview(spotId))
@@ -18,13 +18,12 @@ const SpotReviewPage = () => {
     return (
         <div>
             {spotReviews &&
-            <div>
-                <div>spotReview placeholder</div>
+            <div className='reviews-page-wrapper'>
                 {Object.values(spotReviews).map(review => (
-                    <div key={review.id}>
-                        <div>user: {review.userId}</div>
-                        <div>description: {review.review}</div>
-                        <div>{review.stars}</div>
+                    <div key={review.id} className='reviews-each'>
+                        <div className='review-page-name'>{review.User.firstName}</div>
+                        <div className='review-page-date'>{new Date(review.updatedAt).toString().slice(4, 15)}</div>
+                        <div className='review-page-description'>{review.review}</div>
                     </div>
                 ))}
             </div>
