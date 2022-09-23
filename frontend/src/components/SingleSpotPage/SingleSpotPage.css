@@ -116,6 +116,7 @@
     padding: 20px 15px;
 }
 
+
 .booking-content-reviews {
     display: flex;
     align-items: center;
@@ -149,6 +150,26 @@
     padding: 20px 0px
 }
 
+.added-delete-button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.single-spot-delete {
+    margin-left: 25px;
+    height: 40px;
+    width: 150px;
+    background-color: rgb(255, 56, 92);
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 14px;
+    margin-left: 375px;
+}
+
 .reviews-numReviews {
     display: flex;
     justify-content: center;
@@ -171,14 +192,14 @@
 }
 
 .reviews-button {
-   margin-left: 25px;
-   height: 40px;
-   width: 150px;
-   background-color: rgb(255, 56, 92);
-   color: white;
-   border: none;
-   border-radius: 20px;
-   cursor: pointer;
-   font-weight: 700;
-   font-size: 14px;
+    margin-left: 25px;
+    height: 40px;
+    width: 150px;
+    background-color: rgb(255, 56, 92);
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 14px;
 }

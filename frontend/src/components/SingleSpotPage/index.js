@@ -89,31 +89,34 @@ const SingleSpotPage = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className='reviews-big-info'>
-                            <div className='reviews-avgRating reviews-text'>
-                                <span id='wtfman'>★</span>
-                                <span>{spot.avgStarRating === 0 ? 'New' : Number(spot.avgStarRating).toFixed(2)}</span>
+                        <div className='added-delete-button'>
+                            <div className='reviews-big-info'>
+                                <div className='reviews-avgRating reviews-text'>
+                                    <span id='wtfman'>★</span>
+                                    <span>{spot.avgStarRating === 0 ? 'New' : Number(spot.avgStarRating).toFixed(2)}</span>
+                                </div>
+                                <div className='reviews-numReviews reviews-text'>
+                                    • {spot.numReviews || 0} {numReviews}
+                                </div>
+                                {(user && user.id !== spot.ownerId) &&
+                                    <button className='reviews-button'>Add a review</button>}
                             </div>
-                            <div className='reviews-numReviews reviews-text'>
-                                • {spot.numReviews || 0} {numReviews}
-                            </div>
-                            {(user && user.id !== spot.ownerId) &&
-                                <button className='reviews-button'>Add a review</button>}
+                            <button
+                                className='single-spot-delete'
+                                onClick={handleRemove}>
+                                Delete spot
+                            </button>
                         </div>
                         <div className="reviews">
                             <SpotReviewPage></SpotReviewPage>
                         </div>
                     </div>
-                    {/* <div>
-                        {(user && user.id === spot.ownerId) && (
+                    <div>
+                        {/* {(user && user.id === spot.ownerId) && (
                             <button onClick={handleRemove}>
                                 Delete spot</button>
-                        )}
-                    </div> */}
-                    {/* <div>
-                        {(user && user.id !== spot.ownerId) && (
-                            <AddReviewFormPage></AddReviewFormPage>)}
-                    </div> */}
+                        )} */}
+                    </div>
                     {(user && user.id === spot.ownerId) && (
                         <NavLink to={`/spots/${spot.id}/edit`}>Edit</NavLink>)}
                 </div>
