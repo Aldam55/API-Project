@@ -32,26 +32,59 @@ const SingleSpotPage = () => {
     // console.log('rerender test in SingleSpotPage')
     // if (!spot.SpotImages) spot.SpotImages[0] = 'https://imgur.com/a/77bQHGw' 'https://www.nps.gov/articles/images/image1_3.jpeg?maxwidth=1200&autorotate=false'
     return (
-        <div>
+        <>
             {spot.id &&
-                <div className="spotwrapper">
-                    <div className="singlespotcard">
-                        <div className="title">
-                            <div>
+                <div id="single-spot-spotwrapper">
+                    <div className="single-spot-singlespotcard">
+                        <div className="single-spot-title">
+                            <div className='single-spot-name'>
                                 {spot.name}
                             </div>
-                            <div>
-                                {spot.avgStarRating}
-                            </div>
-                            <div>
-                                {spot.numReviews || 0}
-                            </div>
-                            <div>
-                                {spot.city}, {spot.state}, {spot.country}
+                            <div className='single-spot-header'>
+                                <div id='single-spot-rating'>
+                                    ★{spot.avgStarRating === 0 ? 'New' : spot.avgStarRating}
+                                </div>
+                                <div id='single-spot-numrevies'>
+                                    {spot.numReviews || 0} Reviews
+                                </div>
+                                <div id='single-spot-location'>
+                                    {spot.city}, {spot.state}, {spot.country}
+                                </div>
                             </div>
                         </div>
-                        <div>
-                            <img id='spotimg2' src={spot.SpotImages[0]?.url || 'https://i.imgur.com/LophMn3.png'} alt='Rocks'></img>
+                        <div className="single-spot-images">
+                            <div id='single-spot-big-image'>
+                                <img id='spotimg2' src={spot.SpotImages[0]?.url || 'https://i.imgur.com/LophMn3.png'} alt='Rocks'></img>
+                            </div>
+                            <div className='single-spot-image-columns'>
+                                <div className="image-columns">
+                                    <div>Top Left</div>
+                                    <div>Bottom Left</div>
+                                </div>
+                            </div>
+                            <div class='single-spot-image-columns'>
+                                <div className="image-columns">
+                                    <div>Top Right</div>
+                                    <div>Bottom Right</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className='single-spot-description'>
+                            <div className='single-spot-information'>
+                                <div className='single-spot-host'>Hosted By</div>
+                                <div className="single-spot-description-text"></div>
+                            </div>
+                            <div className='single-spot-booking'>
+                                <div className='single-spot-booking-info'>
+                                    <div className='single-spot-booking-content'>
+                                        <div className='booking-content-price'>${spot.price} night</div>
+                                        <div className='booking-content-reviews'>
+                                            <div id='booking-content-rating'>★{spot.avgStarRating === 0 ? 'New' : spot.avgStarRating}</div>
+                                            <div id='booking-content-numReviews'>{spot.numReviews || 0} Reviews</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div>
@@ -63,15 +96,15 @@ const SingleSpotPage = () => {
                     <div className="reviews">
                         <SpotReviewPage></SpotReviewPage>
                     </div>
-                    <div>
+                    {/* <div>
                         {(user && user.id !== spot.ownerId) && (
                             <AddReviewFormPage></AddReviewFormPage>)}
-                    </div>
+                    </div> */}
                     {(user && user.id === spot.ownerId) && (
                         <NavLink to={`/spots/${spot.id}/edit`}>Edit</NavLink>)}
                 </div>
             }
-        </div>
+        </>
     )
 }
 

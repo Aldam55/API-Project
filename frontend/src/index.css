@@ -15,5 +15,5 @@ body {
 }
 
 html {
-    overflow-y: scroll;
+        width: 100vw;
 }

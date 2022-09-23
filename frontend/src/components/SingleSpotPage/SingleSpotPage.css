@@ -1,4 +1,4 @@
-.spotwrapper {
+#single-spot-spotwrapper {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -7,11 +7,24 @@
     padding: 0px 80px;
 }
 
-.title {
+.single-spot-singlespotcard {
+    width: 1120px;
+}
+
+.single-spot-title {
     /* padding: 0 auto; */
     border: 1px red solid;
     margin: 0 auto;
     width: fit-content;
+}
+
+.single-spot-header {
+    display: flex;
+    align-items: center;
+}
+
+.single-spot-images {
+    display: flex;
 }
 
 #spotimg2 {
