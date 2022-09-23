@@ -1,26 +1,44 @@
-#single-spot-spotwrapper {
+.single-spot-spotwrapper {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 0 auto;
     padding: 0px 80px;
 }
 
-.single-spot-singlespotcard {
+.single-spot-card {
     width: 1120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
 }
 
 .single-spot-title {
     /* padding: 0 auto; */
-    border: 1px red solid;
-    margin: 0 auto;
-    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px 0px;
+}
+
+.single-spot-name {
+    font-size: 26px;
+    font-weight: 600
 }
 
 .single-spot-header {
     display: flex;
     align-items: center;
+    margin-top: 5px
+}
+
+#single-spot-numreviews {
+    margin-left: 5px
+}
+
+#single-spot-location {
+    margin-left: 5px;
 }
 
 .single-spot-images {
@@ -33,4 +51,6 @@
     border-radius: 20px;
 }
 
-/* FIX FONT ON HEROKU */
+.reviews-big-info {
+    display: flex;
+}

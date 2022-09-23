@@ -16,9 +16,9 @@ const SingleSpotPage = () => {
     // const reviews = useSelector(state => state.session.reviews)
     // ADD A REDIRECT FOR AFTER DELETING A SPOT
     // console.log('reviews in single spot page', reviews)
-    console.log('spotImages in single spot page', spot.SpotImages)
-    console.log('spot in singleSpotPage', spot)
-    console.log('Spot owner', spot.Owner)
+    // console.log('spotImages in single spot page', spot.SpotImages)
+    // console.log('spot in singleSpotPage', spot)
+    // console.log('Spot owner', spot.Owner)
     useEffect(() => {
         dispatch(getSpotById(spotId))
     }, [dispatch, spotId])
@@ -27,15 +27,15 @@ const SingleSpotPage = () => {
         dispatch(removeSpot(spot.id))
         history.push('/spots/current')
     }
-
+    let numReviews = spot.numReviews === 1 ? "Review" : "Reviews"
     // if (!spot) return null
     // console.log('rerender test in SingleSpotPage')
     // if (!spot.SpotImages) spot.SpotImages[0] = 'https://imgur.com/a/77bQHGw' 'https://www.nps.gov/articles/images/image1_3.jpeg?maxwidth=1200&autorotate=false'
     return (
         <>
             {spot.id &&
-                <div id="single-spot-spotwrapper">
-                    <div className="single-spot-singlespotcard">
+                <div className="single-spot-spotwrapper">
+                    <div className="single-spot-card">
                         <div className="single-spot-title">
                             <div className='single-spot-name'>
                                 {spot.name}
@@ -44,11 +44,11 @@ const SingleSpotPage = () => {
                                 <div id='single-spot-rating'>
                                     ★{spot.avgStarRating === 0 ? 'New' : spot.avgStarRating}
                                 </div>
-                                <div id='single-spot-numrevies'>
-                                    {spot.numReviews || 0} Reviews
+                                <div id='single-spot-numreviews'>
+                                    • {spot.numReviews || 0} {numReviews}
                                 </div>
                                 <div id='single-spot-location'>
-                                    {spot.city}, {spot.state}, {spot.country}
+                                    • {spot.city}, {spot.state}, {spot.country}
                                 </div>
                             </div>
                         </div>
@@ -85,6 +85,13 @@ const SingleSpotPage = () => {
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <div className='reviews-big-info'>
+                            <div className='reviews-avgRating'>
+                                ★{spot.avgStarRating === 0 ? 'New' : spot.avgStarRating}</div>
+                            <div className='reviews-numReviews'>{spot.numReviews || 0} Reviews</div>
+                            {(user && user.id !== spot.ownerId) &&
+                                <button className='reviews-button'>Add a review</button>}
                         </div>
                     </div>
                     <div>
