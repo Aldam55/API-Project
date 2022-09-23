@@ -75,7 +75,7 @@ const UpdateSpotFormPage = () => {
 
     const handleCancel = async (e) => {
         e.preventDefault()
-        history.push('/')
+        history.push(`/spots/${spot.id}`)
     }
 
     return (
