@@ -73,7 +73,7 @@ function Navigation({ isLoaded }) {
           <div className={className()}>
             <div className='login-dropdown'>
               <div className='login-dropdown-button'>
-                <div id='hidepurple'><LoginFormModal /> </div>
+                <div id='hidepurple'><LoginFormModal /></div>
               </div>
               <div className='login-dropdown-button'>
                 <div id='hidepurple'><SignupFormModal /></div>
