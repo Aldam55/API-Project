@@ -72,12 +72,15 @@ const SingleSpotPage = () => {
                         <div className='single-spot-description'>
                             <div className='single-spot-information'>
                                 <div className='single-spot-host'>Hosted By {spot.Owner.firstName} {spot.Owner.lastName}</div>
-                                <div className="single-spot-description-text"></div>
+                                <div className="single-spot-description-text">{spot.description}</div>
                             </div>
                             <div className='single-spot-booking'>
                                 <div className='single-spot-booking-info'>
                                     <div className='single-spot-booking-content'>
-                                        <div className='booking-content-price'>${spot.price} night</div>
+                                        <div className='booking-content-price'>
+                                            <span id='booking-content-price'>${spot.price}</span>
+                                            <span id='booking-content-night'>night</span>
+                                        </div>
                                         <div className='booking-content-reviews'>
                                             <div id='booking-content-rating'>★{spot.avgStarRating === 0 ? 'New' : spot.avgStarRating}</div>
                                             <div id='booking-content-numReviews'>{spot.numReviews || 0} Reviews</div>

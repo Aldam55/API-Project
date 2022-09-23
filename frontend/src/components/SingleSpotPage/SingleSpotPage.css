@@ -77,9 +77,51 @@
     border-bottom-left-radius: 15px;
 }
 
+.single-spot-description {
+    display: flex;
+    justify-content: space-between;
+    height: 200px;
+    width: 1026px;
+}
+
+.single-spot-information {
+    width: 650px;
+}
+
 .single-spot-host {
+    height: 50px;
     font-size: 22px;
     font-weight: 600;
+    padding: 10px 0px;
+    border-bottom: 1px lightgray solid;
+}
+
+.single-spot-booking {
+    width: 275px;
+}
+
+.single-spot-booking-content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.booking-content-reviews {
+    display: flex;
+
+}
+
+#booking-content-price {
+    font-size: 22px;
+    font-weight: 600;
+    padding-right: 5px;
+}
+
+#booking-content-night {
+    font-size: 16px;
+}
+
+#booking-content-rating {
+    font-size: 14px;
 }
 
 .reviews-big-info {
