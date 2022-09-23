@@ -167,7 +167,24 @@
     cursor: pointer;
     font-weight: 700;
     font-size: 14px;
-    margin-left: 375px;
+}
+
+.single-spot-edit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 25px;
+    height: 40px;
+    width: 150px;
+    background-color: rgb(255, 56, 92);
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 14px;
+    text-decoration: none;
+    margin-left: 200px;
 }
 
 .reviews-numReviews {

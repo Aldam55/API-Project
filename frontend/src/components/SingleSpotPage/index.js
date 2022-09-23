@@ -25,7 +25,7 @@ const SingleSpotPage = () => {
 
     const handleRemove = () => {
         dispatch(removeSpot(spot.id))
-        history.push('/spots/current')
+        history.push('/')
     }
     let numReviews = spot.numReviews === 1 ? "Review" : "Reviews"
     // if (!spot) return null
@@ -71,7 +71,7 @@ const SingleSpotPage = () => {
                         </div>
                         <div className='single-spot-description'>
                             <div className='single-spot-information'>
-                                <div className='single-spot-host'>Hosted By {spot.Owner.firstName} {spot.Owner.lastName}</div>
+                                <div className='single-spot-host'>Hosted By {spot.Owner?.firstName} {spot.Owner?.lastName}</div>
                                 <div className="single-spot-description-text">{spot.description}</div>
                             </div>
                             <div className='single-spot-booking'>
@@ -102,6 +102,8 @@ const SingleSpotPage = () => {
                                     <button className='reviews-button'>Add a review</button>}
                             </div>
                             {(user && user.id === spot.ownerId) && (
+                                <NavLink className='single-spot-edit' to={`/spots/${spot.id}/edit`}>Edit spot</NavLink>)}
+                            {(user && user.id === spot.ownerId) && (
                                 <button className='single-spot-delete' onClick={handleRemove}>
                                     Delete spot</button>
                             )}
@@ -112,8 +114,6 @@ const SingleSpotPage = () => {
                     </div>
                     <div>
                     </div>
-                    {(user && user.id === spot.ownerId) && (
-                        <NavLink to={`/spots/${spot.id}/edit`}>Edit</NavLink>)}
                 </div>
             }
         </>
