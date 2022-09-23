@@ -1,1 +1,42 @@
+.update-spot-form-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 
+.update-spot-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 820px;
+    width: 600px;
+}
+
+.update-spot-form-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: left;
+    width: 600px;
+    height: 620px
+}
+
+.update-form-input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 550px;
+}
+
+.update-input {
+    width: 100%;
+    height: 40px;
+    font-size: 16px;
+    padding: 10px;
+    border: 1px lightgray solid;
+}
+
+.update-submit {
+    margin-top: 10px;
+}

@@ -68,7 +68,7 @@ const SingleSpotPage = () => {
                             <AddReviewFormPage></AddReviewFormPage>)}
                     </div>
                     {(user && user.id === spot.ownerId) && (
-                        <NavLink to='/spots/:spotId/edit'>Edit</NavLink>)}
+                        <NavLink to={`/spots/${spot.id}/edit`}>Edit</NavLink>)}
                 </div>
             }
         </div>
