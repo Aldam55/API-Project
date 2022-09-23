@@ -88,10 +88,10 @@ function ProfileButton({ user }) {
             </div>
             <div className="dropdown-links-wrapper">
             <div className="dropdown-links your-spots">
-              <NavLink id='hidepurple' to='/spots/current'>Your Spots</NavLink>
+              <NavLink className='dropdown-button' id='hidepurple' to='/spots/current'>Your Spots</NavLink>
             </div>
             <div className="dropdown-links" id='your-reviews'>
-              <NavLink id='hidepurple' to='/reviews/current'>Your Reviews</NavLink>
+              <NavLink className='dropdown-button' id='hidepurple' to='/reviews/current'>Your Reviews</NavLink>
             </div>
             <div className="dropdown-links" id='logout-button'>
               <div onClick={logout}>Log Out</div>

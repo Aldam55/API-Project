@@ -36,11 +36,11 @@
     position: absolute;
     top: calc(100% + 10px);
     background-color: white;
-    padding: 10px;
+    padding: 10px 0px;
     border-radius: 10px;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .4);
     right: 20px;
-    width: 230px;
+    width: 250px;
 }
 
 .dropdown-links:hover {
@@ -48,8 +48,18 @@
     cursor: pointer;
 }
 
+/* .dropdown-button:hover {
+    background-color: rgb(231, 231, 231);
+    cursor: pointer;
+} */
+
 .dropdown-links {
-    padding: 10px;
+    padding: 10px 10px 10px 15px;
+    /* display: block; */
+}
+
+.dropdown-button {
+    display: block;
 }
 
 .dropdown-text {
@@ -62,7 +72,7 @@
 }
 
 .dropdown-text-rows {
-    padding: 0px 0px 10px;
+    padding: 0px 0px 10px 5px;
 }
 
 .dropdown-email {
@@ -82,7 +92,7 @@
 }
 
 #logout-button {
-    margin-top: 5px;
+    margin-top: 10px;
 }
 
 /* .dropdown-border {

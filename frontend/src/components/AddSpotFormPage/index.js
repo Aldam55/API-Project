@@ -74,84 +74,85 @@ const AddSpotFormPage = () => {
     }
 
     return (
-        <div className="add-spot-form">
+        <div className="add-spot-form-wrapper">
             <div id="add-spot-form">
-                <form onSubmit={handleSubmit}>
-                    <div>
-                        <label>country</label>
-                        <select
-                            value={country}
-                            onChange={updateCountry}
-                            required >
-                            <option>USA</option>
-                            <option>China</option>
-                            <option>Japan</option>
-                            <option>Mexico</option>
-                            <option>Canada</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label>Address</label>
-                        <input
-                            type='text'
-                            placeholder='Address'
-                            value={address}
-                            onChange={updateAddress}
-                            required />
-                    </div>
-                    <div>
-                        <label>City</label>
-                        <input
-                            type='text'
-                            placeholder='City'
-                            value={city}
-                            onChange={updateCity}
-                            required />
-                    </div>
-                    <div>
-                    <label>State</label>
-                    <input
-                        type='text'
-                        placeholder='State'
-                        value={state}
-                        onChange={updateState}
-                        required />
+                <form className='add-spot-form' onSubmit={handleSubmit}>
+                    <h2>Host a New Spot</h2>
+                    <div className='add-spot-form-content'>
+                        <div className='add-form-input'>
+                            <input
+                                id='add-spot-top-border'
+                                className='add-input'
+                                type='text'
+                                placeholder='Spot Name'
+                                value={name}
+                                onChange={updateName}
+                                required />
                         </div>
-                        <div>
-                    <label>Name</label>
-                        <input
-                            type='text'
-                            placeholder='Name'
-                            value={name}
-                            onChange={updateName}
-                            required />
-                            </div>
-                            <div>
-                    <label>Description</label>
-                        <textarea
-                            type='text'
-                            placeholder='Description'
-                            value={description}
-                            onChange={updateDescription}
-                            required />
-                            </div>
-                            <div>
-                        <label>Price</label>
-                        <input
-                            type='number'
-                            placeholder='Price'
-                            value={price}
-                            onChange={updatePrice}
-                            required />
-                            </div>
-                            <div>
-                    <label>ImageURL</label>
-                        <input
-                            type='text'
-                            placeholder='Image URL'
-                            value={imgUrl}
-                            onChange={updateImgUrl} />
-                            </div>
+                        <div className='add-form-input'>
+                            <input
+                                className='add-input'
+                                type='text'
+                                placeholder='Address'
+                                value={address}
+                                onChange={updateAddress}
+                                required />
+                        </div>
+                        <div className='add-form-input'>
+                            <input
+                                className='add-input'
+                                type='text'
+                                placeholder='City'
+                                value={city}
+                                onChange={updateCity}
+                                required />
+                        </div>
+                        <div className='add-form-input'>
+                            <input
+                                className='add-input'
+                                type='text'
+                                placeholder='State'
+                                value={state}
+                                onChange={updateState}
+                                required />
+                        </div>
+                        <div className='add-form-input'>
+                            <input
+                                className='add-input'
+                                placeholder="Country"
+                                value={country}
+                                onChange={updateCountry}
+                                required >
+                            </input>
+                        </div>
+                        <div className='add-form-input'>
+                            <input
+                                className='add-input'
+                                type='number'
+                                placeholder='Price'
+                                value={price}
+                                onChange={updatePrice}
+                                required />
+                        </div>
+                        <div className='add-form-input'>
+                            <input
+                                className='add-input'
+                                type='text'
+                                placeholder='Image URL'
+                                value={imgUrl}
+                                onChange={updateImgUrl} />
+                        </div>
+                        <div className='add-form-input' id='form-text-area'>
+                            <textarea
+                                id='add-spot-bottom-border'
+                                className='add-input'
+                                type='text'
+                                placeholder='Description'
+                                value={description}
+                                onChange={updateDescription}
+                                required />
+                        </div>
+                    </div>
                     <button type='submit'
                         disabled={validationErrors.length > 0 ? true : false}>
                         Create your spot</button>

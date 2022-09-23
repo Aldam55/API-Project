@@ -13,3 +13,7 @@ body {
     /* font-family: 'Circular Std', sans-serif; */
     font-family: 'Inter', sans-serif;
 }
+
+html {
+    overflow-y: scroll;
+}
