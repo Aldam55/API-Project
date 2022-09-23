@@ -98,16 +98,22 @@
 
 .single-spot-booking {
     width: 275px;
+    border: 1px lightgray solid;
+    border-radius: 10px;
+    box-shadow: 1px 3px 7px gray;
 }
 
 .single-spot-booking-content {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    padding: 20px;
 }
 
 .booking-content-reviews {
     display: flex;
-
+    align-items: center;
+    font-size: 14px
 }
 
 #booking-content-price {
@@ -122,8 +128,36 @@
 
 #booking-content-rating {
     font-size: 14px;
+    margin-right: 5px;
+}
+
+.reviews-text {
+    display: flex;
+    align-items: center;
 }
 
 .reviews-big-info {
     display: flex;
+    height: 40px;
+    width: 500px;
+}
+
+.reviews-numReviews {
+    display: flex;
+    justify-content: center;
+    /* height: 30px; */
+    /* margin-left: 10px; */
+    font-size: 22px;
+    margin-bottom: 0px;
+}
+
+.reviews-avgRating {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+}
+
+#wtfman {
+    padding-bottom: 5px;
 }
