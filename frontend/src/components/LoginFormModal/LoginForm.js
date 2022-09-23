@@ -65,7 +65,14 @@ function LoginForm() {
                 <button className='login-form-submit-button' type="submit">Log In</button>
               </div>
               <div className='login-form-button'>
-                <button className='login-form-submit-button' type="submit">Log In as Demo User</button>
+                <button
+                  className='login-form-submit-button'
+                  type="submit"
+                  onClick={() => {
+                    setCredential('BobbyBobby')
+                    setPassword('password')
+                  }}
+                >Log In as Demo User</button>
               </div>
             </div>
           </form>
