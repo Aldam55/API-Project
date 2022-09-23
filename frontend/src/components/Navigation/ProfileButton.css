@@ -48,8 +48,18 @@
     cursor: pointer;
 }
 
+/* .dropdown-button:hover {
+    background-color: rgb(231, 231, 231);
+    cursor: pointer;
+} */
+
 .dropdown-links {
     padding: 10px;
+    /* display: block; */
+}
+
+.dropdown-button {
+    display: block;
 }
 
 .dropdown-text {
