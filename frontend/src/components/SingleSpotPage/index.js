@@ -14,7 +14,9 @@ const SingleSpotPage = () => {
 
     const spot = useSelector(state => state.spots.singleSpot)
     const user = useSelector(state => state.session.user)
+    const reviews = useSelector(state => state.session.reviews)
     // ADD A REDIRECT FOR AFTER DELETING A SPOT
+    // console.log('reviews in single spot page', reviews)
     console.log('spotImages in single spot page', spot.SpotImages)
     console.log('spot in singleSpotPage', spot)
     console.log('Spot owner', spot.Owner)
