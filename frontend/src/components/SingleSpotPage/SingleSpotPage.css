@@ -4,7 +4,7 @@
     justify-content: center;
     align-items: center;
     margin: 0 auto;
-    padding: 0px 80px
+    padding: 0px 80px;
 }
 
 .title {
@@ -16,5 +16,8 @@
 
 #spotimg2 {
     width: 560px;
-    height: 450px
+    height: 450px;
+    border-radius: 20px;
 }
+
+/* FIX FONT ON HEROKU */

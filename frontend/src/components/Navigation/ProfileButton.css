@@ -1,0 +1,84 @@
+.menu-container {
+    width: 100px;
+}
+
+.menu-button {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 20px;
+    border: none;
+    height: 45px;
+    width: 80px;
+}
+
+.menu-button:hover {
+    box-shadow: 0px 2px 3px gray;
+}
+
+.fa-solid {
+    padding: 10px 5px
+}
+
+.rock-menu-icon {
+    padding: 2px;
+}
+
+.profile-dropdown {
+    position: relative;
+}
+
+.user-dropdown {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: center;
+    position: absolute;
+    top: calc(100% + 10px);
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .4);
+    right: 20px;
+    width: 230px;
+}
+
+.dropdown-links:hover {
+    background-color: rgb(231, 231, 231);
+    cursor: pointer;
+}
+
+.dropdown-links {
+    padding: 10px;
+}
+
+.dropdown-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    padding: 10px;
+    border-bottom: 1px lightgray solid;
+}
+
+.dropdown-text-rows {
+    padding: 0px 0px 10px;
+}
+
+.dropdown-email {
+    padding-top: 10px;
+}
+
+.dropdown-links-wrapper {
+    padding-top: 10px;
+}
+
+/* .dropdown-border {
+} */
+
+
+
+/* .user-dropdown {
+    text-decoration: none;
+    color: black;
+} */

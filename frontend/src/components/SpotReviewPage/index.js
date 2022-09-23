@@ -9,7 +9,7 @@ const SpotReviewPage = () => {
     const dispatch = useDispatch()
 
     const spotReviews = useSelector(state => state.reviews.spot)
-    // console.log('all reviews for this spot', spotReviews)
+    console.log('all reviews for this spot', {...spotReviews})
 
     useEffect(() => {
         dispatch(getSpotReview(spotId))
@@ -17,17 +17,18 @@ const SpotReviewPage = () => {
 
     return (
         <div>
-            {/* {console.log('rerender test in SpotReviewPage return')} */}
-            spotReview placeholder
+            {spotReviews &&
             <div>
+                <div>spotReview placeholder</div>
                 {Object.values(spotReviews).map(review => (
-                    <div>
-                        <div key={review.id}>user: {review.userId}</div>
+                    <div key={review.id}>
+                        <div>user: {review.userId}</div>
                         <div>description: {review.review}</div>
                         <div>{review.stars}</div>
                     </div>
                 ))}
             </div>
+            }
         </div>
     )
 }

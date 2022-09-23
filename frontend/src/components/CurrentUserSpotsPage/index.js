@@ -16,6 +16,7 @@ const CurrentUserSpotsPage = () => {
 
     return (
         <div>
+            {spots.id &&
             <div>
                 {Object.values(spots).map(spot => (
                     <div key={spot.id}>name: {spot.name}, price: {spot.price}, rating {spot.avgRating}
@@ -25,6 +26,7 @@ const CurrentUserSpotsPage = () => {
                     </div>
                 ))}
             </div>
+            }
         </div>
     )
 }
