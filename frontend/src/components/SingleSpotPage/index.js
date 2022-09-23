@@ -58,14 +58,14 @@ const SingleSpotPage = () => {
                             </div>
                             <div className='single-spot-image-columns'>
                                 <div className="image-columns">
-                                    <div><img src={spot.SpotImages[1]?.url || 'https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png'}></img></div>
-                                    <div><img src={spot.SpotImages[2]?.url || 'https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png'}></img></div>
+                                    <div><img className='small-image' src={spot.SpotImages[1]?.url || 'https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png'}></img></div>
+                                    <div><img className='small-image' src={spot.SpotImages[2]?.url || 'https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png'}></img></div>
                                 </div>
                             </div>
                             <div class='single-spot-image-columns'>
                                 <div className="image-columns">
-                                    <div><img src={spot.SpotImages[3]?.url || 'https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png'}></img></div>
-                                    <div><img src={spot.SpotImages[4]?.url || 'https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png'}></img></div>
+                                    <div><img className='small-image top-right' src={spot.SpotImages[3]?.url || 'https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png'}></img></div>
+                                    <div><img className='small-image bottom-right' src={spot.SpotImages[4]?.url || 'https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png'}></img></div>
                                 </div>
                             </div>
                         </div>

@@ -47,6 +47,7 @@
 
 .single-spot-image-columns {
     display: flex;
+    padding-left: 8px;
 }
 
 .image-columns {
@@ -54,10 +55,25 @@
     flex-direction: column;
 }
 
+.small-image {
+    height: 223px;
+    width: 225px;
+    object-fit: cover;
+}
+
+.top-right {
+    border-top-right-radius: 15px;
+}
+
+.bottom-right {
+    border-bottom-right-radius: 15px;
+}
+
 #spotimg2 {
     width: 560px;
     height: 450px;
-    border-radius: 20px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
 }
 
 .reviews-big-info {
