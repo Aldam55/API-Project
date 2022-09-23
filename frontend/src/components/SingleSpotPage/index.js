@@ -82,7 +82,7 @@ const SingleSpotPage = () => {
                                             <span id='booking-content-night'>night</span>
                                         </div>
                                         <div className='booking-content-reviews'>
-                                            <div id='booking-content-rating'>★{spot.avgStarRating === 0 ? 'New' : spot.avgStarRating}</div>
+                                            <div id='booking-content-rating'>★{spot.avgStarRating === 0 ? 'New' : Number(spot.avgStarRating).toFixed(2)}</div>
                                             <div id='booking-content-numReviews'>• {spot.numReviews || 0} {numReviews}</div>
                                         </div>
                                     </div>
@@ -92,10 +92,10 @@ const SingleSpotPage = () => {
                         <div className='reviews-big-info'>
                             <div className='reviews-avgRating reviews-text'>
                                 <span id='wtfman'>★</span>
-                                <span>{spot.avgStarRating === 0 ? 'New' : spot.avgStarRating}</span>
+                                <span>{spot.avgStarRating === 0 ? 'New' : Number(spot.avgStarRating).toFixed(2)}</span>
                             </div>
                             <div className='reviews-numReviews reviews-text'>
-                                {/* {spot.numReviews || 0} {numReviews} */}5
+                                • {spot.numReviews || 0} {numReviews}
                             </div>
                             {(user && user.id !== spot.ownerId) &&
                                 <button className='reviews-button'>Add a review</button>}

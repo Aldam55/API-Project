@@ -106,8 +106,8 @@
 .single-spot-booking-content {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    padding: 20px;
+    align-items: flex-end;
+    padding: 20px 15px;
 }
 
 .booking-content-reviews {
@@ -149,6 +149,7 @@
     /* margin-left: 10px; */
     font-size: 22px;
     margin-bottom: 0px;
+    padding-left: 5px;
 }
 
 .reviews-avgRating {
