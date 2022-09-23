@@ -2,7 +2,7 @@ import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { NavLink, useHistory, useParams } from "react-router-dom"
 import { getSpotById, removeSpot } from "../../store/spots"
-import AddReviewFormPage from "../AddReviewFormPage"
+import AddReviewFormModal from "../AddReviewFormModal"
 import SpotReviewPage from "../SpotReviewPage"
 import './SingleSpotPage.css'
 
@@ -99,7 +99,9 @@ const SingleSpotPage = () => {
                                     • {spot.numReviews || 0} {numReviews}
                                 </div>
                                 {(user && user.id !== spot.ownerId) &&
-                                    <button className='reviews-button'>Add a review</button>}
+                                    // <div className='reviews-button'></div>
+                                    <AddReviewFormModal />
+                                }
                             </div>
                             {(user && user.id === spot.ownerId) && (
                                 <NavLink className='single-spot-edit' to={`/spots/${spot.id}/edit`}>Edit spot</NavLink>)}

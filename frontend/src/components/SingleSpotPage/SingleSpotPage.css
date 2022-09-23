@@ -209,6 +209,9 @@
 }
 
 .reviews-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-left: 25px;
     height: 40px;
     width: 150px;

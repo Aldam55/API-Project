@@ -19,7 +19,7 @@ const AddReviewFormPage = () => {
 
     useEffect(() => {
         const errors = []
-        if(!review) errors.push('Must provide a valid review')
+        if (!review) errors.push('Must provide a valid review')
         if (!stars) errors.push('Must provide a rating')
         setValidationErrors(errors)
     }, [review, stars])
@@ -44,20 +44,22 @@ const AddReviewFormPage = () => {
     return (
         <div>
             {user && (
-                <form onSubmit={handleSubmit}>
-                    <textarea
-                        type='text'
-                        placeholder='How was your stay?'
-                        value={review}
-                        onChange={updateReview} />
-                    <input
-                        type='number'
-                        min='1'
-                        max='5'
-                        value={stars}
-                        onChange={updateStars} />
-                    <button type='submit' hidden={(review.length && stars) ? false : true}>Submit</button>
-                </form>
+                <div>
+                    <form onSubmit={handleSubmit}>
+                        <textarea
+                            type='text'
+                            placeholder='How was your stay?'
+                            value={review}
+                            onChange={updateReview} />
+                        <input
+                            type='number'
+                            min='1'
+                            max='5'
+                            value={stars}
+                            onChange={updateStars} />
+                        <button type='submit' hidden={(review.length && stars) ? false : true}>Submit</button>
+                    </form>
+                </div>
             )}
         </div>
     )
