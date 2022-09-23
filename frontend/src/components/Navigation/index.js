@@ -72,8 +72,12 @@ function Navigation({ isLoaded }) {
           </button>
           <div className={className()}>
             <div className='login-dropdown'>
-            <a href='#' id='hidepurple'><LoginFormModal /></a>
-            <a href='#' id='hidepurple'><SignupFormModal /></a>
+              <div className='login-dropdown-button'>
+                <a href='#' id='hidepurple'><LoginFormModal /></a>
+              </div>
+              <div className='login-dropdown-button'>
+                <a href='#' id='hidepurple'><SignupFormModal /></a>
+              </div>
             </div>
           </div>
         </div>

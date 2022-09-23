@@ -107,6 +107,17 @@
     right: 112px;
 }
 
+.login-dropdown-button {
+    display: flex;
+    align-items: center;
+    width: 170px;
+    padding: 10px;
+}
+
+.login-dropdown-button:hover {
+    background-color: rgb(231, 231, 231);
+}
+
 .drop-menu-visible {
     visibility: visible;
     top: calc(100% + 10px);

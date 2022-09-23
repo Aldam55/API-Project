@@ -35,7 +35,8 @@
     padding: 10px;
     border-radius: 10px;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .1);
-    right: 20px
+    right: 20px;
+    width: 190px;
 }
 
 .dropdown-links:hover {
