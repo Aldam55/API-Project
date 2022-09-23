@@ -34,39 +34,39 @@ function ProfileButton({ user }) {
     dispatch(sessionActions.logout());
   };
 
-  if (!user) {
-    sessionLinks = (
-      <div className="profile-dropdown">
-        <div className="user-dropdown">
-          <div className="user-dropdown">
-            <div className="dropdown-links">
-              <LoginFormModal />
-            </div>
-            <div className="dropdown-links">
-              <SignupFormModal />
-            </div>
-          </div>
-        </div>
-      </div>
-    )
-  } else {
-    sessionLinks = (
-      <div className="profile-dropdown">
-        <div className="user-dropdown">
-          <div>{user.username}</div>
-          <div>{user.email}</div>
-          <div className="dropdown-links">
-            <NavLink id='hidepurple' to='/spots/current'>Your Spots</NavLink>
-          </div>
-          <div className="dropdown-links">
-            <NavLink id='hidepurple' to='/reviews/current'>Your Reviews</NavLink>
-          </div>
-          <div>
-            <button onClick={logout}>Log Out</button>
-          </div>
-        </div>
-      </div>)
-  }
+  // if (!user) {
+  //   sessionLinks = (
+  //     <div className="profile-dropdown">
+  //       <div className="user-dropdown">
+  //         <div className="user-dropdown">
+  //           <div className="dropdown-links">
+  //             <LoginFormModal />
+  //           </div>
+  //           <div className="dropdown-links">
+  //             <SignupFormModal />
+  //           </div>
+  //         </div>
+  //       </div>
+  //     </div>
+  //   )
+  // } else {
+  //   sessionLinks = (
+  //     <div className="profile-dropdown">
+  //       <div className="user-dropdown">
+  //         <div>{user.username}</div>
+  //         <div>{user.email}</div>
+  //         <div className="dropdown-links">
+  //           <NavLink id='hidepurple' to='/spots/current'>Your Spots</NavLink>
+  //         </div>
+  //         <div className="dropdown-links">
+  //           <NavLink id='hidepurple' to='/reviews/current'>Your Reviews</NavLink>
+  //         </div>
+  //         <div>
+  //           <div onClick={logout}>Log Out</div>
+  //         </div>
+  //       </div>
+  //     </div>)
+  // }
 
   return (
     <>
@@ -81,16 +81,24 @@ function ProfileButton({ user }) {
       {showMenu &&
         <div className="profile-dropdown">
           <div className="user-dropdown">
-            <div>{user.username}</div>
-            <div>{user.email}</div>
+            <div className='dropdown-text'>
+              <div className="dropdown-text-rows">
+                {user.username}
+              </div>
+              <div className="dropdown-text-rows dropdown-email">
+                {user.email}
+              </div>
+            </div>
+            <div className="dropdown-links-wrapper">
             <div className="dropdown-links">
               <NavLink id='hidepurple' to='/spots/current'>Your Spots</NavLink>
             </div>
             <div className="dropdown-links">
               <NavLink id='hidepurple' to='/reviews/current'>Your Reviews</NavLink>
             </div>
-            <div>
-              <button onClick={logout}>Log Out</button>
+            <div className="dropdown-links">
+              <div onClick={logout}>Log Out</div>
+            </div>
             </div>
           </div>
         </div>

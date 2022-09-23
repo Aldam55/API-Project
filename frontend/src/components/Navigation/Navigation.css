@@ -103,14 +103,14 @@
     background-color: white;
     padding: 10px;
     border-radius: 10px;
-    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .1);
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .4);
     right: 112px;
 }
 
 .login-dropdown-button {
     display: flex;
     align-items: center;
-    width: 170px;
+    width: 210px;
     padding: 10px;
 }
 
