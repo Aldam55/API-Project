@@ -12,7 +12,6 @@ import CurrentUserSpotsPage from "./components/CurrentUserSpotsPage";
 import CurrentUserReviewsPage from "./components/CurrentUserReviewsPage";
 import AddSpotFormPage from "./components/AddSpotFormPage";
 import UpdateSpotFormPage from "./components/UpdateSpotFormPage";
-import LoginFormModal from "./components/LoginFormModal";
 
 function App() {
   const dispatch = useDispatch();

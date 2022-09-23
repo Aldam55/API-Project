@@ -47,6 +47,7 @@
 
 .createspot:hover {
     background-color: rgb(226, 226, 226);
+    cursor: pointer;
 }
 
 .createspot {
@@ -113,6 +114,7 @@
     width: 210px;
     padding: 10px;
 }
+
 
 .button-modal:hover {
     background-color: rgb(231, 231, 231);

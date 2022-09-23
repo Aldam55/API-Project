@@ -17,7 +17,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 55px;
+    height: 60px;
     border-bottom: 1px solid lightgray;
     font-weight: 600;
 }
@@ -28,13 +28,12 @@
 }
 
 .login-form-content {
-    padding: 25px;
+    padding: 20px;
 }
 
 .login-form-input {
     display: flex;
     flex-direction: column;
-
 }
 
 .login-form-text {
@@ -53,13 +52,13 @@
 
 .login-form-button {
     padding: 0px 0px 20px;
-    color: rgb(255,56,92)
+    color: rgb(255, 56, 92)
 }
 
 .login-form-submit-button {
     height: 35px;
     width: 100%;
-    background-color: rgb(255,56,92);
+    background-color: rgb(255, 56, 92);
     color: white;
     border: none;
     border-radius: 6px;

@@ -5,10 +5,10 @@ import LoginForm from './LoginForm';
 
 function LoginFormModal() {
   const [showModal, setShowModal] = useState(false);
-  console.log('showModal in index.js', showModal)
+  // console.log('showModal in index.js', showModal)
   return (
     <>
-      <div className='button-modal' onClick={() => setShowModal(true)}>Log In</div>
+      <div className='button-modal log-in' onClick={() => setShowModal(true)}>Log In</div>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <LoginForm />

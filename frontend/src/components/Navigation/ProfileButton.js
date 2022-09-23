@@ -4,13 +4,10 @@ import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
 import './ProfileButton.css'
 import { NavLink } from "react-router-dom";
-import LoginFormModal from "../LoginFormModal";
-import SignupFormModal from "../SignupFormModal";
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
-  let sessionLinks;
 
   const openMenu = () => {
     if (showMenu) return;
@@ -90,13 +87,13 @@ function ProfileButton({ user }) {
               </div>
             </div>
             <div className="dropdown-links-wrapper">
-            <div className="dropdown-links">
+            <div className="dropdown-links your-spots">
               <NavLink id='hidepurple' to='/spots/current'>Your Spots</NavLink>
             </div>
-            <div className="dropdown-links">
+            <div className="dropdown-links" id='your-reviews'>
               <NavLink id='hidepurple' to='/reviews/current'>Your Reviews</NavLink>
             </div>
-            <div className="dropdown-links">
+            <div className="dropdown-links" id='logout-button'>
               <div onClick={logout}>Log Out</div>
             </div>
             </div>

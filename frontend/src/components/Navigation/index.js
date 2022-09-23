@@ -11,10 +11,10 @@ function Navigation({ isLoaded }) {
   const sessionUser = useSelector(state => state.session.user);
   const [showMenu, setShowMenu] = useState(false);
 
-  const openMenu = () => {
-    if (showMenu) return;
-    setShowMenu(true);
-  };
+  // const openMenu = () => {
+  //   if (showMenu) return;
+  //   setShowMenu(true);
+  // };
 
   useEffect(() => {
     if (!showMenu) return;
@@ -73,10 +73,10 @@ function Navigation({ isLoaded }) {
           <div className={className()}>
             <div className='login-dropdown'>
               <div className='login-dropdown-button'>
-                <a href='#' id='hidepurple'><LoginFormModal /></a>
+                <div id='hidepurple'><LoginFormModal /> </div>
               </div>
               <div className='login-dropdown-button'>
-                <a href='#' id='hidepurple'><SignupFormModal /></a>
+                <div id='hidepurple'><SignupFormModal /></div>
               </div>
             </div>
           </div>
@@ -91,7 +91,7 @@ function Navigation({ isLoaded }) {
         <div className='leftbuttons'>
           <div id='home'>
             <NavLink exact to="/" >
-              <img id='home-logo' src='https://i.imgur.com/bKJG6DC.png'></img>
+              <img id='home-logo' src='https://i.imgur.com/bKJG6DC.png' alt='rocks'></img>
             </NavLink>
           </div>
         </div>

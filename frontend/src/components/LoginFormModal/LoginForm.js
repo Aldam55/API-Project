@@ -24,10 +24,12 @@ function LoginForm() {
   return (
     <div className='login-form-modal-wrapper'>
       <div className="login-form-modal-container">
-        <div className="login-form-header">Log in</div>
+        <div className="login-form-header">
+          Log in
+          </div>
         <div className="login-form-content">
           <div className='login-form-welcome'>
-            Welcome to EarthRnR!
+            Welcome to Earthrnr!
           </div>
           <form onSubmit={handleSubmit}>
             <div>

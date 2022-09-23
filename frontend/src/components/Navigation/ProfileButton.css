@@ -73,6 +73,18 @@
     padding-top: 10px;
 }
 
+.your-spots {
+    padding-top: 10px;
+}
+
+#your-reviews {
+    border-bottom: 1px solid lightgray;
+}
+
+#logout-button {
+    margin-top: 5px;
+}
+
 /* .dropdown-border {
 } */
 
