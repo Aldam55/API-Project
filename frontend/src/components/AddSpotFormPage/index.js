@@ -142,7 +142,7 @@ const AddSpotFormPage = () => {
                                 value={imgUrl}
                                 onChange={updateImgUrl} />
                         </div>
-                        <div className='add-form-input' id='form-text-area'>
+                        <div className='add-form-input form-text-area'>
                             <textarea
                                 id='add-spot-bottom-border'
                                 className='add-input'
@@ -154,9 +154,15 @@ const AddSpotFormPage = () => {
                         </div>
                     </div>
                     <button type='submit'
+                        className="add-form-button"
                         disabled={validationErrors.length > 0 ? true : false}>
-                        Create your spot</button>
-                    <button type='button' onClick={handleCancel}>Cancel</button>
+                        Create your spot
+                    </button>
+                    <button type='button'
+                        className="add-form-button form-cancel"
+                        onClick={handleCancel}>
+                        Cancel
+                    </button>
                 </form>
             </div>
         </div>

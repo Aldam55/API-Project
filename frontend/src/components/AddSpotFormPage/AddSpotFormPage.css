@@ -19,7 +19,7 @@
     align-items: center;
     justify-content: left;
     width: 600px;
-    height: 700px
+    height: 620px
 }
 
 .add-form-input {
@@ -37,7 +37,7 @@
     border: 1px lightgray solid;
 }
 
-#form-text-area {
+.form-text-area {
     height: 173px;
 }
 
@@ -54,11 +54,28 @@
 
 textarea {
     height: 200px;
-    resize: none
+    resize: none;
+    font-family: 'Inter', sans-serif;
 }
 
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
+}
+
+.add-form-button {
+        height: 35px;
+        width: 550px;
+        background-color: rgb(255, 56, 92);
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: 700;
+        font-size: 14px;
+}
+
+.form-cancel {
+    margin-top: 10px;
 }
