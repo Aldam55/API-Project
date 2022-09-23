@@ -7,7 +7,7 @@ import './AddSpotFormPage.css'
 const AddSpotFormPage = () => {
     const dispatch = useDispatch()
     const history = useHistory()
-    const user = useSelector(state => state.session.user)
+    // const user = useSelector(state => state.session.user)
 
     const [address, setAddress] = useState('')
     const [city, setCity] = useState('')

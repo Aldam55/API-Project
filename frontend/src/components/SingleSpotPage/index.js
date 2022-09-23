@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux"
 import { NavLink, useHistory, useParams } from "react-router-dom"
 import { getSpotById, removeSpot } from "../../store/spots"
 import AddReviewFormPage from "../AddReviewFormPage"
-import LoginFormModal from "../LoginFormModal"
 import SpotReviewPage from "../SpotReviewPage"
 import './SingleSpotPage.css'
 
@@ -14,7 +13,7 @@ const SingleSpotPage = () => {
 
     const spot = useSelector(state => state.spots.singleSpot)
     const user = useSelector(state => state.session.user)
-    const reviews = useSelector(state => state.session.reviews)
+    // const reviews = useSelector(state => state.session.reviews)
     // ADD A REDIRECT FOR AFTER DELETING A SPOT
     // console.log('reviews in single spot page', reviews)
     console.log('spotImages in single spot page', spot.SpotImages)
