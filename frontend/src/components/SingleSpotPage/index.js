@@ -71,7 +71,7 @@ const SingleSpotPage = () => {
                         </div>
                         <div className='single-spot-description'>
                             <div className='single-spot-information'>
-                                <div className='single-spot-host'>Hosted By</div>
+                                <div className='single-spot-host'>Hosted By {spot.Owner.firstName} {spot.Owner.lastName}</div>
                                 <div className="single-spot-description-text"></div>
                             </div>
                             <div className='single-spot-booking'>

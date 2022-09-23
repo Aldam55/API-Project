@@ -43,6 +43,7 @@
 
 .single-spot-images {
     display: flex;
+    margin-bottom: 20px;
 }
 
 .single-spot-image-columns {
@@ -74,6 +75,11 @@
     height: 450px;
     border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
+}
+
+.single-spot-host {
+    font-size: 22px;
+    font-weight: 600;
 }
 
 .reviews-big-info {
