@@ -22,37 +22,56 @@ function LoginForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <ul>
-          {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
-          ))}
-        </ul>
+    <div className='login-form-modal-wrapper'>
+      <div className="login-form-modal-container">
+        <div className="login-form-header">Log in</div>
+        <div className="login-form-content">
+          <div className='login-form-welcome'>
+            Welcome to EarthRnR!
+          </div>
+          <form onSubmit={handleSubmit}>
+            <div>
+              <ul>
+                {errors.map((error, idx) => (
+                  <li key={idx}>{error}</li>
+                ))}
+              </ul>
+            </div>
+            <div className='login-form-input'>
+              <label className="login-form-text">
+                Username or Email
+              </label>
+              <input
+                className='login-input'
+                type="text"
+                value={credential}
+                onChange={(e) => setCredential(e.target.value)}
+                required
+              />
+            </div>
+            <div className='login-form-input'>
+              <label className="login-form-text">
+                Password</label>
+              <input
+                className='login-input'
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+            </div>
+            <div className="login-form-button-container">
+              <div className='login-form-button'>
+                <button className='login-form-submit-button' type="submit">Log In</button>
+              </div>
+              <div className='login-form-button'>
+                <button className='login-form-submit-button' type="submit">Log In as Demo User</button>
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
-      <div>
-        <label>
-          Username or Email</label>
-        <input
-          type="text"
-          value={credential}
-          onChange={(e) => setCredential(e.target.value)}
-          required
-        />
-      </div>
-      <div>
-        <label>
-          Password</label>
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-      </div>
-
-      <button type="submit">Log In</button>
-    </form>
+    </div>
   );
 }
 

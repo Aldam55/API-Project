@@ -8,7 +8,7 @@ function LoginFormModal() {
   console.log('showModal in index.js', showModal)
   return (
     <>
-      <div onClick={() => setShowModal(true)}>Log In</div>
+      <div className='button-modal' onClick={() => setShowModal(true)}>Log In</div>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <LoginForm />
