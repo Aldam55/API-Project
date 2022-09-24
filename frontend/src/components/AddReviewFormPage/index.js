@@ -42,7 +42,7 @@ const AddReviewFormPage = () => {
     }
 
     return (
-        <div>
+        <>
             {user && (
                 <div className='review-form-wrapper'>
                     <div className="review-form-container">
@@ -50,27 +50,34 @@ const AddReviewFormPage = () => {
                         <div className='review-form-content'>
                             <form onSubmit={handleSubmit}>
                                 <div className='review-form-input'>
+                                    <div className='review-how-stay'>How was your stay?</div>
                                     <textarea
+                                        id='review-description-box'
                                         type='text'
-                                        placeholder='How was your stay?'
+                                        placeholder='Description...'
                                         value={review}
                                         onChange={updateReview} />
                                 </div>
                                 <div className="review-form-rating">
+                                    <div className='review-how-star'>Stars</div>
                                     <input
+                                        id='review-stars-input'
                                         type='number'
                                         min='1'
                                         max='5'
                                         value={stars}
                                         onChange={updateStars} />
                                 </div>
-                                <button type='submit' hidden={(review.length && stars) ? false : true}>Submit</button>
+                                <button className='leave-your-review'
+                                    type='submit'>
+                                    Submit
+                                </button>
                             </form>
                         </div>
                     </div>
                 </div>
             )}
-        </div>
+        </>
     )
 }
 

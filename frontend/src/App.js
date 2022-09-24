@@ -33,7 +33,6 @@ function App() {
             <SpotsPage></SpotsPage>
           </Route>
           <Route path='/spots/:spotId/reviews'>
-            Spot Review Test
             <AddReviewFormPage></AddReviewFormPage>
           </Route>
           <Route path='/spots/:spotId/edit'>

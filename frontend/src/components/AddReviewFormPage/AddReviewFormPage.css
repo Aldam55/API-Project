@@ -5,12 +5,17 @@
     justify-content: center;
     height: 550px;
     width: 550px;
+    margin: 0px 685px;
 }
 
 .review-form-container {
     display: flex;
     flex-direction: column;
     height: 100%;
+    border-radius: 10px;
+    box-shadow: 2px 2px 9px gray;
+    width: 500px;
+    height: 400px;
 }
 
 .leave-a-review {
@@ -20,4 +25,48 @@
     height: 50px;
     border-bottom: 1px solid lightgray;
     font-weight: 600;
+    width: 502px;
+}
+
+.review-form-input {
+    margin-top: 20px;
+}
+
+.review-how-stay {
+    margin-left: 47px;
+    padding-bottom: 10px;
+    font-weight: 500;
+}
+
+.review-how-star {
+    font-weight: 500;
+    padding-bottom: 3px;
+}
+
+#review-description-box {
+    height: 150px;
+    width: 400px;
+    margin: 0px 47px;
+}
+
+.review-form-rating {
+    margin-left: 47px;
+    padding-top: 10px;
+}
+
+#review-stars-input {
+    width: 100px;
+}
+
+.leave-your-review {
+    margin: 20px 47px 0px;
+    height: 35px;
+    width: 410px;
+    background-color: rgb(255, 56, 92);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 14px;
 }
