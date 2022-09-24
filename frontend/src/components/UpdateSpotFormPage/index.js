@@ -18,8 +18,9 @@ const UpdateSpotFormPage = () => {
     const [name, setName] = useState(spot.name)
     const [description, setDescription] = useState(spot.description)
     const [price, setPrice] = useState(spot.price)
-    const [imgUrl, setImgUrl] = useState(spot.SpotImages[0])
+    // const [imgUrl, setImgUrl] = useState(spot.SpotImages[0])
     const [validationErrors, setValidationErrors] = useState([])
+    const [showErrors, setShowErrors] = useState(false)
 
     const updateAddress = (e) => setAddress(e.target.value)
     const updateCity = (e) => setCity(e.target.value)
@@ -28,48 +29,53 @@ const UpdateSpotFormPage = () => {
     const updateName = (e) => setName(e.target.value)
     const updateDescription = (e) => setDescription(e.target.value)
     const updatePrice = (e) => setPrice(e.target.value)
-    const updateImgUrl = (e) => setImgUrl(e.target.value)
+    // const updateImgUrl = (e) => setImgUrl(e.target.value)
 
     useEffect(() => {
         const errors = []
+        if (!name || name.length > 50) errors.push('Must provide a valid name')
         if (!address || address.length > 20) errors.push('Must provide a valid address')
         if (!city || city.length > 20) errors.push('Must provide a valid city')
         if (!state || state.length > 20) errors.push('Must provide a valid state')
-        if (!name || name.length > 50) errors.push('Must provide a valid name')
-        if (!description) errors.push('Must provide a description')
+        if (!country) errors.push('Must provide a valid country')
         if (!price || isNaN(price)) errors.push('Price must be a number')
+        if (!description) errors.push('Must provide a description')
+        if (description.length > 200 || description.length < 10) errors.push('Description must be between 10 and 200 characters')
         setValidationErrors(errors)
     }, [address, city, state, country, name, description, price])
 
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+        setShowErrors(true)
+        if (!validationErrors.length) {
 
-        const payload = {
-            address,
-            city,
-            state,
-            country,
-            name,
-            description,
-            lat: 39.423,
-            lng: 39.423,
-            price,
-        }
+            const payload = {
+                address,
+                city,
+                state,
+                country,
+                name,
+                description,
+                lat: 39.423,
+                lng: 39.423,
+                price,
+            }
 
-        let updatedSpot = await dispatch(updateSpot(payload, spot.id))
-        // console.log('does update break here?', updatedSpot)
+            let updatedSpot = await dispatch(updateSpot(payload, spot.id))
+            // console.log('does update break here?', updatedSpot)
 
-        if (updatedSpot) {
+            if (updatedSpot) {
 
-            //     const imgBody = ({
-            //         spotId: updatedSpot.id,
-            //         url: imgUrl,
-            //         preview: true
-            //     })
+                //     const imgBody = ({
+                //         spotId: updatedSpot.id,
+                //         url: imgUrl,
+                //         preview: true
+                //     })
 
-            //     await dispatch(addImageToSpot(imgBody, updatedSpot.id))
-            history.push(`/spots/${updatedSpot.id}`)
+                //     await dispatch(addImageToSpot(imgBody, updatedSpot.id))
+                history.push(`/spots/${updatedSpot.id}`)
+            }
         }
     }
 
@@ -83,6 +89,13 @@ const UpdateSpotFormPage = () => {
             <div id='update-spot-form'>
                 <form className='update-spot-form' onSubmit={handleSubmit}>
                     <h2>Edit your Spot</h2>
+                    {showErrors &&
+                        <ul className="errors">
+                            {validationErrors.map((e, i) => {
+                                return <li key={i}>{e}</li>
+                            })}
+                        </ul>
+                    }
                     <div className='update-spot-form-content'>
                         <div className='update-form-input'>
                             <input
