@@ -21,7 +21,7 @@ const SpotReviewPage = () => {
             <div className='reviews-page-wrapper'>
                 {Object.values(spotReviews).map(review => (
                     <div key={review.id} className='reviews-each'>
-                        <div className='review-page-name'>{review.User.firstName}</div>
+                        <div className='review-page-name'>{review.User?.firstName}</div>
                         <div className='review-page-date'>{new Date(review.updatedAt).toString().slice(4, 15)}</div>
                         <div className='review-page-description'>{review.review}</div>
                     </div>

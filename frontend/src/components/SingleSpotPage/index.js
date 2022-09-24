@@ -62,7 +62,7 @@ const SingleSpotPage = () => {
                                     <div><img className='small-image' src={spot.SpotImages[2]?.url || 'https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png'}></img></div>
                                 </div>
                             </div>
-                            <div class='single-spot-image-columns'>
+                            <div className='single-spot-image-columns'>
                                 <div className="image-columns">
                                     <div><img className='small-image top-right' src={spot.SpotImages[3]?.url || 'https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png'}></img></div>
                                     <div><img className='small-image bottom-right' src={spot.SpotImages[4]?.url || 'https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png'}></img></div>
@@ -99,8 +99,7 @@ const SingleSpotPage = () => {
                                     • {spot.numReviews || 0} {numReviews}
                                 </div>
                                 {(user && user.id !== spot.ownerId) &&
-                                    // <div className='reviews-button'></div>
-                                    <AddReviewFormModal />
+                                    <NavLink to={`/spots/${spot.id}/reviews`} className='reviews-button'>Leave a Review</NavLink>
                                 }
                             </div>
                             {(user && user.id === spot.ownerId) && (

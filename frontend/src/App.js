@@ -12,6 +12,7 @@ import CurrentUserSpotsPage from "./components/CurrentUserSpotsPage";
 import CurrentUserReviewsPage from "./components/CurrentUserReviewsPage";
 import AddSpotFormPage from "./components/AddSpotFormPage";
 import UpdateSpotFormPage from "./components/UpdateSpotFormPage";
+import AddReviewFormPage from "./components/AddReviewFormPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -33,7 +34,7 @@ function App() {
           </Route>
           <Route path='/spots/:spotId/reviews'>
             Spot Review Test
-            <SpotReviewPage></SpotReviewPage>
+            <AddReviewFormPage></AddReviewFormPage>
           </Route>
           <Route path='/spots/:spotId/edit'>
             <UpdateSpotFormPage></UpdateSpotFormPage>

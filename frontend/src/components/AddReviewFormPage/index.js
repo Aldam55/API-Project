@@ -35,10 +35,9 @@ const AddReviewFormPage = () => {
 
         let createdReview = await dispatch(addSpotReview(payload, spot.id))
 
+
         if (createdReview) {
-            setReview('')
-            setStars('')
-            history.push(`/spots/${spot.spotId}`)
+            history.push(`/spots/${spot.id}`)
         }
     }
 
@@ -50,7 +49,6 @@ const AddReviewFormPage = () => {
                         <div className="leave-a-review">Leave a Review!</div>
                         <div className='review-form-content'>
                             <form onSubmit={handleSubmit}>
-
                                 <div className='review-form-input'>
                                     <textarea
                                         type='text'
