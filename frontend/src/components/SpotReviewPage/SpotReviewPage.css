@@ -23,3 +23,16 @@
 .review-page-description {
     padding-top: 10px;
 }
+
+.review-delete {
+    margin-top: 15px;
+    height: 40px;
+    width: 150px;
+    background-color: rgb(255, 56, 92);
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 14px;
+}

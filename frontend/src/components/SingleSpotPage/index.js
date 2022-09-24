@@ -14,6 +14,7 @@ const SingleSpotPage = ({ reviews }) => {
     const user = useSelector(state => state.session.user)
     let existingReview
     const existingReviews = Object.values(reviews)
+
     if (!existingReviews.length) {
         existingReview = true
     } else {
@@ -108,6 +109,10 @@ const SingleSpotPage = ({ reviews }) => {
                                 {(user && user.id !== spot.ownerId && existingReview) &&
                                     <NavLink to={`/spots/${spot.id}/reviews`} className='reviews-button'>Leave a Review</NavLink>
                                 }
+                                {/* {Object.values(reviews).map(review => (
+                                    (user && user.id !== spot.ownerId && review.userId !== user.id)) &&
+                                    <NavLink to={`/spots/${spot.id}/reviews`} className='reviews-button'>Leave a Review</NavLink>
+                                )} */}
                             </div>
                             {(user && user.id === spot.ownerId) && (
                                 <NavLink className='single-spot-edit' to={`/spots/${spot.id}/edit`}>Edit spot</NavLink>)}
