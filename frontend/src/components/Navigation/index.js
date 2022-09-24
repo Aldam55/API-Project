@@ -101,7 +101,7 @@ function Navigation({ isLoaded }) {
           {sessionUser &&
             <div className='createspot'>
               <div className='testcreatespot'>
-                <NavLink id='hidepurple' to='/spots/create'>Host a Spot</NavLink>
+                <NavLink id='hidepurple' className='host-spot-button-click' to='/spots/create'>Host a Spot</NavLink>
               </div>
             </div>
           }

@@ -37,7 +37,7 @@ const AddSpotFormPage = () => {
         if (!state || state.length > 20) errors.push('Must provide a valid state')
         if (!country) errors.push('Must provide a valid country')
         if (!price || isNaN(price)) errors.push('Price must be a number')
-        if (!imgUrl.match(/\.(jpg|jpeg|png|gif)$/)) errors.push('Please enter a valid image.')
+        if (!imgUrl.match(/\.(jpg|jpeg|png|gif)$/)) errors.push('Please enter a valid image(jpg/jpeg/png).')
         if (!description) errors.push('Must provide a description')
         if (description.length > 200 || description.length < 10) errors.push('Description must be between 10 and 200 characters')
         setValidationErrors(errors)

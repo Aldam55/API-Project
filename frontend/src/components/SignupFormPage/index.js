@@ -1,5 +1,5 @@
 // frontend/src/components/SignupFormPage/index.js
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
@@ -15,6 +15,15 @@ function SignupFormPage() {
   const [lastName, setLastName] = useState('')
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
+
+  useEffect(() => {
+    const validationErrors = []
+    if(!email || !email.includes('@') || !email.includes('.com')) validationErrors.push('Must provide a valid email')
+    if(!username || username.length > 15) validationErrors.push('Must provide a valid username')
+    if(!firstName) validationErrors.push('Must provide a valid first name')
+    if(!lastName) validationErrors.push('Must provide a valid last name')
+    setErrors(validationErrors)
+  }, [email, username])
 
 
   if (sessionUser) return <Redirect to="/" />;
@@ -45,7 +54,7 @@ function SignupFormPage() {
           <form onSubmit={handleSubmit}>
             <div>
               <ul>
-                {errors.map((error, idx) => 
+                {errors.map((error, idx) =>
                 <li key={idx}>{error}</li>)}
               </ul>
             </div>
