@@ -49,6 +49,7 @@ export const removeSpotReview = (reviewId) => async dispatch => {
 
     if (response.ok) {
         dispatch(remove(reviewId))
+        return
     }
 }
 

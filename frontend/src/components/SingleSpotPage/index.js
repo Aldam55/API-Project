@@ -29,11 +29,11 @@ const SingleSpotPage = ({ reviews }) => {
     }
     useEffect(() => {
         dispatch(getSpotById(spotId))
-    }, [dispatch, spotId])
+    }, [dispatch, spotId, existingReviews.length])
 
     const handleRemove = () => {
         dispatch(removeSpot(spot.id))
-        history.push('/')
+        history.push('/spots/current')
     }
     let numReviews = spot.numReviews === 1 ? "Review" : "Reviews"
     // if (!spot) return null

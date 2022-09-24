@@ -1,0 +1,25 @@
+.current-user-page-wrapper {
+    margin-left: 390px
+}
+
+.current-user-header {
+    padding-left: 10px;
+}
+
+.reviews-each-container {
+    padding-bottom: 15px;
+    padding-left: 10px;
+    width: 700px;
+}
+
+.current-review {
+    border: lightgray 1px solid;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.review-to-spot {
+    text-decoration: none;
+    color: black;
+    padding-bottom: 5px;
+}

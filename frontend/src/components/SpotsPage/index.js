@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { getAllSpots } from "../../store/spots"
+import { getAllSpots, resetState } from "../../store/spots"
 import { NavLink } from 'react-router-dom';
 import { reset } from "../../store/reviews";
 import './SpotsPage.css'
@@ -15,7 +15,8 @@ const SpotsPage = () => {
 
     useEffect(() => {
         dispatch(getAllSpots())
-        return () => dispatch(reset())
+        dispatch(reset())
+        return () => dispatch(resetState())
     }, [dispatch])
 
     console.log('all spots info in spotspage', spots)
