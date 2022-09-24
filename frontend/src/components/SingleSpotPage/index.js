@@ -2,23 +2,30 @@ import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { NavLink, useHistory, useParams } from "react-router-dom"
 import { getSpotById, removeSpot } from "../../store/spots"
-import AddReviewFormModal from "../AddReviewFormModal"
 import SpotReviewPage from "../SpotReviewPage"
 import './SingleSpotPage.css'
 
-const SingleSpotPage = () => {
+const SingleSpotPage = ({ reviews }) => {
     const { spotId } = useParams()
     const dispatch = useDispatch()
     const history = useHistory()
 
     const spot = useSelector(state => state.spots.singleSpot)
     const user = useSelector(state => state.session.user)
-    // const reviews = useSelector(state => state.session.reviews)
-    // ADD A REDIRECT FOR AFTER DELETING A SPOT
-    // console.log('reviews in single spot page', reviews)
-    // console.log('spotImages in single spot page', spot.SpotImages)
-    // console.log('spot in singleSpotPage', spot)
-    // console.log('Spot owner', spot.Owner)
+    let existingReview
+    const existingReviews = Object.values(reviews)
+    if (!existingReviews.length) {
+        existingReview = true
+    } else {
+        for (let i = 0; i < existingReviews.length; i++) {
+            console.log('testing existing reviews', existingReviews[i])
+            if (existingReviews[i].User?.id === user.id) {
+                existingReview = false
+            } else {
+                existingReview = true
+            }
+        }
+    }
     useEffect(() => {
         dispatch(getSpotById(spotId))
     }, [dispatch, spotId])
@@ -98,7 +105,7 @@ const SingleSpotPage = () => {
                                 <div className='reviews-numReviews reviews-text'>
                                     • {spot.numReviews || 0} {numReviews}
                                 </div>
-                                {(user && user.id !== spot.ownerId) &&
+                                {(user && user.id !== spot.ownerId && existingReview) &&
                                     <NavLink to={`/spots/${spot.id}/reviews`} className='reviews-button'>Leave a Review</NavLink>
                                 }
                             </div>
