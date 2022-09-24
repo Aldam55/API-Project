@@ -19,7 +19,7 @@ const SingleSpotPage = ({ reviews }) => {
     } else {
         for (let i = 0; i < existingReviews.length; i++) {
             console.log('testing existing reviews', existingReviews[i])
-            if (existingReviews[i].User?.id === user.id) {
+            if (existingReviews[i].User?.id === user?.id) {
                 existingReview = false
             } else {
                 existingReview = true
@@ -65,14 +65,14 @@ const SingleSpotPage = ({ reviews }) => {
                             </div>
                             <div className='single-spot-image-columns'>
                                 <div className="image-columns">
-                                    <div><img className='small-image' src={spot.SpotImages[1]?.url || 'https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png'}></img></div>
-                                    <div><img className='small-image' src={spot.SpotImages[2]?.url || 'https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png'}></img></div>
+                                    <div><img className='small-image' src={spot.SpotImages[1]?.url || 'https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png'} alt='Rocks'></img></div>
+                                    <div><img className='small-image' src={spot.SpotImages[2]?.url || 'https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png'} alt='Rocks'></img></div>
                                 </div>
                             </div>
                             <div className='single-spot-image-columns'>
                                 <div className="image-columns">
-                                    <div><img className='small-image top-right' src={spot.SpotImages[3]?.url || 'https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png'}></img></div>
-                                    <div><img className='small-image bottom-right' src={spot.SpotImages[4]?.url || 'https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png'}></img></div>
+                                    <div><img className='small-image top-right' src={spot.SpotImages[3]?.url || 'https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png'} alt='Rocks'></img></div>
+                                    <div><img className='small-image bottom-right' src={spot.SpotImages[4]?.url || 'https://www.firstbenefits.org/wp-content/uploads/2017/10/placeholder.png'} alt='Rocks'></img></div>
                                 </div>
                             </div>
                         </div>
