@@ -79,3 +79,12 @@ input[type=number]::-webkit-outer-spin-button {
 .form-cancel {
     margin-top: 10px;
 }
+
+.errors {
+    padding-right: 40px;
+    width: 300px;
+}
+
+#add-spot-header-text {
+    padding-right: 10px;
+}

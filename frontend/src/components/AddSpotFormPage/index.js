@@ -35,7 +35,9 @@ const AddSpotFormPage = () => {
         if (!state || state.length > 20) errors.push('Must provide a valid state')
         if (!name || name.length > 50) errors.push('Must provide a valid name')
         if (!description) errors.push('Must provide a description')
+        if (description.length > 300 || description.length < 10) errors.push('Description must be between 10 and 300 characters')
         if (!price || isNaN(price)) errors.push('Price must be a number')
+        if (!imgUrl.match(/\.(jpg|jpeg|png)$/)) errors.push('Please enter a valid image.')
         setValidationErrors(errors)
     }, [address, city, state, country, name, description, price, imgUrl])
 
@@ -77,7 +79,12 @@ const AddSpotFormPage = () => {
         <div className="add-spot-form-wrapper">
             <div id="add-spot-form">
                 <form className='add-spot-form' onSubmit={handleSubmit}>
-                    <h2>Host a New Spot</h2>
+                    <h2 id='add-spot-header-text'>Host a New Spot</h2>
+                    <ul className="errors">
+                        {validationErrors.map((e, i) => {
+                            return <li key={i}>{e}</li>
+                        })}
+                    </ul>
                     <div className='add-spot-form-content'>
                         <div className='add-form-input'>
                             <input
