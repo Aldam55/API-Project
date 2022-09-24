@@ -18,6 +18,7 @@ const AddSpotFormPage = () => {
     const [price, setPrice] = useState('')
     const [imgUrl, setImgUrl] = useState('')
     const [validationErrors, setValidationErrors] = useState([])
+    const [showErrors, setShowErrors] = useState(false)
 
     const updateAddress = (e) => setAddress(e.target.value)
     const updateCity = (e) => setCity(e.target.value)
@@ -30,43 +31,48 @@ const AddSpotFormPage = () => {
 
     useEffect(() => {
         const errors = []
+        if (!name || name.length > 50) errors.push('Must provide a valid name')
         if (!address || address.length > 20) errors.push('Must provide a valid address')
         if (!city || city.length > 20) errors.push('Must provide a valid city')
         if (!state || state.length > 20) errors.push('Must provide a valid state')
-        if (!name || name.length > 50) errors.push('Must provide a valid name')
-        if (!description) errors.push('Must provide a description')
-        if (description.length > 300 || description.length < 10) errors.push('Description must be between 10 and 300 characters')
+        if (!country) errors.push('Must provide a valid country')
         if (!price || isNaN(price)) errors.push('Price must be a number')
-        if (!imgUrl.match(/\.(jpg|jpeg|png)$/)) errors.push('Please enter a valid image.')
+        if (!imgUrl.match(/\.(jpg|jpeg|png|gif)$/)) errors.push('Please enter a valid image.')
+        if (!description) errors.push('Must provide a description')
+        if (description.length > 200 || description.length < 10) errors.push('Description must be between 10 and 200 characters')
         setValidationErrors(errors)
     }, [address, city, state, country, name, description, price, imgUrl])
 
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+        setShowErrors(true)
 
-        const payload = {
-            address,
-            city,
-            state,
-            country,
-            name,
-            description,
-            lat: 39.423,
-            lng: 39.423,
-            price,
-        }
+        if (!validationErrors.length) {
+            const payload = {
+                address,
+                city,
+                state,
+                country,
+                name,
+                description,
+                lat: 39.423,
+                lng: 39.423,
+                price,
+            }
 
-        let createdSpot = await dispatch(addASpot(payload))
+            let createdSpot = await dispatch(addASpot(payload))
 
 
-        if (createdSpot) {
-            const imgBody = ({
-                url: imgUrl,
-                preview: true
-            })
-            await dispatch(addImageToSpot(imgBody, createdSpot.id))
-            history.push(`/spots/${createdSpot.id}`)
+            if (createdSpot) {
+                const imgBody = ({
+                    url: imgUrl,
+                    preview: true
+                })
+                await dispatch(addImageToSpot(imgBody, createdSpot.id))
+                setShowErrors(false)
+                history.push(`/spots/${createdSpot.id}`)
+            }
         }
     }
 
@@ -80,11 +86,13 @@ const AddSpotFormPage = () => {
             <div id="add-spot-form">
                 <form className='add-spot-form' onSubmit={handleSubmit}>
                     <h2 id='add-spot-header-text'>Host a New Spot</h2>
-                    <ul className="errors">
-                        {validationErrors.map((e, i) => {
-                            return <li key={i}>{e}</li>
-                        })}
-                    </ul>
+                    {showErrors &&
+                        <ul className="errors">
+                            {validationErrors.map((e, i) => {
+                                return <li key={i}>{e}</li>
+                            })}
+                        </ul>
+                    }
                     <div className='add-spot-form-content'>
                         <div className='add-form-input'>
                             <input
@@ -147,7 +155,8 @@ const AddSpotFormPage = () => {
                                 type='text'
                                 placeholder='Image URL'
                                 value={imgUrl}
-                                onChange={updateImgUrl} />
+                                onChange={updateImgUrl}
+                                required />
                         </div>
                         <div className='add-form-input form-text-area'>
                             <textarea
@@ -162,7 +171,9 @@ const AddSpotFormPage = () => {
                     </div>
                     <button type='submit'
                         className="add-form-button"
-                        disabled={validationErrors.length > 0 ? true : false}>
+                    // onClick={() => setSubmitted(true)}
+                    // disabled={validationErrors.length > 0 ? true : false}
+                    >
                         Create your spot
                     </button>
                     <button type='button'
