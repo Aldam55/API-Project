@@ -29,7 +29,7 @@ const SingleSpotPage = ({ reviews }) => {
     }
     useEffect(() => {
         dispatch(getSpotById(spotId))
-    }, [dispatch, spotId])
+    }, [dispatch, spotId, existingReviews.length])
 
     const handleRemove = () => {
         dispatch(removeSpot(spot.id))
