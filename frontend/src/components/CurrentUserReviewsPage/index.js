@@ -22,7 +22,7 @@ const CurrentUserReviewsPage = () => {
         <div>
             {reviews &&
                 <div className='current-user-page-wrapper'>
-                    <h2>{user.firstName}'s Reviews!</h2>
+                    <h2 className="current-user-header">{user.firstName}'s Reviews!</h2>
                     <div className='reviews-page-wrapper'>
                         {Object.values(reviews).map(review => (
                             <div className="reviews-each-container">

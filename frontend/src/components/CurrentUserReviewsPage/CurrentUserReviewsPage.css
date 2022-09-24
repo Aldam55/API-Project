@@ -1,9 +1,14 @@
 .current-user-page-wrapper {
-    margin-left: 300px
+    margin-left: 390px
+}
+
+.current-user-header {
+    padding-left: 10px;
 }
 
 .reviews-each-container {
-    padding: 10px;
+    padding-bottom: 15px;
+    padding-left: 10px;
     width: 700px;
 }
 
