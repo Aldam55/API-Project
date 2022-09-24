@@ -17,10 +17,10 @@ const SpotReviewPage = () => {
         dispatch(getSpotReview(spotId))
     }, [dispatch, spotId])
 
-    const handleRemove = () => {
-        dispatch(removeSpotReview(spotReviews.id))
-        history.push(`/spots/${spotReviews.id}`)
-    }
+    // const handleRemove = () => {
+    //     dispatch(removeSpotReview(spotReviews.id))
+    //     history.push(`/spots/${spotReviews.id}`)
+    // }
     return (
         <div>
             {spotReviews &&
@@ -31,7 +31,7 @@ const SpotReviewPage = () => {
                             <div className='review-page-date'>{new Date(review.updatedAt).toString().slice(4, 15)}</div>
                             <div className='review-page-description'>{review.review}</div>
                             {(user && user.id === review.userId) && (
-                                <button className='review-delete' onClick={handleRemove}>
+                                <button className='review-delete' onClick={() => dispatch(removeSpotReview(review.id))}>
                                     Delete Review</button>
                             )}
                         </div>
