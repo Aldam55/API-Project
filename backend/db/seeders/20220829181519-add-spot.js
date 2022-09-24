@@ -63,7 +63,7 @@ function getSpots() {
   let spots = [];
   for (let i = 0; i < 12; i++) {
     const random = Math.floor(Math.random() * 20)
-    const ownerId = Math.floor(Math.random() * 12)
+    const ownerId = Math.floor(Math.random() * 12) + 1
     const address = addresses[random]
     const city = cities[random]
     const state = states[random]
