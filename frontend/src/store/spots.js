@@ -7,6 +7,7 @@ const ADD_IMAGE = '/spots/ADD_IMAGE'
 const REMOVE = '/spots/REMOVE'
 const UPDATE = '/spots/UPDATE'
 const LOAD_CURRENT = 'spots/LOAD_CURRENT'
+const RESET_STATE = '/spots/RESET_STATE'
 
 const load = (spots) => ({
     type: LOAD,
@@ -36,6 +37,10 @@ const update = (spot) => ({
 const addImage = (spotId) => ({
     type: ADD_IMAGE,
     spotId
+})
+
+export const resetState = () => ({
+    type: RESET_STATE
 })
 
 // const loadCurrent = (spot) => ({
@@ -200,6 +205,8 @@ const spotsReducer = (state = initialState, action) => {
                 newState.singleSpot = {}
             }
             return newState
+        case RESET_STATE:
+            return initialState
         default:
             return state
     }
