@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useHistory } from "react-router-dom"
 import { addSpotReview } from "../../store/reviews"
+import './AddReviewFormPage.css'
 
 const AddReviewFormPage = () => {
     const dispatch = useDispatch()
@@ -44,21 +45,28 @@ const AddReviewFormPage = () => {
     return (
         <div>
             {user && (
-                <div>
-                    <form onSubmit={handleSubmit}>
-                        <textarea
-                            type='text'
-                            placeholder='How was your stay?'
-                            value={review}
-                            onChange={updateReview} />
-                        <input
-                            type='number'
-                            min='1'
-                            max='5'
-                            value={stars}
-                            onChange={updateStars} />
-                        <button type='submit' hidden={(review.length && stars) ? false : true}>Submit</button>
-                    </form>
+                <div className='review-form-wrapper'>
+                    <div className="review-form-container">
+                        <div className="leave-a-review">Leave a Review!</div>
+                        <form onSubmit={handleSubmit}>
+                            <div className='review-form-input'>
+                                <textarea
+                                    type='text'
+                                    placeholder='How was your stay?'
+                                    value={review}
+                                    onChange={updateReview} />
+                            </div>
+                            <div className="review-form-rating">
+                                <input
+                                    type='number'
+                                    min='1'
+                                    max='5'
+                                    value={stars}
+                                    onChange={updateStars} />
+                            </div>
+                            <button type='submit' hidden={(review.length && stars) ? false : true}>Submit</button>
+                        </form>
+                    </div>
                 </div>
             )}
         </div>
