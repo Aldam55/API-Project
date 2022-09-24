@@ -41,8 +41,8 @@ const descriptions = [
 function getReviews() {
   let reviews = []
   for (let i = 0; i < 15; i++) {
-    const spotId = Math.floor(Math.random() * 20)
-    const userId = Math.floor(Math.random() * 10) + 15
+    const spotId = Math.floor(Math.random() * 12) + 1
+    const userId = Math.floor(Math.random() * 10) + 13
     const review = descriptions[Math.floor(Math.random() * 9)]
     const stars = Math.floor(Math.random() * 5) + 1
     reviews.push({

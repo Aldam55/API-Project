@@ -64,7 +64,9 @@ export const addSpotReview = (data, spotId) => async dispatch => {
     if (response.ok) {
         const spotReview = await response.json()
         dispatch(add(spotReview))
+        return spotReview
     }
+    return null
 }
 
 export const getSpotReview = (spotId) => async dispatch => {
@@ -73,7 +75,9 @@ export const getSpotReview = (spotId) => async dispatch => {
     if (response.ok) {
         const spotReview = await response.json()
         dispatch(load(spotReview, spotId))
+        return spotReview
     }
+    return null
 }
 
 const initialState = { spot: {}, user: {} }
@@ -87,7 +91,7 @@ const reviewReducer = (state = initialState, action) => {
             action.reviews.Reviews.forEach(review => {
                 spot[review.id] = review
             })
-            return {spot}
+            return { spot }
         case ADD_REVIEW:
             newState = {spot: {...state.spot}, user: {...state.user}}
             newState.spot[action.review.id] = action.review

@@ -1,23 +1,226 @@
-.spotwrapper {
+.single-spot-spotwrapper {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 0 auto;
     padding: 0px 80px;
 }
 
-.title {
+.single-spot-card {
+    width: 1120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.single-spot-title {
     /* padding: 0 auto; */
-    border: 1px red solid;
-    margin: 0 auto;
-    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px 0px;
+}
+
+.single-spot-name {
+    font-size: 26px;
+    font-weight: 600
+}
+
+.single-spot-header {
+    display: flex;
+    align-items: center;
+    margin-top: 5px
+}
+
+#single-spot-numreviews {
+    margin-left: 5px
+}
+
+#single-spot-location {
+    margin-left: 5px;
+}
+
+.single-spot-images {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.single-spot-image-columns {
+    display: flex;
+    padding-left: 8px;
+}
+
+.image-columns {
+    display: flex;
+    flex-direction: column;
+}
+
+.small-image {
+    height: 223px;
+    width: 225px;
+    object-fit: cover;
+}
+
+.top-right {
+    border-top-right-radius: 15px;
+}
+
+.bottom-right {
+    border-bottom-right-radius: 15px;
 }
 
 #spotimg2 {
     width: 560px;
     height: 450px;
-    border-radius: 20px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
 }
 
-/* FIX FONT ON HEROKU */
+.single-spot-description {
+    display: flex;
+    justify-content: space-between;
+    height: 200px;
+    width: 1026px;
+    border-bottom: 1px lightgray solid;
+    padding-bottom: 15px
+}
+
+.single-spot-information {
+    width: 650px;
+}
+
+.single-spot-host {
+    height: 50px;
+    font-size: 22px;
+    font-weight: 600;
+    padding: 10px 0px;
+    border-bottom: 1px lightgray solid;
+}
+
+.single-spot-description-text {
+    padding-top: 20px;
+}
+
+.single-spot-booking {
+    width: 275px;
+    border: 1px lightgray solid;
+    border-radius: 10px;
+    box-shadow: 1px 3px 7px gray;
+}
+
+.single-spot-booking-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 20px 15px;
+}
+
+
+.booking-content-reviews {
+    display: flex;
+    align-items: center;
+    font-size: 14px
+}
+
+#booking-content-price {
+    font-size: 22px;
+    font-weight: 600;
+    padding-right: 5px;
+}
+
+#booking-content-night {
+    font-size: 16px;
+}
+
+#booking-content-rating {
+    font-size: 14px;
+    margin-right: 5px;
+}
+
+.reviews-text {
+    display: flex;
+    align-items: center;
+}
+
+.reviews-big-info {
+    display: flex;
+    height: 40px;
+    width: 500px;
+    padding: 20px 0px
+}
+
+.added-delete-button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.single-spot-delete {
+    margin-left: 25px;
+    height: 40px;
+    width: 150px;
+    background-color: rgb(255, 56, 92);
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.single-spot-edit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 25px;
+    height: 40px;
+    width: 150px;
+    background-color: rgb(255, 56, 92);
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 14px;
+    text-decoration: none;
+    margin-left: 200px;
+}
+
+.reviews-numReviews {
+    display: flex;
+    justify-content: center;
+    /* height: 30px; */
+    /* margin-left: 10px; */
+    font-size: 22px;
+    margin-bottom: 0px;
+    padding-left: 5px;
+}
+
+.reviews-avgRating {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+}
+
+#wtfman {
+    padding-bottom: 5px;
+}
+
+.reviews-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 25px;
+    height: 40px;
+    width: 150px;
+    background-color: rgb(255, 56, 92);
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 14px;
+    text-decoration: none;
+}

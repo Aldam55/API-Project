@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useHistory } from "react-router-dom"
 import { addSpotReview } from "../../store/reviews"
+import './AddReviewFormPage.css'
 
 const AddReviewFormPage = () => {
     const dispatch = useDispatch()
@@ -19,7 +20,7 @@ const AddReviewFormPage = () => {
 
     useEffect(() => {
         const errors = []
-        if(!review) errors.push('Must provide a valid review')
+        if (!review) errors.push('Must provide a valid review')
         if (!stars) errors.push('Must provide a rating')
         setValidationErrors(errors)
     }, [review, stars])
@@ -34,32 +35,49 @@ const AddReviewFormPage = () => {
 
         let createdReview = await dispatch(addSpotReview(payload, spot.id))
 
+
         if (createdReview) {
-            setReview('')
-            setStars('')
-            history.push(`/spots/${spot.spotId}`)
+            history.push(`/spots/${spot.id}`)
         }
     }
 
     return (
-        <div>
+        <>
             {user && (
-                <form onSubmit={handleSubmit}>
-                    <textarea
-                        type='text'
-                        placeholder='How was your stay?'
-                        value={review}
-                        onChange={updateReview} />
-                    <input
-                        type='number'
-                        min='1'
-                        max='5'
-                        value={stars}
-                        onChange={updateStars} />
-                    <button type='submit' hidden={(review.length && stars) ? false : true}>Submit</button>
-                </form>
+                <div className='review-form-wrapper'>
+                    <div className="review-form-container">
+                        <div className="leave-a-review">Leave a Review!</div>
+                        <div className='review-form-content'>
+                            <form onSubmit={handleSubmit}>
+                                <div className='review-form-input'>
+                                    <div className='review-how-stay'>How was your stay?</div>
+                                    <textarea
+                                        id='review-description-box'
+                                        type='text'
+                                        placeholder='Description...'
+                                        value={review}
+                                        onChange={updateReview} />
+                                </div>
+                                <div className="review-form-rating">
+                                    <div className='review-how-star'>Stars</div>
+                                    <input
+                                        id='review-stars-input'
+                                        type='number'
+                                        min='1'
+                                        max='5'
+                                        value={stars}
+                                        onChange={updateStars} />
+                                </div>
+                                <button className='leave-your-review'
+                                    type='submit'>
+                                    Submit
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             )}
-        </div>
+        </>
     )
 }
 

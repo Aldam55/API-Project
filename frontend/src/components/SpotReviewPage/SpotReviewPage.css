@@ -1,0 +1,25 @@
+.reviews-page-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+}
+
+.reviews-each{
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+
+.review-page-name {
+    font-size: 16px;
+    font-weight: 600;
+    padding-bottom: 2px;
+}
+
+.review-page-date {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.review-page-description {
+    padding-top: 10px;
+}

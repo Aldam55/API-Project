@@ -62,80 +62,111 @@ const UpdateSpotFormPage = () => {
 
         if (updatedSpot) {
 
-        //     const imgBody = ({
-        //         spotId: updatedSpot.id,
-        //         url: imgUrl,
-        //         preview: true
-        //     })
+            //     const imgBody = ({
+            //         spotId: updatedSpot.id,
+            //         url: imgUrl,
+            //         preview: true
+            //     })
 
-        //     await dispatch(addImageToSpot(imgBody, updatedSpot.id))
+            //     await dispatch(addImageToSpot(imgBody, updatedSpot.id))
             history.push(`/spots/${updatedSpot.id}`)
         }
     }
 
     const handleCancel = async (e) => {
         e.preventDefault()
-        history.push('/')
+        history.push(`/spots/${spot.id}`)
     }
 
     return (
-        <div className="formwrapper">
-            <form onSubmit={handleSubmit}>
-                <select
-                    value={country}
-                    onChange={updateCountry}
-                    required >
-                    <option>USA</option>
-                    <option>China</option>
-                    <option>Japan</option>
-                    <option>Mexico</option>
-                    <option>Canada</option>
-                </select>
-                <input
-                    type='text'
-                    placeholder='Address'
-                    value={address}
-                    onChange={updateAddress}
-                    required />
-                <input
-                    type='text'
-                    placeholder='City'
-                    value={city}
-                    onChange={updateCity}
-                    required />
-                <input
-                    type='text'
-                    placeholder='State'
-                    value={state}
-                    onChange={updateState}
-                    required />
-                <input
-                    type='text'
-                    placeholder='Name'
-                    value={name}
-                    onChange={updateName}
-                    required />
-                <textarea
-                    type='text'
-                    placeholder='Description'
-                    value={description}
-                    onChange={updateDescription}
-                    required />
-                <input
-                    type='number'
-                    placeholder='Price'
-                    value={price}
-                    onChange={updatePrice}
-                    required />
-                {/* <input
+        <div className="update-spot-form-wrapper">
+            <div id='update-spot-form'>
+                <form className='update-spot-form' onSubmit={handleSubmit}>
+                    <h2>Edit your Spot</h2>
+                    <div className='update-spot-form-content'>
+                        <div className='update-form-input'>
+                            <input
+                                id='add-spot-top-border'
+                                className="update-input"
+                                type='text'
+                                placeholder='Spot Name'
+                                value={name}
+                                onChange={updateName}
+                                required />
+                        </div>
+                        <div className='update-form-input'>
+                            <input
+                                className="update-input"
+                                type='text'
+                                placeholder='Address'
+                                value={address}
+                                onChange={updateAddress}
+                                required />
+                        </div>
+                        <div className='update-form-input'>
+                            <input
+                                className="update-input"
+                                type='text'
+                                placeholder='City'
+                                value={city}
+                                onChange={updateCity}
+                                required />
+                        </div>
+                        <div className='update-form-input'>
+                            <input
+                                className="update-input"
+                                type='text'
+                                placeholder='State'
+                                value={state}
+                                onChange={updateState}
+                                required />
+                        </div>
+                        <div className='update-form-input'>
+                            <input
+                                className="update-input"
+                                placeholder="Country"
+                                value={country}
+                                onChange={updateCountry}
+                                required >
+                            </input>
+                        </div>
+                        <div className='update-form-input'>
+                            <input
+                                className="update-input"
+                                type='number'
+                                placeholder='Price'
+                                value={price}
+                                onChange={updatePrice}
+                                required />
+                        </div>
+                        <div className='update-form-input form-text-area'>
+                            <textarea
+                                id='add-spot-bottom-border'
+                                className="update-input"
+                                type='text'
+                                placeholder='Description'
+                                value={description}
+                                onChange={updateDescription}
+                                required />
+                        </div>
+                        {/* <input
                     type='text'
                     placeholder='Image URL'
                     value={imgUrl}
-                    onChange={updateImgUrl} /> */}
-                <button type='submit'>Update</button>
-                <button type='button' onClick={handleCancel}>Cancel</button>
-            </form>
-        </div>
+                onChange={updateImgUrl} /> */}
+                        <button type='submit'
+                            className="add-form-button update-submit">
+                            Update
+                        </button>
+                        <button type='button'
+                            className="add-form-button form-cancel"
+                            onClick={handleCancel}>
+                            Cancel
+                        </button>
+                    </div>
+                </form>
+            </div >
+        </div >
     )
 
 }

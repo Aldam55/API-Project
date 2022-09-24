@@ -16,6 +16,8 @@ function SignupFormPage() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
 
+  // if (!image.match(/\.(jpg|jpeg|png|gif)$/)) errors.push('Please enter a valid image.')
+
 
   if (sessionUser) return <Redirect to="/" />;
 
