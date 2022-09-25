@@ -62,23 +62,50 @@ router.post(
                     }
                 })
         }
+        // const existingUser = await User.findOne({
+        //     where: {
+        //         [Op.or]: [
+        //             { email: email },
+        //             { username: username }
+        //         ]
+        //     }
+        // })
+        // if (existingUser) {
+        //     res.statusCode = 403
+        //     res.json({
+        //         message: "User already exists",
+        //         statusCode: res.statusCode,
+        //         errors: [
+        //             { email: "User with that email already exists" }
+        //         ]
+        //     })
+        // }
 
         const existingUser = await User.findOne({
-            where: {
-                [Op.or]: [
-                    { email: email },
-                    { username: username }
-                ]
-            }
+            where: { email }
         })
         if (existingUser) {
             res.statusCode = 403
             res.json({
                 message: "User already exists",
                 statusCode: res.statusCode,
-                errors: {
-                    email: "User with that email already exists"
-                }
+                errors: [
+                    "User with that email already exists"
+                ]
+            })
+        }
+
+        const existingUser2 = await User.findOne({
+            where: { username }
+        })
+        if (existingUser2) {
+            res.statusCode = 403
+            res.json({
+                message: "User already exists",
+                statusCode: res.statusCode,
+                errors: [
+                    "User with that username already exists"
+                ]
             })
         }
 

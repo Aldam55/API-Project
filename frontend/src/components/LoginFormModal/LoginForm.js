@@ -1,5 +1,5 @@
 // frontend/src/components/LoginFormModal/LoginForm.js
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
 import './LoginForm.css'
@@ -9,14 +9,22 @@ function LoginForm() {
   const [credential, setCredential] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
+  const [showErrors, setShowErrors] = useState(false)
+
+  // useEffect(() => {
+  //   const validationErrors = []
+
+  // }, [credential, password])
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setShowErrors(true)
     setErrors([]);
     return dispatch(sessionActions.login({ credential, password })).catch(
       async (res) => {
         const data = await res.json();
-        if (data && data.errors) setErrors(data.errors);
+        if (data && data.message) setErrors([data.message]);
+        else setShowErrors(false)
       }
     );
   };
@@ -33,9 +41,9 @@ function LoginForm() {
           </div>
           <form onSubmit={handleSubmit}>
             <div>
-              <ul>
+              <ul className='login-error-container'>
                 {errors.map((error, idx) => (
-                  <li key={idx}>{error}</li>
+                  <div className='login-error-message' key={idx}>{error}</div>
                 ))}
               </ul>
             </div>

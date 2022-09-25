@@ -73,6 +73,7 @@
 
 .dropdown-text-rows {
     padding: 0px 0px 10px 5px;
+    overflow: ellipsis;
 }
 
 .dropdown-email {

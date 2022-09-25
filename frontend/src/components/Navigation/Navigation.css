@@ -45,26 +45,32 @@
     width: 250px;
 }
 
-.createspot:hover {
+.host-spot-button-click:hover {
     background-color: rgb(226, 226, 226);
     cursor: pointer;
 }
 
+.host-spot-button-click {
+    display: block;
+    border-radius: 20px;
+    padding: 12px 9px;
+}
+
 .createspot {
     border-radius: 20px;
-    display: flex;
+    display: block;
     justify-content: center;
     align-items: center;
     background: transparent;
-    padding: 12px 9px;
     font-size: 16px;
+    width: 120px
 }
 
 .testcreatespot {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100px;
+    width: 120px;
 }
 
 .login {

@@ -1,5 +1,5 @@
 // frontend/src/components/SignupFormPage/index.js
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
@@ -15,21 +15,34 @@ function SignupFormPage() {
   const [lastName, setLastName] = useState('')
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
+  const [showErrors, setShowErrors] = useState(false)
+
+  useEffect(() => {
+    const validationErrors = []
+    if (!email || !email.includes('@') || !email.includes('.com')) validationErrors.push('Must provide a valid email')
+    if (!username) validationErrors.push('Must provide a valid username')
+    if (username.length > 15 || username.length < 5) validationErrors.push('Username must be between 5 and 15 characters')
+      if (!firstName) validationErrors.push('Must provide a valid first name')
+    if (!lastName) validationErrors.push('Must provide a valid last name')
+    if (!password) validationErrors.push('Must provide a valid password')
+    if (password.length < 7) validationErrors.push('Password must be at least 7 characters')
+    if (password !== confirmPassword) validationErrors.push('Confirm Password field must be the same as the Password field')
+    setErrors(validationErrors)
+  }, [email, username, firstName, lastName, password])
 
 
   if (sessionUser) return <Redirect to="/" />;
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (password === confirmPassword) {
-      setErrors([]);
+    setShowErrors(true)
+    if (!errors.length) {
       return dispatch(sessionActions.signup({ firstName, lastName, email, username, password }))
         .catch(async (res) => {
           const data = await res.json();
           if (data && data.errors) setErrors(data.errors);
         });
     }
-    return setErrors(['Confirm Password field must be the same as the Password field']);
   };
 
   return (
@@ -44,10 +57,12 @@ function SignupFormPage() {
           </div>
           <form onSubmit={handleSubmit}>
             <div>
-              <ul>
-                {errors.map((error, idx) => 
-                <li key={idx}>{error}</li>)}
-              </ul>
+              {showErrors &&
+                <ul>
+                  {errors.map((error, idx) =>
+                    <div className='login-error-message' key={idx}>{error}</div>)}
+                </ul>
+              }
             </div>
             <div className="signup-form-input">
               <label className="signup-form-text">
