@@ -40,6 +40,10 @@ const AddReviewFormPage = () => {
             history.push(`/spots/${spot.id}`)
         }
     }
+    const handleCancel = async (e) => {
+        e.preventDefault()
+        history.push(`/spots/${spot.id}`)
+    }
 
     return (
         <>
@@ -71,6 +75,11 @@ const AddReviewFormPage = () => {
                                 <button className='leave-your-review'
                                     type='submit'>
                                     Submit
+                                </button>
+                                <button type='button'
+                                    className="leave-your-review"
+                                    onClick={handleCancel}>
+                                    Cancel
                                 </button>
                             </form>
                         </div>

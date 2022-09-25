@@ -3,7 +3,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 550px;
+    height: 700px;
     width: 550px;
     margin: 0px 685px;
 }
@@ -15,7 +15,7 @@
     border-radius: 10px;
     box-shadow: 2px 2px 9px gray;
     width: 500px;
-    height: 400px;
+    height: 450px;
 }
 
 .leave-a-review {
