@@ -28,16 +28,16 @@ This project is built with:
 
 ### Spots
 
-#### Read Spot Details
+#### Read Spot Details:
 <img src='https://i.gyazo.com/000916651e3de020114abbaafd263711.jpg'>
 
-#### Create Spots
+#### Create Spots:
 ![image](https://i.gyazo.com/0ba4928699e2796745d84da1d695e76a.png)
 
-#### Edit a Spot
+#### Edit a Spot:
 ![image](https://user-images.githubusercontent.com/106426283/192168554-52787064-2d8e-413b-865e-e59fda837396.png)![image](https://user-images.githubusercontent.com/106426283/192168578-11b64385-8504-4d04-8562-0f998663a5e2.png)
 
-#### Delete a Spot
+#### Delete a Spot:
 ![image](https://user-images.githubusercontent.com/106426283/192168624-ae7ed97a-3256-4cd9-a0f9-ebeb5f81d519.png)
 
 
