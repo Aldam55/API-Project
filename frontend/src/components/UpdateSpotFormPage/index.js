@@ -147,6 +147,7 @@ const UpdateSpotFormPage = () => {
                             <input
                                 className="update-input"
                                 type='number'
+                                min='1'
                                 placeholder='Price'
                                 value={price}
                                 onChange={updatePrice}
