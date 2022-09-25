@@ -1,7 +1,7 @@
 .reviews-page-wrapper {
     display: flex;
     flex-direction: column;
-    width: fit-content;
+    width: 1030px;
 }
 
 .reviews-each{
@@ -22,6 +22,7 @@
 
 .review-page-description {
     padding-top: 10px;
+    word-wrap: break-word;
 }
 
 .review-delete {

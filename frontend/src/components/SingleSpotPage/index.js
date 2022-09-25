@@ -122,7 +122,7 @@ const SingleSpotPage = ({ reviews }) => {
                                     Delete spot</button>
                             )}
                         </div>
-                        <div className="reviews">
+                        <div id="reviews">
                             <SpotReviewPage></SpotReviewPage>
                         </div>
                     </div>
