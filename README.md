@@ -35,8 +35,7 @@ This project is built with:
 ![image](https://i.gyazo.com/0ba4928699e2796745d84da1d695e76a.png)
 
 #### Edit a Spot
-![image](https://user-images.githubusercontent.com/106426283/192168554-52787064-2d8e-413b-865e-e59fda837396.png) ![image](https://i.gyazo.com/da5ee1e9ed78b9cd3c42268a25add0da.png)
-
+![image](https://user-images.githubusercontent.com/106426283/192168554-52787064-2d8e-413b-865e-e59fda837396.png)![image](https://user-images.githubusercontent.com/106426283/192168578-11b64385-8504-4d04-8562-0f998663a5e2.png)
 
 ## Contact
 * [LinkedIn](https://www.linkedin.com/in/alexander-dam-a45b8821a/)
