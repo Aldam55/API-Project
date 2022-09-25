@@ -19,16 +19,16 @@ function SignupFormPage() {
 
   useEffect(() => {
     const validationErrors = []
-    if (!email || !email.includes('@') || !email.includes('.com')) validationErrors.push('Must provide a valid email')
+    if (!email || !email.includes('@') || !email.includes('.com')) validationErrors.push('Must provide a valid email(.com)')
     if (!username) validationErrors.push('Must provide a valid username')
     if (username.length > 15 || username.length < 5) validationErrors.push('Username must be between 5 and 15 characters')
-      if (!firstName) validationErrors.push('Must provide a valid first name')
+    if (!firstName) validationErrors.push('Must provide a valid first name')
     if (!lastName) validationErrors.push('Must provide a valid last name')
     if (!password) validationErrors.push('Must provide a valid password')
     if (password.length < 7) validationErrors.push('Password must be at least 7 characters')
     if (password !== confirmPassword) validationErrors.push('Confirm Password field must be the same as the Password field')
     setErrors(validationErrors)
-  }, [email, username, firstName, lastName, password])
+  }, [email, username, firstName, lastName, password, confirmPassword])
 
 
   if (sessionUser) return <Redirect to="/" />;
