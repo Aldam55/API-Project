@@ -62,25 +62,6 @@ router.post(
                     }
                 })
         }
-        // const existingUser = await User.findOne({
-        //     where: {
-        //         [Op.or]: [
-        //             { email: email },
-        //             { username: username }
-        //         ]
-        //     }
-        // })
-        // if (existingUser) {
-        //     res.statusCode = 403
-        //     res.json({
-        //         message: "User already exists",
-        //         statusCode: res.statusCode,
-        //         errors: [
-        //             { email: "User with that email already exists" }
-        //         ]
-        //     })
-        // }
-
         const existingUser = await User.findOne({
             where: { email }
         })

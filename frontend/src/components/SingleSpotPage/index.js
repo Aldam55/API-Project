@@ -34,7 +34,7 @@ const SingleSpotPage = ({ reviews }) => {
     const handleRemove = () => {
         dispatch(removeSpot(spot.id))
         dispatch(resetState())
-        history.push('/spots/current')
+        history.push('/')
     }
     let numReviews = spot.numReviews === 1 ? "Review" : "Reviews"
     // if (!spot) return null
