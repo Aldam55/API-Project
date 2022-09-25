@@ -16,7 +16,8 @@ const CurrentUserReviewsPage = () => {
         dispatch(getCurrent())
     }, [dispatch])
 
-    if (reviews) {
+
+    if (!reviews || !Object.values(reviews).length) {
         return (
             <h2 className="your-spots-header">Looks like you don't have any Reviews!</h2>
         )
@@ -29,7 +30,7 @@ const CurrentUserReviewsPage = () => {
                     <h2 className="current-user-header">{user.firstName}'s Reviews!</h2>
                     <div className='reviews-page-wrapper'>
                         {Object.values(reviews).map(review => (
-                            <div className="reviews-each-container">
+                            <div key={review.id} className="reviews-each-container">
                                 <div key={review.id} className='reviews-each current-review'>
                                     <NavLink className='review-page-name review-to-spot' to={`/spots/${review.Spot.id}`}>{review.Spot?.name}</NavLink>
                                     <div className='review-page-date'>{new Date(review.updatedAt).toString().slice(4, 15)}</div>

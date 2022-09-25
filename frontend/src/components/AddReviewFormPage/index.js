@@ -69,7 +69,7 @@ const AddReviewFormPage = () => {
                                         type='number'
                                         min='1'
                                         max='5'
-                                        placeholder="1-5"
+                                        placeholder="1-5 Stars"
                                         value={stars}
                                         onChange={updateStars} />
                                 </div>
