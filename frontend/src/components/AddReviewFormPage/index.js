@@ -14,6 +14,7 @@ const AddReviewFormPage = () => {
     const [review, setReview] = useState('')
     const [stars, setStars] = useState('')
     const [validationErrors, setValidationErrors] = useState([])
+    const [showErrors, setShowErrors] = useState(false)
 
     const updateReview = (e) => setReview(e.target.value)
     const updateStars = (e) => setStars(e.target.value)
@@ -21,23 +22,28 @@ const AddReviewFormPage = () => {
     useEffect(() => {
         const errors = []
         if (!review) errors.push('Must provide a valid review')
-        if (!stars) errors.push('Must provide a rating')
+        if (review.length < 10 || review.length > 200) errors.push('Reviews must be between 10 and 200 characters')
+        if (!stars) errors.push('Must provide a star rating')
         setValidationErrors(errors)
     }, [review, stars])
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+        setShowErrors(true)
 
-        const payload = {
-            review,
-            stars
-        }
+        if (!validationErrors.length) {
 
-        let createdReview = await dispatch(addSpotReview(payload, spot.id))
+            const payload = {
+                review,
+                stars
+            }
 
+            let createdReview = await dispatch(addSpotReview(payload, spot.id))
 
-        if (createdReview) {
-            history.push(`/spots/${spot.id}`)
+            if (createdReview) {
+                setShowErrors(false)
+                history.push(`/spots/${spot.id}`)
+            }
         }
     }
     const handleCancel = async (e) => {
@@ -55,11 +61,19 @@ const AddReviewFormPage = () => {
                             <form onSubmit={handleSubmit}>
                                 <div className='review-form-input'>
                                     <div className='review-how-stay'>How was your stay?</div>
+                                    {showErrors &&
+                                        <ul className="errors reviews-errors">
+                                            {validationErrors.map((e, i) => {
+                                                return <div className='login-error-message' key={i}>{e}</ div>
+                                            })}
+                                        </ul>
+                                    }
                                     <textarea
                                         id='review-description-box'
                                         type='text'
                                         placeholder='Description...'
                                         value={review}
+                                        required
                                         onChange={updateReview} />
                                 </div>
                                 <div className="review-form-rating">
@@ -71,6 +85,7 @@ const AddReviewFormPage = () => {
                                         max='5'
                                         placeholder="1-5 Stars"
                                         value={stars}
+                                        required
                                         onChange={updateStars} />
                                 </div>
                                 <button className='leave-your-review'
