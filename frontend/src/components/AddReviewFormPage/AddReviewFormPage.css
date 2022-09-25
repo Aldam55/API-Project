@@ -15,7 +15,7 @@
     border-radius: 10px;
     box-shadow: 2px 2px 9px gray;
     width: 500px;
-    height: 530px;
+    height: 480px;
 }
 
 .leave-a-review {
@@ -74,4 +74,8 @@
 .reviews-errors {
     padding-left: 46px;
     margin-top: -3px;
+}
+
+.review-error-message {
+    font-size: 14px;
 }

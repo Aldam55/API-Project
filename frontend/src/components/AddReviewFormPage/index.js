@@ -21,9 +21,7 @@ const AddReviewFormPage = () => {
 
     useEffect(() => {
         const errors = []
-        if (!review) errors.push('Must provide a valid review')
         if (review.length < 10 || review.length > 200) errors.push('Reviews must be between 10 and 200 characters')
-        if (!stars) errors.push('Must provide a star rating')
         setValidationErrors(errors)
     }, [review, stars])
 
@@ -64,7 +62,7 @@ const AddReviewFormPage = () => {
                                     {showErrors &&
                                         <ul className="errors reviews-errors">
                                             {validationErrors.map((e, i) => {
-                                                return <div className='login-error-message' key={i}>{e}</ div>
+                                                return <div className='login-error-message review-error-message' key={i}>{e}</ div>
                                             })}
                                         </ul>
                                     }
