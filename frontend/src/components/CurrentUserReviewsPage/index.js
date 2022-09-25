@@ -16,9 +16,9 @@ const CurrentUserReviewsPage = () => {
         dispatch(getCurrent())
     }, [dispatch])
 
-    if (!Object.values(reviews).length) {
+    if (reviews) {
         return (
-            <h2 className="current-user-header">Looks like you don't have any Reviews!</h2>
+            <h2 className="your-spots-header">Looks like you don't have any Reviews!</h2>
         )
     }
 
