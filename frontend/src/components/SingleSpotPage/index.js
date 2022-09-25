@@ -19,7 +19,7 @@ const SingleSpotPage = ({ reviews }) => {
         existingReview = true
     } else {
         for (let i = 0; i < existingReviews.length; i++) {
-            console.log('testing existing reviews', existingReviews[i])
+            // console.log('testing existing reviews', existingReviews[i])
             if (existingReviews[i].User?.id === user?.id) {
                 existingReview = false
             } else {

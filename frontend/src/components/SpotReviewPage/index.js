@@ -11,7 +11,7 @@ const SpotReviewPage = () => {
 
     const user = useSelector(state => state.session.user)
     const spotReviews = useSelector(state => state.reviews.spot)
-    console.log('spotReivews', spotReviews)
+    // console.log('spotReivews', spotReviews)
 
     useEffect(() => {
         dispatch(getSpotReview(spotId))

@@ -9,7 +9,6 @@ const CurrentUserSpotsPage = () => {
 
     const spots = useSelector(state => state.spots.allSpots)
     const user = useSelector(state => state.session.user)
-    console.log('spots in getcurrentuser', spots)
 
     useEffect(() => {
         dispatch(getCurrent())

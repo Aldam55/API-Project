@@ -19,7 +19,7 @@ const SpotsPage = () => {
         return () => dispatch(resetState())
     }, [dispatch])
 
-    console.log('all spots info in spotspage', spots)
+    // console.log('all spots info in spotspage', spots)
     if (!spots) return null
 
     return (

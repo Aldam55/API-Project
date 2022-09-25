@@ -9,8 +9,8 @@ const CurrentUserReviewsPage = () => {
 
     const user = useSelector(state => state.session.user)
     const reviews = useSelector(state => state.reviews.user)
-    console.log('reviews of current user', reviews)
-    console.log('user in get current user reviews', user)
+    // console.log('reviews of current user', reviews)
+    // console.log('user in get current user reviews', user)
 
     useEffect(() => {
         dispatch(getCurrent())
