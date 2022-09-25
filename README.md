@@ -37,5 +37,9 @@ This project is built with:
 #### Edit a Spot
 ![image](https://user-images.githubusercontent.com/106426283/192168554-52787064-2d8e-413b-865e-e59fda837396.png)![image](https://user-images.githubusercontent.com/106426283/192168578-11b64385-8504-4d04-8562-0f998663a5e2.png)
 
+#### Delete a Spot
+![image](https://user-images.githubusercontent.com/106426283/192168624-ae7ed97a-3256-4cd9-a0f9-ebeb5f81d519.png)
+
+
 ## Contact
 * [LinkedIn](https://www.linkedin.com/in/alexander-dam-a45b8821a/)
