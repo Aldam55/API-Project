@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { NavLink, useHistory, useParams } from "react-router-dom"
-import { getSpotById, removeSpot } from "../../store/spots"
+import { getSpotById, removeSpot, resetState } from "../../store/spots"
 import SpotReviewPage from "../SpotReviewPage"
 import './SingleSpotPage.css'
 
@@ -33,6 +33,7 @@ const SingleSpotPage = ({ reviews }) => {
 
     const handleRemove = () => {
         dispatch(removeSpot(spot.id))
+        dispatch(resetState())
         history.push('/spots/current')
     }
     let numReviews = spot.numReviews === 1 ? "Review" : "Reviews"

@@ -112,7 +112,7 @@
 .single-spot-booking-content {
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
+    align-items: center;
     padding: 20px 15px;
 }
 
@@ -124,7 +124,7 @@
 }
 
 #booking-content-price {
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 600;
     padding-right: 5px;
 }
