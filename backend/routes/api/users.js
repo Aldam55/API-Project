@@ -104,7 +104,7 @@ router.post(
                 message: "User already exists",
                 statusCode: res.statusCode,
                 errors: [
-                    { username: "User with that Username already exists" }
+                    { username: "User with that username already exists" }
                 ]
             })
         }
