@@ -29,7 +29,7 @@ This project is built with:
 ### Spots
 
 #### Read Spot Details
-![image](https://i.gyazo.com/000916651e3de020114abbaafd263711.jpg
+![image](https://i.gyazo.com/000916651e3de020114abbaafd263711.jpg)
 
 #### Create Spots
 ![image](https://i.gyazo.com/0ba4928699e2796745d84da1d695e76a.png)
