@@ -75,6 +75,7 @@
     height: 450px;
     border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
+    object-fit: cover;
 }
 
 .single-spot-description {
