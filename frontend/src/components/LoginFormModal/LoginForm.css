@@ -75,4 +75,5 @@
 .login-error-message {
     font-size: 16px;
     color: red;
+    width: 350px;
 }

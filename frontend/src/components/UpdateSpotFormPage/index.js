@@ -34,7 +34,7 @@ const UpdateSpotFormPage = () => {
     useEffect(() => {
         const errors = []
         if (!name || name.length > 50) errors.push('Must provide a valid name')
-        if (!address || address.length > 20) errors.push('Must provide a valid address')
+        if (!address || address.length > 20 || address.length < 7) errors.push('Must provide a valid address')
         if (!city || city.length > 20) errors.push('Must provide a valid city')
         if (!state || state.length > 20) errors.push('Must provide a valid state')
         if (!country) errors.push('Must provide a valid country')
@@ -92,7 +92,7 @@ const UpdateSpotFormPage = () => {
                     {showErrors &&
                         <ul className="errors">
                             {validationErrors.map((e, i) => {
-                                return <li key={i}>{e}</li>
+                                return <div className='login-error-message' key={i}>{e}</div>
                             })}
                         </ul>
                     }
