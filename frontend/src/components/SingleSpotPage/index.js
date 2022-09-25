@@ -32,7 +32,7 @@ const SingleSpotPage = ({ reviews }) => {
     }, [dispatch, spotId, existingReviews.length])
 
     const handleRemove = async () => {
-        dispatch(removeSpot(spot.id))
+        await dispatch(removeSpot(spot.id))
         await dispatch(resetState())
         history.push('/spots/current')
     }
