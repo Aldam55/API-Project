@@ -35,7 +35,7 @@ This project is built with:
 ![image](https://i.gyazo.com/0ba4928699e2796745d84da1d695e76a.png)
 
 #### Edit a Spot
-![image](https://i.gyazo.com/14efaea96c0f40c5b5cb79fb5cd21066.png) ![image](https://i.gyazo.com/da5ee1e9ed78b9cd3c42268a25add0da.png)
+![image](https://user-images.githubusercontent.com/106426283/192168554-52787064-2d8e-413b-865e-e59fda837396.png) ![image](https://i.gyazo.com/da5ee1e9ed78b9cd3c42268a25add0da.png)
 
 
 ## Contact
