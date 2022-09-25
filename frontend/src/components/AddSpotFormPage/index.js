@@ -89,7 +89,7 @@ const AddSpotFormPage = () => {
                     {showErrors &&
                         <ul className="errors">
                             {validationErrors.map((e, i) => {
-                                return <li key={i}>{e}</li>
+                                return <div className='login-error-message' key={i}>{e}</ div>
                             })}
                         </ul>
                     }
