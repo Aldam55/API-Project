@@ -82,7 +82,7 @@ router.post(
         // }
 
         const existingUser = await User.findOne({
-            where: { email: email }
+            where: { email }
         })
         if (existingUser) {
             res.statusCode = 403
@@ -90,13 +90,13 @@ router.post(
                 message: "User already exists",
                 statusCode: res.statusCode,
                 errors: [
-                    { email: "User with that email already exists" }
+                    "User with that email already exists"
                 ]
             })
         }
 
         const existingUser2 = await User.findOne({
-            where: { username: username }
+            where: { username }
         })
         if (existingUser2) {
             res.statusCode = 403
@@ -104,7 +104,7 @@ router.post(
                 message: "User already exists",
                 statusCode: res.statusCode,
                 errors: [
-                    { username: "User with that username already exists" }
+                    "User with that username already exists"
                 ]
             })
         }

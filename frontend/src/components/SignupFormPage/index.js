@@ -35,15 +35,12 @@ function SignupFormPage() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setShowErrors(true)
-    if (!errors.length) {
+    if (password === confirmPassword) {
       return dispatch(sessionActions.signup({ firstName, lastName, email, username, password }))
         .catch(async (res) => {
           const data = await res.json();
-          console.log('data in signup', data.errors[0].username)
-          if (data && data.errors[0].username) {
-            setErrors(errors.push(data.errors[0].username))
-            console.log('errors in signup', errors)
-          };
+          console.log('data in signup', data.errors)
+          if (data && data.errors) setErrors(data.errors);
         });
     }
   };
