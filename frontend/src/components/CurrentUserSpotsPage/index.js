@@ -15,7 +15,7 @@ const CurrentUserSpotsPage = () => {
         dispatch(getCurrent())
     }, [dispatch])
 
-    if (!Object.values(spots).length) {
+    if (!spots || !Object.values(spots).length) {
         return (
             <h2 className='your-spots-header'>Looks like you don't have any spots!</h2>
         )
