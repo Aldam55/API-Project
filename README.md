@@ -26,5 +26,18 @@ This project is built with:
 
 ## Features
 
+### Spots
+
+#### Read Spot Details
+![image](https://i.gyazo.com/000916651e3de020114abbaafd263711.jpg
+
+#### Create Spots
+![image](https://i.gyazo.com/0ba4928699e2796745d84da1d695e76a.png)
+
+#### Edit a Spot
+![image](https://i.gyazo.com/14efaea96c0f40c5b5cb79fb5cd21066.png)
+![image](https://i.gyazo.com/da5ee1e9ed78b9cd3c42268a25add0da.png)
+
+
 ## Contact
 * [LinkedIn](https://www.linkedin.com/in/alexander-dam-a45b8821a/)
