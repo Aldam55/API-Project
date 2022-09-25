@@ -20,8 +20,9 @@ function SignupFormPage() {
   useEffect(() => {
     const validationErrors = []
     if (!email || !email.includes('@') || !email.includes('.com')) validationErrors.push('Must provide a valid email')
-    if (!username || username.length > 15) validationErrors.push('Must provide a valid username')
-    if (!firstName) validationErrors.push('Must provide a valid first name')
+    if (!username) validationErrors.push('Must provide a valid username')
+    if (username.length > 15 || username.length < 5) validationErrors.push('Username must be between 5 and 15 characters')
+      if (!firstName) validationErrors.push('Must provide a valid first name')
     if (!lastName) validationErrors.push('Must provide a valid last name')
     if (!password) validationErrors.push('Must provide a valid password')
     if (password.length < 7) validationErrors.push('Password must be at least 7 characters')
@@ -35,11 +36,10 @@ function SignupFormPage() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setShowErrors(true)
-    if (password === confirmPassword) {
+    if (!errors.length) {
       return dispatch(sessionActions.signup({ firstName, lastName, email, username, password }))
         .catch(async (res) => {
           const data = await res.json();
-          console.log('data in signup', data.errors)
           if (data && data.errors) setErrors(data.errors);
         });
     }
