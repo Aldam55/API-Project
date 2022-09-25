@@ -20,7 +20,7 @@ This project is built with:
 * Redux
 
 
-## Home Page
+## Landing Page
 
 ## Contact
 * [LinkedIn](https://www.linkedin.com/in/alexander-dam-a45b8821a/)
