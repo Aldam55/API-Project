@@ -1,8 +1,9 @@
 .allspots {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
+    justify-content: left;
+    gap: 15px;
+    padding: 0px 125px;
 }
 
 /* .spotcard {
