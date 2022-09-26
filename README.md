@@ -36,7 +36,6 @@ Hosted on:
 ### User
 
 #### Signup/Login:
-![image](https://user-images.githubusercontent.com/106426283/192189006-da8cc6ae-d016-469b-acaf-407b841f4a99.png)
 ![image](https://user-images.githubusercontent.com/106426283/192189014-43a1db2a-4438-4482-bcc6-d978f9ef151a.png)
 ![image](https://user-images.githubusercontent.com/106426283/192189017-739f8daa-9fe4-4b02-b0ad-71b8636e10f1.png)
 
