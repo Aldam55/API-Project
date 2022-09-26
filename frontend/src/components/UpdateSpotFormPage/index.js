@@ -88,11 +88,11 @@ const UpdateSpotFormPage = () => {
         <div className="update-spot-form-wrapper">
             <div id='update-spot-form'>
                 <form className='update-spot-form' onSubmit={handleSubmit}>
-                    <h2>Edit your Spot</h2>
+                    <h2 id='add-spot-header-text'>Edit your Spot</h2>
                     {showErrors &&
                         <ul className="errors">
                             {validationErrors.map((e, i) => {
-                                return <div className='login-error-message' key={i}>{e}</div>
+                                return <div className='update-error-message' key={i}>{e}</div>
                             })}
                         </ul>
                     }

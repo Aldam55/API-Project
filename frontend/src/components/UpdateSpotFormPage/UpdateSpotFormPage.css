@@ -40,3 +40,12 @@
 .update-submit {
     margin-top: 10px;
 }
+
+.update-error-message {
+    display: flex;
+    justify-content: left;
+    font-size: 16px;
+    color: red;
+    width: 340px;
+    padding-left: 70px;
+}

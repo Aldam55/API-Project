@@ -82,19 +82,18 @@ input[type=number]::-webkit-outer-spin-button {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding-right: 155px;
     width: 500px;
 }
 
 #add-spot-header-text {
-    margin: 20px 0px 0px 0px;
+    margin: 20px 0px 10px 0px;
 }
 
 .create-spot-error-message {
     display: flex;
-    justify-content: center;
+    justify-content: left;
     font-size: 16px;
     color: red;
-    width: fit-content;
-    padding-left: 40px;
+    width: 340px;
+    padding-left: 90px;
 }

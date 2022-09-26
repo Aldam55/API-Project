@@ -60,9 +60,9 @@ const AddReviewFormPage = () => {
                                 <div className='review-form-input'>
                                     <div className='review-how-stay'>How was your stay?</div>
                                     {showErrors &&
-                                        <ul className="errors reviews-errors">
+                                        <ul className="reviews-errors">
                                             {validationErrors.map((e, i) => {
-                                                return <div className='login-error-message review-error-message' key={i}>{e}</ div>
+                                                return <div className='review-error-message' key={i}>{e}</ div>
                                             })}
                                         </ul>
                                     }
