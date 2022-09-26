@@ -63,11 +63,11 @@ This project is built with:
   - Allow users to delete their own bookings.
   - Allow users to delete bookings from their spots.
   
-  ## Getting started:
-  - Clone the repo or download the zip file
-  - Run 'npm install' in both backend and frontend directories
-  - Run 'npx dotenv sequelize db:migrate' and 'npx dotenv sequelize db:seed:all' to migrate and seed your database
-  - Run 'npm start' in both backend and frontend directories
+## Getting started:
+ - Clone the repo or download the zip file
+ - Run 'npm install' in both backend and frontend directories
+ - Run 'npx dotenv sequelize db:migrate' and 'npx dotenv sequelize db:seed:all' to migrate and seed your database
+ - Run 'npm start' in both backend and frontend directories
 
 ## Contact
 * [LinkedIn](https://www.linkedin.com/in/alexander-dam-a45b8821a/)
