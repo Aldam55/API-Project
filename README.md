@@ -49,7 +49,9 @@ This project is built with:
 ![image](https://user-images.githubusercontent.com/106426283/192172385-1f95a4f1-d08b-46e3-a866-6ee83f99bdaa.png)
 ![image](https://user-images.githubusercontent.com/106426283/192172389-8f4c8ba4-eab0-474c-8bc5-ce0b40bc80e4.png)
 
-#### Delete Reviews
+#### Delete Reviews:
+![image](https://user-images.githubusercontent.com/106426283/192172510-78901cb6-8e41-4236-8076-1d6e199bbf27.png)
+
 
 ## Contact
 * [LinkedIn](https://www.linkedin.com/in/alexander-dam-a45b8821a/)
