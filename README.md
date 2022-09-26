@@ -52,6 +52,22 @@ This project is built with:
 #### Delete Reviews:
 ![image](https://user-images.githubusercontent.com/106426283/192172510-78901cb6-8e41-4236-8076-1d6e199bbf27.png)
 
+## Roadmap:
+- Allow users to add more than one image upon creating a spot.
+- Allow users to change their image when editing a spot.
+- Allow users to add an image when creating a review for a spot.
+- Allow users to edit their reviews after creation.
+- Add functionality for bookings:
+  - Allow users to create a booking for a spot
+  - Allow users to edit bookings that they created.
+  - Allow users to delete their own bookings.
+  - Allow users to delete bookings from their spots.
+  
+  ## Getting started:
+  - Clone the repo or download the zip file
+  - Run 'npm install' in both backend and frontend directories
+  - Run 'npx dotenv sequelize db:migrate' and 'npx dotenv sequelize db:seed:all' to migrate and seed your database
+  - Run 'npm start' in both backend and frontend directories
 
 ## Contact
 * [LinkedIn](https://www.linkedin.com/in/alexander-dam-a45b8821a/)
