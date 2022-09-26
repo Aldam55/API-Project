@@ -36,15 +36,18 @@ Hosted on:
 ### User
 
 #### Signup/Login:
+- Users can sign up and login with their credentials, or log in as a demo user.
 ![image](https://user-images.githubusercontent.com/106426283/192189014-43a1db2a-4438-4482-bcc6-d978f9ef151a.png)
 ![image](https://user-images.githubusercontent.com/106426283/192189017-739f8daa-9fe4-4b02-b0ad-71b8636e10f1.png)
 
 #### User's Spots:
+- Once logged in, users can navigate to their spots.
 ![image](https://user-images.githubusercontent.com/106426283/192189307-9b47893b-e1e3-40a3-bbdc-c18cbfb9946b.png)
 
 ![image](https://user-images.githubusercontent.com/106426283/192189314-19044ccd-f412-493a-9a8f-3129448da3f2.png)
 
 #### User's Reviews:
+- Once logged in, users can navigate to their existing reviews.
 ![image](https://user-images.githubusercontent.com/106426283/192189473-46a81082-4c91-499f-9e10-070bc70055ff.png)
 
 ![image](https://user-images.githubusercontent.com/106426283/192189477-91f7048e-f48a-4420-8a2a-2cfcd07cf7d1.png)
