@@ -41,6 +41,7 @@ Hosted on:
 
 #### User's Spots:
 ![image](https://user-images.githubusercontent.com/106426283/192189307-9b47893b-e1e3-40a3-bbdc-c18cbfb9946b.png)
+
 ![image](https://user-images.githubusercontent.com/106426283/192189314-19044ccd-f412-493a-9a8f-3129448da3f2.png)
 
 
