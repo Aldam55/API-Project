@@ -58,9 +58,9 @@ function SignupFormPage() {
           <form onSubmit={handleSubmit}>
             <div>
               {showErrors &&
-                <ul>
+                <ul className='signup-move-center'>
                   {errors.map((error, idx) =>
-                    <div className='login-error-message' key={idx}>{error}</div>)}
+                    <div className='signup-error-message' key={idx}>{error}</div>)}
                 </ul>
               }
             </div>

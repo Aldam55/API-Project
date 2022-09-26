@@ -40,7 +40,7 @@ function LoginForm() {
             Welcome to Earthrnr!
           </div>
           <form onSubmit={handleSubmit}>
-            <div>
+            <div className="login-error-move-left">
               <ul className='login-error-container'>
                 {errors.map((error, idx) => (
                   <div className='login-error-message' key={idx}>{error}</div>

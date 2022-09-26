@@ -24,9 +24,13 @@
 .login-form-welcome {
     font-size: 25px;
     font-weight: 500;
+    padding-left: 125px;
 }
 
 .login-form-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     padding: 20px;
 }
 
@@ -68,12 +72,12 @@
 
 .login-error-container {
     display: flex;
-    justify-content: center;
-    padding-right: 40px;
+    padding-left: -80px
 }
 
 .login-error-message {
     font-size: 16px;
     color: red;
-    width: 350px;
+    width: 300px;
+    padding-left: 150px;
 }
