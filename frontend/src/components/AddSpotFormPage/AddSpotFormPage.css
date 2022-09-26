@@ -79,10 +79,22 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .errors {
-    padding-right: 40px;
-    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-right: 155px;
+    width: 500px;
 }
 
 #add-spot-header-text {
-    padding-right: 10px;
+    margin: 20px 0px 0px 0px;
+}
+
+.create-spot-error-message {
+    display: flex;
+    justify-content: center;
+    font-size: 16px;
+    color: red;
+    width: fit-content;
+    padding-left: 40px;
 }
