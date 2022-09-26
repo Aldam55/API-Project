@@ -59,27 +59,34 @@ Hosted on:
 ### Spots
 
 #### Read Spot Details:
+- Users can navigate to individual spot pages and read details.
 <img src='https://i.gyazo.com/000916651e3de020114abbaafd263711.jpg'>
 
 #### Create Spots:
+- Logged in users can create their own spots.
 ![image](https://i.gyazo.com/0ba4928699e2796745d84da1d695e76a.png)
 
 #### Edit a Spot:
+- Logged in users can edit spots that they have created.
 ![image](https://user-images.githubusercontent.com/106426283/192168554-52787064-2d8e-413b-865e-e59fda837396.png)![image](https://user-images.githubusercontent.com/106426283/192168578-11b64385-8504-4d04-8562-0f998663a5e2.png)
 
 #### Delete a Spot:
+- Logged in users can delete their own spots.
 ![image](https://user-images.githubusercontent.com/106426283/192168624-ae7ed97a-3256-4cd9-a0f9-ebeb5f81d519.png)
 
 ### Reviews
 
 #### Read Reviews:
+- Users can read reviews for spots at the bottom of the individual spot page.
 ![image](https://user-images.githubusercontent.com/106426283/192172267-467de01a-89ab-4461-a4fe-4df9a1c49e61.png)
 
 #### Create Reviews:
+- Logged in users can create reviews.
 ![image](https://user-images.githubusercontent.com/106426283/192172385-1f95a4f1-d08b-46e3-a866-6ee83f99bdaa.png)
 ![image](https://user-images.githubusercontent.com/106426283/192172389-8f4c8ba4-eab0-474c-8bc5-ce0b40bc80e4.png)
 
 #### Delete Reviews:
+- Logged in users can delete their own reviews.
 ![image](https://user-images.githubusercontent.com/106426283/192172510-78901cb6-8e41-4236-8076-1d6e199bbf27.png)
 
 ## Roadmap:
