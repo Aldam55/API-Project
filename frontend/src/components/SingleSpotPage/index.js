@@ -126,8 +126,6 @@ const SingleSpotPage = ({ reviews }) => {
                             <SpotReviewPage></SpotReviewPage>
                         </div>
                     </div>
-                    <div>
-                    </div>
                 </div>
             }
         </>
