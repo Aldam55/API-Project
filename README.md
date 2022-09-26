@@ -40,6 +40,10 @@ This project is built with:
 #### Delete a Spot:
 ![image](https://user-images.githubusercontent.com/106426283/192168624-ae7ed97a-3256-4cd9-a0f9-ebeb5f81d519.png)
 
+### Reviews
+
+#### Read Reviews:
+![image](https://user-images.githubusercontent.com/106426283/192172267-467de01a-89ab-4461-a4fe-4df9a1c49e61.png)
 
 ## Contact
 * [LinkedIn](https://www.linkedin.com/in/alexander-dam-a45b8821a/)
